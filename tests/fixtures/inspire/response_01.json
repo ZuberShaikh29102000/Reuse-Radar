@@ -1,0 +1,928 @@
+{
+ "hits": {
+  "hits": [
+   {
+    "created": "2021-03-24T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1853014?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1853014?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1853014?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1853014?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1853014?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1853014?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1853014"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1853014,
+     "arxiv_eprints": [
+      {
+       "value": "2103.12603"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Measurements of the inclusive and differential production cross sections of a top-quark–antiquark pair in association with a Z boson at $\\sqrt{s} = 13$ TeV with the ATLAS detector"
+      },
+      {
+       "title": "Measurements of the inclusive and differential production cross sections of a top-quark-antiquark pair in association with a $Z$ boson at $\\sqrt{s} = 13$ TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-03-23"
+    },
+    "updated": "2026-09-23T13:34:02.579725+00:00",
+    "id": "1853014"
+   },
+   {
+    "created": "2021-03-23T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1852821?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1852821?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1852821?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1852821?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1852821?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1852821?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1852821"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1852821,
+     "arxiv_eprints": [
+      {
+       "value": "2103.11684"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for supersymmetry in events with four or more charged leptons in 139 fb$^{−1}$ of $ \\sqrt{s} $ = 13 TeV pp collisions with the ATLAS detector"
+      },
+      {
+       "title": "Search for supersymmetry in events with four or more charged leptons in $139\\,\\textrm{fb}^{-1}$ of $\\sqrt{s}=13$ TeV $pp$ collisions with the ATLAS detector"
+      },
+      {
+       "title": "Search for supersymmetry in events with four or more charged leptons in $139\\,\\mbox{fb\\(^{-1}\\)}$ of $\\sqrt{s}=13$ TeV $pp$ collisions with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-03-22"
+    },
+    "updated": "2026-09-23T13:54:45.955407+00:00",
+    "id": "1852821"
+   },
+   {
+    "created": "2021-03-19T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1852325?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1852325?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1852325?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1852325?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1852325?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1852325?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1852325"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1852325,
+     "arxiv_eprints": [
+      {
+       "value": "2103.10322"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Evidence for Higgs boson decays to a low-mass dilepton system and a photon in pp collisions at <math altimg=\"si1.svg\"><msqrt><mrow><mi>s</mi></mrow></msqrt><mo linebreak=\"goodbreak\" linebreakstyle=\"after\">=</mo><mn>13</mn></math> TeV with the ATLAS detector"
+      },
+      {
+       "title": "Evidence for Higgs boson decays to a low-mass dilepton system and a photon in pp collisions at s=13 TeV with the ATLAS detector"
+      },
+      {
+       "title": "Evidence for Higgs boson decays to a low-mass dilepton system and a photon in $pp$ collisions at $\\sqrt {s}$ = 13 TeV with the ATLAS detector"
+      },
+      {
+       "title": "Evidence for Higgs boson decays to a low-mass dilepton system and a photon in pp collisions at $\\sqrt{s} =$ 13 TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-03-18"
+    },
+    "updated": "2026-08-05T13:55:01.384313+00:00",
+    "id": "1852325"
+   },
+   {
+    "created": "2021-03-19T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1852328?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1852328?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1852328?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1852328?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1852328?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1852328?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1852328"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1852328,
+     "arxiv_eprints": [
+      {
+       "value": "2103.10319"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Measurements of $W^+W^-+\\ge 1~$jet production cross-sections in $pp$ collisions at $\\sqrt{s}=13~$TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-03-18"
+    },
+    "updated": "2026-09-23T12:52:33.825605+00:00",
+    "id": "1852328"
+   },
+   {
+    "created": "2021-03-16T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1851675?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1851675?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1851675?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1851675?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1851675?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1851675?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1851675"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1851675,
+     "arxiv_eprints": [
+      {
+       "value": "2103.08189"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for bottom-squark pair production in $pp$ collision events at $\\sqrt{s} = 13$ TeV with hadronically decaying $\\tau$-leptons, $b$-jets and missing transverse momentum using the ATLAS detector"
+      },
+      {
+       "title": "Search for bottom-squark pair production in $pp$ collision events at $\\sqrt{s} = 13$ TeV with hadronically decaying $\\tau$-leptons, $b$-jets and missing transverse momentum using the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-03-15"
+    },
+    "updated": "2026-09-23T13:06:57.809531+00:00",
+    "id": "1851675"
+   },
+   {
+    "created": "2021-03-03T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1849535?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1849535?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1849535?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1849535?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1849535?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1849535?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1849535"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1849535,
+     "arxiv_eprints": [
+      {
+       "value": "2103.01918"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Measurements of differential cross-sections in four-lepton events in 13 TeV proton-proton collisions with the ATLAS detector"
+      },
+      {
+       "title": "Measurements of differential cross-sections in four-lepton events in 13 TeV proton-proton collisions with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-03-02"
+    },
+    "updated": "2026-09-23T12:51:50.836398+00:00",
+    "id": "1849535"
+   },
+   {
+    "created": "2021-10-20T10:19:55.895857+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1947702?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1947702?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1947702?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1947702?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1947702?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1947702?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1947702"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1947702,
+     "titles": [
+      {
+       "title": "Search for pair production of top squarks and for dark matter in final states with two leptons using data collected by the ATLAS experiment during the LHC Run 2"
+      }
+     ],
+     "earliest_date": "2021-03"
+    },
+    "updated": "2023-11-23T11:25:59.543092+00:00",
+    "id": "1947702"
+   },
+   {
+    "created": "2021-10-20T10:21:00.657342+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1947711?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1947711?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1947711?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1947711?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1947711?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1947711?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1947711"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1947711,
+     "titles": [
+      {
+       "title": "Measurement of the track impact parameters resolution with the ATLAS experiment at LHC using 2016-2018 data"
+      }
+     ],
+     "earliest_date": "2021-03"
+    },
+    "updated": "2023-03-07T00:02:12.856707+00:00",
+    "id": "1947711"
+   },
+   {
+    "created": "2021-10-20T10:22:04.515233+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1947720?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1947720?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1947720?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1947720?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1947720?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1947720?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1947720"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1947720,
+     "titles": [
+      {
+       "title": "Reconstruction improvements for the measurements of the $H \\to b$ decay at the ATLAS experiment"
+      }
+     ],
+     "earliest_date": "2021-03"
+    },
+    "updated": "2024-04-19T08:00:13.053469+00:00",
+    "id": "1947720"
+   },
+   {
+    "created": "2021-10-20T16:11:11.042194+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1947812?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1947812?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1947812?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1947812?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1947812?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1947812?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1947812"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1947812,
+     "titles": [
+      {
+       "title": "Beam-induced background identification with image vision techniques at ATLAS"
+      }
+     ],
+     "earliest_date": "2021-03"
+    },
+    "updated": "2023-03-06T22:02:36.567415+00:00",
+    "id": "1947812"
+   },
+   {
+    "created": "2021-10-20T16:11:32.262255+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1947815?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1947815?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1947815?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1947815?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1947815?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1947815?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1947815"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1947815,
+     "titles": [
+      {
+       "title": "3D pixel modules characterization with RD53A readout for ATLAS ITk Upgrade"
+      }
+     ],
+     "earliest_date": "2021-03"
+    },
+    "updated": "2023-03-06T22:46:00.297868+00:00",
+    "id": "1947815"
+   },
+   {
+    "created": "2021-03-01T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1849059?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1849059?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1849059?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1849059?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1849059?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1849059?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1849059"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1849059,
+     "arxiv_eprints": [
+      {
+       "value": "2102.13405"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for resonances decaying into photon pairs in 139 fb$^{-1}$ of $pp$ collisions at $\\sqrt {s}$=13 TeV with the ATLAS detector"
+      },
+      {
+       "title": "Search for resonances decaying into photon pairs in 139 fb$^{-1}$ of $pp$ collisions at $\\sqrt{s} =$ 13 TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-02-26"
+    },
+    "updated": "2026-08-05T13:54:46.583727+00:00",
+    "id": "1849059"
+   },
+   {
+    "created": "2021-03-03T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1849519?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1849519?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1849519?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1849519?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1849519?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1849519?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1849519"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1849519,
+     "arxiv_eprints": [
+      {
+       "value": "2103.01029"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Performance of the ATLAS RPC detector and Level-1 muon barrel trigger at $\\sqrt{s}=13$ TeV"
+      },
+      {
+       "title": "Performance of the ATLAS RPC detector and Level-1 muon barrel trigger at √(s)=13 TeV"
+      }
+     ],
+     "earliest_date": "2021-02-25"
+    },
+    "updated": "2026-09-23T12:52:59.589782+00:00",
+    "id": "1849519"
+   },
+   {
+    "created": "2021-02-23T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1847779?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1847779?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1847779?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1847779?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1847779?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1847779?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1847779"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1847779,
+     "arxiv_eprints": [
+      {
+       "value": "2102.10874"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for new phenomena in events with an energetic jet and missing transverse momentum in $pp$ collisions at $\\sqrt {s}$ =13  TeV with the ATLAS detector"
+      },
+      {
+       "title": "Search for new phenomena in events with an energetic jet and missing transverse momentum in $pp$ collisions at $\\sqrt{s} = 13$ TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-02-22"
+    },
+    "updated": "2026-08-05T13:53:50.969956+00:00",
+    "id": "1847779"
+   },
+   {
+    "created": "2021-02-22T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1847643?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1847643?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1847643?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1847643?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1847643?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1847643?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1847643"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1847643,
+     "arxiv_eprints": [
+      {
+       "value": "2102.10076"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for charged Higgs bosons decaying into a top quark and a bottom quark at $ \\sqrt{\\mathrm{s}} $ = 13 TeV with the ATLAS detector"
+      },
+      {
+       "title": "Search for charged Higgs bosons decaying into a top quark and a bottom quark at $\\sqrt{s}$=13 TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-02-19"
+    },
+    "updated": "2026-09-23T12:51:25.250261+00:00",
+    "id": "1847643"
+   },
+   {
+    "created": "2021-02-19T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1847316?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1847316?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1847316?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1847316?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1847316?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1847316?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1847316"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1847316,
+     "arxiv_eprints": [
+      {
+       "value": "2102.09495"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Emulating the impact of additional proton–proton interactions in the ATLAS simulation by presampling sets of inelastic Monte Carlo events"
+      },
+      {
+       "title": "Emulating the impact of additional proton-proton interactions in the ATLAS simulation by pre-sampling sets of inelastic Monte Carlo events"
+      }
+     ],
+     "earliest_date": "2021-02-18"
+    },
+    "updated": "2026-09-23T13:52:05.439204+00:00",
+    "id": "1847316"
+   },
+   {
+    "created": "2021-02-03T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1844425?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1844425?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1844425?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1844425?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1844425?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1844425?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1844425"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1844425,
+     "arxiv_eprints": [
+      {
+       "value": "2102.01444"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for new phenomena in events with two opposite-charge leptons, jets and missing transverse momentum in pp collisions at $ \\sqrt{\\mathrm{s}} $ = 13 TeV with the ATLAS detector"
+      },
+      {
+       "title": "Search for new phenomena in events with two opposite-charge leptons, jets and missing transverse momentum in $pp$ collisions at $\\sqrt{s} = 13$ TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-02-02"
+    },
+    "updated": "2026-08-05T13:56:44.366912+00:00",
+    "id": "1844425"
+   },
+   {
+    "created": "2021-02-01T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1843959?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1843959?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1843959?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1843959?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1843959?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1843959?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1843959"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1843959,
+     "arxiv_eprints": [
+      {
+       "value": "2101.12527"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for new phenomena in final states with $b$-jets and missing transverse momentum in $\\sqrt{s}=13$ TeV $pp$ collisions with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-01-29"
+    },
+    "updated": "2026-08-05T13:53:35.548626+00:00",
+    "id": "1843959"
+   },
+   {
+    "created": "2021-01-29T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1843269?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1843269?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1843269?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1843269?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1843269?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1843269?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1843269"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1843269,
+     "arxiv_eprints": [
+      {
+       "value": "2101.11961"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for doubly and singly charged Higgs bosons decaying into vector bosons in multi-lepton final states with the ATLAS detector using proton-proton collisions at $ \\sqrt{\\mathrm{s}} $ = 13 TeV"
+      },
+      {
+       "title": "Search for doubly and singly charged Higgs bosons decaying into vector bosons in multi-lepton final states with the ATLAS detector using proton-proton collisions at $\\sqrt{s}$ = 13 TeV"
+      }
+     ],
+     "earliest_date": "2021-01-28"
+    },
+    "updated": "2026-09-23T13:54:50.439725+00:00",
+    "id": "1843269"
+   },
+   {
+    "created": "2021-01-28T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1843001?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1843001?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1843001?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1843001?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1843001?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1843001?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1843001"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1843001,
+     "arxiv_eprints": [
+      {
+       "value": "2101.11582"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for pair production of third-generation scalar leptoquarks decaying into a top quark and a $\\tau$-lepton in $pp$ collisions at $ \\sqrt{s} $ = 13 TeV with the ATLAS detector"
+      },
+      {
+       "title": "Search for pair production of third-generation scalar leptoquarks decaying into a top quark and a $\\tau$-lepton in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-01-27"
+    },
+    "updated": "2026-09-23T12:52:31.047669+00:00",
+    "id": "1843001"
+   },
+   {
+    "created": "2021-01-27T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1842843?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1842843?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1842843?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1842843?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1842843?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1842843?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1842843"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1842843,
+     "arxiv_eprints": [
+      {
+       "value": "2101.10771"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Two-particle azimuthal correlations in photonuclear ultraperipheral Pb+Pb collisions at 5.02 TeV with ATLAS"
+      },
+      {
+       "title": "Two-particle azimuthal correlations in photonuclear ultraperipheral Pb+Pb collisions at 5.02 TeV with ATLAS"
+      }
+     ],
+     "earliest_date": "2021-01-26"
+    },
+    "updated": "2026-09-23T12:51:53.415667+00:00",
+    "id": "1842843"
+   },
+   {
+    "created": "2021-01-14T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1840521?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1840521?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1840521?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1840521?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1840521?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1840521?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1840521"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1840521,
+     "arxiv_eprints": [
+      {
+       "value": "2101.05095"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Determination of the parton distribution functions of the proton from ATLAS measurements of differential W$^{±}$ and Z boson production in association with jets"
+      },
+      {
+       "title": "Determination of the parton distribution functions of the proton from ATLAS measurements of differential $W^\\pm$ and $Z$ boson production in association with jets"
+      }
+     ],
+     "earliest_date": "2021-01-13"
+    },
+    "updated": "2026-09-23T13:24:50.794034+00:00",
+    "id": "1840521"
+   },
+   {
+    "created": "2021-01-14T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1840598?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1840598?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1840598?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1840598?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1840598?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1840598?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1840598"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1840598,
+     "arxiv_eprints": [
+      {
+       "value": "2101.05078"
+      }
+     ],
+     "titles": [
+      {
+       "title": "The ATLAS Fast TracKer system"
+      },
+      {
+       "title": "The ATLAS Fast TracKer System"
+      }
+     ],
+     "earliest_date": "2021-01-12"
+    },
+    "updated": "2026-08-05T13:54:28.035715+00:00",
+    "id": "1840598"
+   },
+   {
+    "created": "2020-10-19T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1823705?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1823705?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1823705?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1823705?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1823705?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1823705?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1823705"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS ITk"
+      }
+     ],
+     "control_number": 1823705,
+     "titles": [
+      {
+       "title": "ATLAS ITk pixel endcap demonstrator “Ring-0” construction and testing"
+      }
+     ],
+     "earliest_date": "2021-01-11"
+    },
+    "updated": "2023-03-06T23:45:47.986683+00:00",
+    "id": "1823705"
+   },
+   {
+    "created": "2020-10-26T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1826169?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1826169?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1826169?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1826169?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1826169?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1826169?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1826169"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS ITk"
+      }
+     ],
+     "control_number": 1826169,
+     "titles": [
+      {
+       "title": "Data-acquisition system developments for ATLAS pixel QA and QC test toward High-Luminosity LHC"
+      }
+     ],
+     "earliest_date": "2021-01-11"
+    },
+    "updated": "2023-03-06T21:44:19.189536+00:00",
+    "id": "1826169"
+   },
+   {
+    "created": "2021-01-06T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1839446?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1839446?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1839446?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1839446?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1839446?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1839446?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1839446"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1839446,
+     "arxiv_eprints": [
+      {
+       "value": "2101.01629"
+      }
+     ],
+     "titles": [
+      {
+       "title": "Search for squarks and gluinos in final states with one isolated lepton, jets, and missing transverse momentum at $\\sqrt{s}=13$  with the ATLAS detector"
+      },
+      {
+       "title": "Search for squarks and gluinos in final states with one isolated lepton, jets, and missing transverse momentum at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+      }
+     ],
+     "earliest_date": "2021-01-05"
+    },
+    "updated": "2026-09-23T12:52:01.803273+00:00",
+    "id": "1839446"
+   },
+   {
+    "created": "2021-06-25T00:00:00+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/1870228?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/1870228?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/1870228?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/1870228?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/1870228?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/1870228?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A1870228"
+    },
+    "metadata": {
+     "collaborations": [
+      {
+       "value": "ATLAS"
+      }
+     ],
+     "control_number": 1870228,
+     "titles": [
+      {
+       "title": "Search for Dark Matter in final states with one photon and missing transverse momentum with the ATLAS experiment"
+      }
+     ],
+     "earliest_date": "2021-01"
+    },
+    "updated": "2023-03-07T03:16:23.452487+00:00",
+    "id": "1870228"
+   }
+  ],
+  "total": 67
+ },
+ "links": {
+  "self": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&fields=control_number,titles.title,arxiv_eprints.value,collaborations.value,earliest_date",
+  "prev": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=1&fields=control_number,titles.title,arxiv_eprints.value,collaborations.value,earliest_date",
+  "bibtex": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&format=bibtex",
+  "latex-eu": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&format=latex-eu",
+  "latex-us": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&format=latex-us",
+  "json": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&fields=control_number,titles.title,arxiv_eprints.value,collaborations.value,earliest_date&format=json",
+  "json-expanded": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&format=json-expanded",
+  "cv": "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&format=cv"
+ }
+}

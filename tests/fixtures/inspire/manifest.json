@@ -1,0 +1,5 @@
+{
+ "https://inspirehep.net/api/literature?q=collaboration+ATLAS+and+tc+published+and+de+2021&size=40&page=1&sort=mostrecent&fields=control_number%2Ctitles.title%2Carxiv_eprints.value%2Ccollaborations.value%2Cearliest_date": "response_00.json",
+ "https://inspirehep.net/api/literature/?sort=mostrecent&q=collaboration%20ATLAS%20and%20tc%20published%20and%20de%202021&size=40&page=2&fields=control_number,titles.title,arxiv_eprints.value,collaborations.value,earliest_date": "response_01.json",
+ "https://inspirehep.net/api/literature?q=t+higgs&size=1&page=1&sort=mostrecent&fields=control_number": "response_02.json"
+}

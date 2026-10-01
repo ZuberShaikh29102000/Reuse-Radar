@@ -1,0 +1,9 @@
+# The corpus to harvest. Widening scope is an edit here, never a code change.
+# `query` is INSPIRE search syntax; the harvester appends `and de <year>` per slice,
+# which filters on the record's earliest_date.
+
+[corpus]
+name = "atlas-published-2020-2025"
+query = "collaboration ATLAS and tc published"
+start_year = 2020
+end_year = 2025

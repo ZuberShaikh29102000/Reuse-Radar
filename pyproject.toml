@@ -1,0 +1,38 @@
+[project]
+name = "reuse-radar"
+version = "0.1.0"
+description = "Detects reusable HEP data products that never reached HEPData."
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.27",
+    "opentelemetry-api>=1.25",
+    "python-dotenv>=1.2.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["reuse_radar"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,34 @@
+{
+ "hits": {
+  "hits": [
+   {
+    "id": "3209397",
+    "updated": "2026-09-30T19:48:04.894733+00:00",
+    "links": {
+     "bibtex": "https://inspirehep.net/api/literature/3209397?format=bibtex",
+     "latex-eu": "https://inspirehep.net/api/literature/3209397?format=latex-eu",
+     "latex-us": "https://inspirehep.net/api/literature/3209397?format=latex-us",
+     "json": "https://inspirehep.net/api/literature/3209397?format=json",
+     "json-expanded": "https://inspirehep.net/api/literature/3209397?format=json-expanded",
+     "cv": "https://inspirehep.net/api/literature/3209397?format=cv",
+     "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A3209397"
+    },
+    "metadata": {
+     "control_number": 3209397
+    },
+    "created": "2026-09-30T14:28:18.069908+00:00"
+   }
+  ],
+  "total": 24887
+ },
+ "links": {
+  "self": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=1&fields=control_number",
+  "next": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=2&fields=control_number",
+  "bibtex": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=1&format=bibtex",
+  "latex-eu": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=1&format=latex-eu",
+  "latex-us": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=1&format=latex-us",
+  "json": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=1&fields=control_number&format=json",
+  "json-expanded": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=1&format=json-expanded",
+  "cv": "https://inspirehep.net/api/literature/?sort=mostrecent&q=t%20higgs&size=1&page=1&format=cv"
+ }
+}
