@@ -1,0 +1,7 @@
+{
+ "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%22https%3A%2F%2Finspirehep.net%2Fliterature%2F2745375%22+AND+types.resourceTypeGeneral%3ACollection&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1": "response_00.json",
+ "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%2210.17182%2Fhepdata.149762.v1%22&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1": "response_01.json",
+ "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%22https%3A%2F%2Finspirehep.net%2Fliterature%2F1995886%22+AND+types.resourceTypeGeneral%3ACollection&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1": "response_02.json",
+ "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%22https%3A%2F%2Finspirehep.net%2Fliterature%2F1%22+AND+types.resourceTypeGeneral%3ACollection&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1": "response_03.json",
+ "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%2210.17182%2Fhepdata.105864.v4%22&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1": "response_04.json"
+}

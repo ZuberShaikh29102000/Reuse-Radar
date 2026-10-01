@@ -1,0 +1,264 @@
+{
+ "data": [
+  {
+   "id": "10.17182/hepdata.149762.v1",
+   "type": "dois",
+   "attributes": {
+    "doi": "10.17182/hepdata.149762.v1",
+    "identifiers": [
+     {
+      "identifier": "https://www.hepdata.net/record/ins2745375",
+      "identifierType": "HEPDataRecord"
+     },
+     {
+      "identifier": "https://www.hepdata.net/record/149762",
+      "identifierType": "HEPDataRecordAlt"
+     }
+    ],
+    "creators": [
+     {
+      "nameType": "Organizational",
+      "affiliation": [],
+      "name": "ATLAS Collaboration",
+      "nameIdentifiers": []
+     }
+    ],
+    "titles": [
+     {
+      "title": "Measurement of the total and differential cross-sections of $t\\bar{t}W$ production in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+     }
+    ],
+    "publisher": "HEPData",
+    "container": {},
+    "publicationYear": 2025,
+    "subjects": [],
+    "contributors": [],
+    "dates": [
+     {
+      "date": "2025",
+      "dateType": "Issued"
+     }
+    ],
+    "language": "en",
+    "types": {
+     "schemaOrg": "Collection",
+     "resourceTypeGeneral": "Collection",
+     "citeproc": "article",
+     "bibtex": "misc",
+     "ris": "GEN",
+     "resourceType": "Collection"
+    },
+    "relatedIdentifiers": [
+     {
+      "relationType": "IsSupplementTo",
+      "relatedIdentifier": "https://inspirehep.net/literature/2745375",
+      "relatedIdentifierType": "URL"
+     },
+     {
+      "relationType": "IsSupplementTo",
+      "resourceTypeGeneral": "JournalArticle",
+      "relatedIdentifier": "10.1007/jhep05(2024)131",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "IsVersionOf",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.149762",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.149762.v1/t1",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.149762.v1/t2",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Other",
+      "relatedIdentifier": "10.17182/hepdata.149762.v1/r1",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Other",
+      "relatedIdentifier": "10.17182/hepdata.149762.v1/r2",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Other",
+      "relatedIdentifier": "10.17182/hepdata.149762.v1/r3",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Other",
+      "relatedIdentifier": "10.17182/hepdata.149762.v1/r4",
+      "relatedIdentifierType": "DOI"
+     }
+    ],
+    "relatedItems": [],
+    "sizes": [],
+    "formats": [],
+    "version": "1",
+    "rightsList": [],
+    "descriptions": [
+     {
+      "descriptionType": "Abstract",
+      "description": "This HEPData entry contains the results from the ATLAS Run 2 inclusive and differential cross-section measurements, \nincluding inclusive fits and differential fits for multiple observables.\n\nThe submission contains bootstrap replicas and HS3 JSON files for likelihood fits in each region and \nworkspace files for nominal and unregularized differential fits. The complete set of HS3 JSON files\ncan be found at https://zenodo.org/records/14538237."
+     }
+    ],
+    "geoLocations": [],
+    "fundingReferences": [],
+    "url": "https://www.hepdata.net/record/ins2745375?version=1",
+    "contentUrl": null,
+    "metadataVersion": 1,
+    "schemaVersion": "http://datacite.org/schema/kernel-4",
+    "source": "mds",
+    "isActive": true,
+    "state": "findable",
+    "reason": null,
+    "viewCount": 0,
+    "downloadCount": 0,
+    "referenceCount": 0,
+    "citationCount": 1,
+    "partCount": 6,
+    "partOfCount": 0,
+    "versionCount": 0,
+    "versionOfCount": 1,
+    "created": "2025-02-25T10:22:14Z",
+    "registered": "2025-02-25T10:22:15Z",
+    "published": null,
+    "updated": "2025-12-04T01:00:06Z"
+   },
+   "relationships": {
+    "client": {
+     "data": {
+      "id": "cern.hepdata",
+      "type": "clients"
+     }
+    }
+   }
+  },
+  {
+   "id": "10.17182/hepdata.149762",
+   "type": "dois",
+   "attributes": {
+    "doi": "10.17182/hepdata.149762",
+    "identifiers": [
+     {
+      "identifier": "https://www.hepdata.net/record/149762",
+      "identifierType": "HEPDataRecordAlt"
+     }
+    ],
+    "creators": [
+     {
+      "nameType": "Organizational",
+      "affiliation": [],
+      "name": "ATLAS Collaboration",
+      "nameIdentifiers": []
+     }
+    ],
+    "titles": [
+     {
+      "title": "Measurement of the total and differential cross-sections of $t\\bar{t}W$ production in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+     }
+    ],
+    "publisher": "HEPData",
+    "container": {},
+    "publicationYear": 2025,
+    "subjects": [],
+    "contributors": [],
+    "dates": [
+     {
+      "date": "2025",
+      "dateType": "Issued"
+     }
+    ],
+    "language": "en",
+    "types": {
+     "schemaOrg": "Collection",
+     "resourceTypeGeneral": "Collection",
+     "citeproc": "article",
+     "bibtex": "misc",
+     "ris": "GEN",
+     "resourceType": "Collection"
+    },
+    "relatedIdentifiers": [
+     {
+      "relationType": "IsSupplementTo",
+      "relatedIdentifier": "https://inspirehep.net/literature/2745375",
+      "relatedIdentifierType": "URL"
+     },
+     {
+      "relationType": "IsSupplementTo",
+      "resourceTypeGeneral": "JournalArticle",
+      "relatedIdentifier": "10.1007/jhep05(2024)131",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasVersion",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.149762.v1",
+      "relatedIdentifierType": "DOI"
+     }
+    ],
+    "relatedItems": [],
+    "sizes": [],
+    "formats": [],
+    "version": "1",
+    "rightsList": [],
+    "descriptions": [
+     {
+      "descriptionType": "Abstract",
+      "description": "This HEPData entry contains the results from the ATLAS Run 2 inclusive and differential cross-section measurements, \nincluding inclusive fits and differential fits for multiple observables.\n\nThe submission contains bootstrap replicas and HS3 JSON files for likelihood fits in each region and \nworkspace files for nominal and unregularized differential fits. The complete set of HS3 JSON files\ncan be found at https://zenodo.org/records/14538237."
+     }
+    ],
+    "geoLocations": [],
+    "fundingReferences": [],
+    "url": "https://www.hepdata.net/record/ins2745375",
+    "contentUrl": null,
+    "metadataVersion": 1,
+    "schemaVersion": "http://datacite.org/schema/kernel-4",
+    "source": "mds",
+    "isActive": true,
+    "state": "findable",
+    "reason": null,
+    "viewCount": 0,
+    "downloadCount": 0,
+    "referenceCount": 0,
+    "citationCount": 1,
+    "partCount": 6,
+    "partOfCount": 0,
+    "versionCount": 1,
+    "versionOfCount": 0,
+    "created": "2025-02-25T10:22:13Z",
+    "registered": "2025-02-25T10:22:14Z",
+    "published": null,
+    "updated": "2025-12-04T01:00:05Z"
+   },
+   "relationships": {
+    "client": {
+     "data": {
+      "id": "cern.hepdata",
+      "type": "clients"
+     }
+    }
+   }
+  }
+ ],
+ "meta": {
+  "total": 2,
+  "totalPages": 1,
+  "page": 1
+ },
+ "links": {
+  "self": "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%22https%3A%2F%2Finspirehep.net%2Fliterature%2F2745375%22+AND+types.resourceTypeGeneral%3ACollection&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1"
+ }
+}

@@ -1,0 +1,26 @@
+# Local development services. Phase 4 needs Postgres with pgvector; Airflow, Prometheus and
+# Grafana (SPEC section 6) are added in the phases that use them.
+#
+#   docker compose up -d db
+#
+# Credentials below are for a throwaway local database only; production uses DATABASE_URL.
+
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_DB: reuse_radar
+      POSTGRES_USER: reuse_radar
+      POSTGRES_PASSWORD: local-dev-only
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reuse_radar -d reuse_radar"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  pgdata:

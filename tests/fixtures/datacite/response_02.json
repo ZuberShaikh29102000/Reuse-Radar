@@ -1,0 +1,1320 @@
+{
+ "data": [
+  {
+   "id": "10.17182/hepdata.105864.v2",
+   "type": "dois",
+   "attributes": {
+    "doi": "10.17182/hepdata.105864.v2",
+    "identifiers": [
+     {
+      "identifier": "https://www.hepdata.net/record/ins1995886",
+      "identifierType": "HEPDataRecord"
+     },
+     {
+      "identifier": "https://www.hepdata.net/record/105864",
+      "identifierType": "HEPDataRecordAlt"
+     }
+    ],
+    "creators": [
+     {
+      "nameType": "Organizational",
+      "affiliation": [],
+      "name": "ATLAS Collaboration",
+      "nameIdentifiers": []
+     }
+    ],
+    "titles": [
+     {
+      "title": "Search for Higgs boson pair production in the two bottom quarks plus two photons final state in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+     }
+    ],
+    "publisher": "HEPData",
+    "container": {},
+    "publicationYear": 2022,
+    "subjects": [],
+    "contributors": [],
+    "dates": [
+     {
+      "date": "2022",
+      "dateType": "Issued"
+     }
+    ],
+    "language": "en",
+    "types": {
+     "schemaOrg": "Collection",
+     "resourceTypeGeneral": "Collection",
+     "citeproc": "article",
+     "bibtex": "misc",
+     "ris": "GEN",
+     "resourceType": "Collection"
+    },
+    "relatedIdentifiers": [
+     {
+      "relationType": "IsSupplementTo",
+      "relatedIdentifier": "https://inspirehep.net/literature/1995886",
+      "relatedIdentifierType": "URL"
+     },
+     {
+      "relationType": "IsSupplementTo",
+      "resourceTypeGeneral": "JournalArticle",
+      "relatedIdentifier": "10.1103/physrevd.106.052001",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "IsVersionOf",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t1",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t2",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t3",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t4",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t5",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t6",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t7",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t8",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t9",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t10",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t11",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t12",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t13",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t14",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t15",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t16",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t17",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t18",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t19",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t20",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t21",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t22",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t23",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t24",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t25",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t26",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t27",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t28",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t29",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t30",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2/t31",
+      "relatedIdentifierType": "DOI"
+     }
+    ],
+    "relatedItems": [],
+    "sizes": [],
+    "formats": [],
+    "version": "2",
+    "rightsList": [],
+    "descriptions": [
+     {
+      "descriptionType": "Abstract",
+      "description": "CERN-LHC, ATLAS.\nLimits on pair production of Higgs bosons in the final state with two bottom quarks plus two photons.\nThe search is based on 139 $fb^{-1}$ of pp collisions at $\\sqrt{s}$ = 13 TeV recorded by the ATLAS detector at the CERN Large Hadron Collider.\nData include exactly two b-tagged jets with a 77% working point and two well-identified isolated photons.\nThe search is sensitive to both resonant and nonresonant production of Higgs boson pairs.\nBoth the nonresonant and resonant searches employ multivariate analysis techniques to select events. Events are selected if they satisfy a common set of preselection requirements; then they are required to fulfill different requirements for the nonresonant and the resonant search. These further requirements are based on the BDT scores shown in tables 1 to 6. \n$m^{*}_{b\\bar{b}\\gamma\\gamma} = m_{b\\bar{b}\\gamma\\gamma} - m_{b\\bar{b}} - m_{\\gamma\\gamma} + 250$ GeV is used to implement selection criteria for both the nonresonant and resonant analyses. \n\nPreselection:\n- there are at least two photons passing the tight and isolated object selection criteria;\n- the di-photon invariant mass, built with the two leading photons, satisfies 105 GeV &lt; $m_{\\gamma\\gamma}$ &lt; 160 GeV;\n- the leading (sub-leading) photon $p_{T}$ is larger than 35% (25%) of the mass of the di-photon system;\n- there are exactly two b-tagged jets at 77% working point;\n- no electrons or muons are present;\n- fewer than six central (|$\\eta$|&lt; 2.5) jets are required, to help rejecting $t\\bar{t}H$ events where the top quarks decay hadronically.\n\n\nNon-resonant selection:\nFollowing the preselection, events are divided into two regions using the value of $m^{*}_{b\\bar{b}\\gamma\\gamma}$. High mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &gt; 350$ GeV targets the SM signal, while low mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &lt; 350$ GeV targets BSM signals. In each mass region, a dedicated BDT is trained using XGBoost, and two categories are defined based on the BDT score. Events with a BDT score below 0.881 in the low mass region or below 0.857 in the high mass region are discarded.\n\nResonant selection:\nUsing the TMVA toolkit, two BDTs are trained to better separate the signal from backgrounds of different nature (the ${\\gamma\\gamma}$ plus the ${t\\bar{t}\\gamma\\gamma}$ backgrounds and the single Higgs boson background, where ZH and ${t\\bar{t}H}$ production modes are the dominant resonant backgrounds). The combined BDT score of an event ($BDT_{tot}$) is obtained by combining the two BDT scores in quadrature. Only events passing a minimum requirement on the value of the $BDT_{tot}$ are considered in the analysis. Events with a BDT score below 0.85 for $m_{X}$ = 300 GeV or below 0.75 for $m_{X}$ = 500 GeV are discarded. The BDT thresholds for other $m_{X}$ points are listed in Table 31."
+     }
+    ],
+    "geoLocations": [],
+    "fundingReferences": [],
+    "url": "https://www.hepdata.net/record/ins1995886?version=2",
+    "contentUrl": null,
+    "metadataVersion": 2,
+    "schemaVersion": "http://datacite.org/schema/kernel-4",
+    "source": "mds",
+    "isActive": true,
+    "state": "findable",
+    "reason": null,
+    "viewCount": 0,
+    "downloadCount": 0,
+    "referenceCount": 0,
+    "citationCount": 1,
+    "partCount": 31,
+    "partOfCount": 0,
+    "versionCount": 0,
+    "versionOfCount": 1,
+    "created": "2022-01-19T03:15:17Z",
+    "registered": "2022-01-19T03:15:18Z",
+    "published": null,
+    "updated": "2025-11-04T21:09:00Z"
+   },
+   "relationships": {
+    "client": {
+     "data": {
+      "id": "cern.hepdata",
+      "type": "clients"
+     }
+    }
+   }
+  },
+  {
+   "id": "10.17182/hepdata.105864",
+   "type": "dois",
+   "attributes": {
+    "doi": "10.17182/hepdata.105864",
+    "identifiers": [
+     {
+      "identifier": "https://www.hepdata.net/record/105864",
+      "identifierType": "HEPDataRecordAlt"
+     }
+    ],
+    "creators": [
+     {
+      "nameType": "Organizational",
+      "affiliation": [],
+      "name": "ATLAS Collaboration",
+      "nameIdentifiers": []
+     }
+    ],
+    "titles": [
+     {
+      "title": "Search for Higgs boson pair production in the two bottom quarks plus two photons final state in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+     }
+    ],
+    "publisher": "HEPData",
+    "container": {},
+    "publicationYear": 2022,
+    "subjects": [],
+    "contributors": [],
+    "dates": [
+     {
+      "date": "2022",
+      "dateType": "Issued"
+     }
+    ],
+    "language": "en",
+    "types": {
+     "schemaOrg": "Collection",
+     "resourceTypeGeneral": "Collection",
+     "citeproc": "article",
+     "bibtex": "misc",
+     "ris": "GEN",
+     "resourceType": "Collection"
+    },
+    "relatedIdentifiers": [
+     {
+      "relationType": "IsSupplementTo",
+      "relatedIdentifier": "https://inspirehep.net/literature/1995886",
+      "relatedIdentifierType": "URL"
+     },
+     {
+      "relationType": "IsSupplementTo",
+      "resourceTypeGeneral": "JournalArticle",
+      "relatedIdentifier": "10.1103/physrevd.106.052001",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasVersion",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasVersion",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864.v2",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasVersion",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasVersion",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4",
+      "relatedIdentifierType": "DOI"
+     }
+    ],
+    "relatedItems": [],
+    "sizes": [],
+    "formats": [],
+    "version": "2",
+    "rightsList": [],
+    "descriptions": [
+     {
+      "descriptionType": "Abstract",
+      "description": "CERN-LHC, ATLAS.\nLimits on pair production of Higgs bosons in the final state with two bottom quarks plus two photons.\nThe search is based on 139 $fb^{-1}$ of pp collisions at $\\sqrt{s}$ = 13 TeV recorded by the ATLAS detector at the CERN Large Hadron Collider.\nData include exactly two b-tagged jets with a 77% working point and two well-identified isolated photons.\nThe search is sensitive to both resonant and nonresonant production of Higgs boson pairs.\nBoth the nonresonant and resonant searches employ multivariate analysis techniques to select events. Events are selected if they satisfy a common set of preselection requirements; then they are required to fulfill different requirements for the nonresonant and the resonant search. These further requirements are based on the BDT scores shown in tables 1 to 6. \n$m^{*}_{b\\bar{b}\\gamma\\gamma} = m_{b\\bar{b}\\gamma\\gamma} - m_{b\\bar{b}} - m_{\\gamma\\gamma} + 250$ GeV is used to implement selection criteria for both the nonresonant and resonant analyses. \n\nPreselection:\n- there are at least two photons passing the tight and isolated object selection criteria;\n- the di-photon invariant mass, built with the two leading photons, satisfies 105 GeV &lt; $m_{\\gamma\\gamma}$ &lt; 160 GeV;\n- the leading (sub-leading) photon $p_{T}$ is larger than 35% (25%) of the mass of the di-photon system;\n- there are exactly two b-tagged jets at 77% working point;\n- no electrons or muons are present;\n- fewer than six central (|$\\eta$|&lt; 2.5) jets are required, to help rejecting $t\\bar{t}H$ events where the top quarks decay hadronically.\n\n\nNon-resonant selection:\nFollowing the preselection, events are divided into two regions using the value of $m^{*}_{b\\bar{b}\\gamma\\gamma}$. High mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &gt; 350$ GeV targets the SM signal, while low mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &lt; 350$ GeV targets BSM signals. In each mass region, a dedicated BDT is trained using XGBoost, and two categories are defined based on the BDT score. Events with a BDT score below 0.881 in the low mass region or below 0.857 in the high mass region are discarded.\n\nResonant selection:\nUsing the TMVA toolkit, two BDTs are trained to better separate the signal from backgrounds of different nature (the ${\\gamma\\gamma}$ plus the ${t\\bar{t}\\gamma\\gamma}$ backgrounds and the single Higgs boson background, where ZH and ${t\\bar{t}H}$ production modes are the dominant resonant backgrounds). The combined BDT score of an event ($BDT_{tot}$) is obtained by combining the two BDT scores in quadrature. Only events passing a minimum requirement on the value of the $BDT_{tot}$ are considered in the analysis. Events with a BDT score below 0.85 for $m_{X}$ = 300 GeV or below 0.75 for $m_{X}$ = 500 GeV are discarded. The BDT thresholds for other $m_{X}$ points are listed in Table 31."
+     }
+    ],
+    "geoLocations": [],
+    "fundingReferences": [],
+    "url": "https://www.hepdata.net/record/ins1995886",
+    "contentUrl": null,
+    "metadataVersion": 30,
+    "schemaVersion": "http://datacite.org/schema/kernel-4",
+    "source": "mds",
+    "isActive": true,
+    "state": "findable",
+    "reason": null,
+    "viewCount": 0,
+    "downloadCount": 0,
+    "referenceCount": 0,
+    "citationCount": 1,
+    "partCount": 124,
+    "partOfCount": 0,
+    "versionCount": 4,
+    "versionOfCount": 0,
+    "created": "2021-12-24T01:33:05Z",
+    "registered": "2021-12-24T01:33:06Z",
+    "published": null,
+    "updated": "2025-11-04T21:08:59Z"
+   },
+   "relationships": {
+    "client": {
+     "data": {
+      "id": "cern.hepdata",
+      "type": "clients"
+     }
+    }
+   }
+  },
+  {
+   "id": "10.17182/hepdata.105864.v1",
+   "type": "dois",
+   "attributes": {
+    "doi": "10.17182/hepdata.105864.v1",
+    "identifiers": [
+     {
+      "identifier": "https://www.hepdata.net/record/ins1995886",
+      "identifierType": "HEPDataRecord"
+     },
+     {
+      "identifier": "https://www.hepdata.net/record/105864",
+      "identifierType": "HEPDataRecordAlt"
+     }
+    ],
+    "creators": [
+     {
+      "nameType": "Organizational",
+      "affiliation": [],
+      "name": "ATLAS Collaboration",
+      "nameIdentifiers": []
+     }
+    ],
+    "titles": [
+     {
+      "title": "Search for Higgs boson pair production in the two bottom quarks plus two photons final state in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+     }
+    ],
+    "publisher": "HEPData",
+    "container": {},
+    "publicationYear": 2021,
+    "subjects": [],
+    "contributors": [],
+    "dates": [
+     {
+      "date": "2021",
+      "dateType": "Issued"
+     }
+    ],
+    "language": "en",
+    "types": {
+     "schemaOrg": "Collection",
+     "resourceTypeGeneral": "Collection",
+     "citeproc": "article",
+     "bibtex": "misc",
+     "ris": "GEN",
+     "resourceType": "Collection"
+    },
+    "relatedIdentifiers": [
+     {
+      "relationType": "IsSupplementTo",
+      "relatedIdentifier": "https://inspirehep.net/literature/1995886",
+      "relatedIdentifierType": "URL"
+     },
+     {
+      "relationType": "IsSupplementTo",
+      "resourceTypeGeneral": "JournalArticle",
+      "relatedIdentifier": "10.1103/physrevd.106.052001",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "IsVersionOf",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t1",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t2",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t3",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t4",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t5",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t6",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t7",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t8",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t9",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t10",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t11",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t12",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t13",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t14",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t15",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t16",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t17",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t18",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t19",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t20",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t21",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t22",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t23",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t24",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t25",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t26",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t27",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t28",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t29",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t30",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v1/t31",
+      "relatedIdentifierType": "DOI"
+     }
+    ],
+    "relatedItems": [],
+    "sizes": [],
+    "formats": [],
+    "version": "1",
+    "rightsList": [],
+    "descriptions": [
+     {
+      "descriptionType": "Abstract",
+      "description": "CERN-LHC, ATLAS.\nLimits on pair production of Higgs bosons in the final state with two bottom quarks plus two photons.\nThe search is based on 139 $fb^{-1}$ of pp collisions at $\\sqrt{s}$ = 13 TeV recorded by the ATLAS detector at the CERN Large Hadron Collider.\nData include exactly two b-tagged jets with a 77% working point and two well-identified isolated photons.\nThe search is sensitive to both resonant and nonresonant production of Higgs boson pairs.\nBoth the nonresonant and resonant searches employ multivariate analysis techniques to select events. Events are selected if they satisfy a common set of preselection requirements; then they are required to fulfill different requirements for the nonresonant and the resonant search. These further requirements are based on the BDT scores shown in tables 1 to 6. \n$m^{*}_{b\\bar{b}\\gamma\\gamma} = m_{b\\bar{b}\\gamma\\gamma} - m_{b\\bar{b}} - m_{\\gamma\\gamma} + 250$ GeV is used to implement selection criteria for both the nonresonant and resonant analyses. \n\nPreselection:\n- there are at least two photons passing the tight and isolated object selection criteria;\n- the di-photon invariant mass, built with the two leading photons, satisfies 105 GeV &lt; $m_{\\gamma\\gamma}$ &lt; 160 GeV;\n- the leading (sub-leading) photon $p_{T}$ is larger than 35% (25%) of the mass of the di-photon system;\n- there are exactly two b-tagged jets at 77% working point;\n- no electrons or muons are present;\n- fewer than six central (|$\\eta$|&lt; 2.5) jets are required, to help rejecting $t\\bar{t}H$ events where the top quarks decay hadronically.\n\n\nNon-resonant selection:\nFollowing the preselection, events are divided into two regions using the value of $m^{*}_{b\\bar{b}\\gamma\\gamma}$. High mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &gt; 350$ GeV targets the SM signal, while low mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &lt; 350$ GeV targets BSM signals. In each mass region, a dedicated BDT is trained using XGBoost, and two categories are defined based on the BDT score. Events with a BDT score below 0.881 in the low mass region or below 0.857 in the high mass region are discarded.\n\nResonant selection:\nUsing the TMVA toolkit, two BDTs are trained to better separate the signal from backgrounds of different nature (the ${\\gamma\\gamma}$ plus the ${t\\bar{t}\\gamma\\gamma}$ backgrounds and the single Higgs boson background, where ZH and ${t\\bar{t}H}$ production modes are the dominant resonant backgrounds). The combined BDT score of an event ($BDT_{tot}$) is obtained by combining the two BDT scores in quadrature. Only events passing a minimum requirement on the value of the $BDT_{tot}$ are considered in the analysis. Events with a BDT score below 0.85 for $m_{X}$ = 300 GeV or below 0.75 for $m_{X}$ = 500 GeV are discarded. The BDT thresholds for other $m_{X}$ points are listed in Table 31."
+     }
+    ],
+    "geoLocations": [],
+    "fundingReferences": [],
+    "url": "https://www.hepdata.net/record/ins1995886?version=1",
+    "contentUrl": null,
+    "metadataVersion": 2,
+    "schemaVersion": "http://datacite.org/schema/kernel-4",
+    "source": "mds",
+    "isActive": true,
+    "state": "findable",
+    "reason": null,
+    "viewCount": 0,
+    "downloadCount": 0,
+    "referenceCount": 0,
+    "citationCount": 1,
+    "partCount": 31,
+    "partOfCount": 0,
+    "versionCount": 0,
+    "versionOfCount": 1,
+    "created": "2021-12-24T01:33:40Z",
+    "registered": "2021-12-24T01:33:40Z",
+    "published": null,
+    "updated": "2025-11-04T21:08:52Z"
+   },
+   "relationships": {
+    "client": {
+     "data": {
+      "id": "cern.hepdata",
+      "type": "clients"
+     }
+    }
+   }
+  },
+  {
+   "id": "10.17182/hepdata.105864.v4",
+   "type": "dois",
+   "attributes": {
+    "doi": "10.17182/hepdata.105864.v4",
+    "identifiers": [
+     {
+      "identifier": "https://www.hepdata.net/record/ins1995886",
+      "identifierType": "HEPDataRecord"
+     },
+     {
+      "identifier": "https://www.hepdata.net/record/105864",
+      "identifierType": "HEPDataRecordAlt"
+     }
+    ],
+    "creators": [
+     {
+      "nameType": "Organizational",
+      "affiliation": [],
+      "name": "ATLAS Collaboration",
+      "nameIdentifiers": []
+     }
+    ],
+    "titles": [
+     {
+      "title": "Search for Higgs boson pair production in the two bottom quarks plus two photons final state in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+     }
+    ],
+    "publisher": "HEPData",
+    "container": {},
+    "publicationYear": 2022,
+    "subjects": [],
+    "contributors": [],
+    "dates": [
+     {
+      "date": "2022",
+      "dateType": "Issued"
+     }
+    ],
+    "language": "en",
+    "types": {
+     "schemaOrg": "Collection",
+     "resourceTypeGeneral": "Collection",
+     "citeproc": "article",
+     "bibtex": "misc",
+     "ris": "GEN",
+     "resourceType": "Collection"
+    },
+    "relatedIdentifiers": [
+     {
+      "relationType": "IsSupplementTo",
+      "relatedIdentifier": "https://inspirehep.net/literature/1995886",
+      "relatedIdentifierType": "URL"
+     },
+     {
+      "relationType": "IsSupplementTo",
+      "resourceTypeGeneral": "JournalArticle",
+      "relatedIdentifier": "10.1103/physrevd.106.052001",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "IsVersionOf",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t1",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t2",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t3",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t4",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t5",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t6",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t7",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t8",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t9",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t10",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t11",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t12",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t13",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t14",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t15",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t16",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t17",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t18",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t19",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t20",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t21",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t22",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t23",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t24",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t25",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t26",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t27",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t28",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t29",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t30",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v4/t31",
+      "relatedIdentifierType": "DOI"
+     }
+    ],
+    "relatedItems": [],
+    "sizes": [],
+    "formats": [],
+    "version": "4",
+    "rightsList": [],
+    "descriptions": [
+     {
+      "descriptionType": "Abstract",
+      "description": "CERN-LHC, ATLAS.\nLimits on pair production of Higgs bosons in the final state with two bottom quarks plus two photons.\nThe search is based on 139 $fb^{-1}$ of pp collisions at $\\sqrt{s}$ = 13 TeV recorded by the ATLAS detector at the CERN Large Hadron Collider.\nData include exactly two b-tagged jets with a 77% working point and two well-identified isolated photons.\nThe search is sensitive to both resonant and nonresonant production of Higgs boson pairs.\nBoth the nonresonant and resonant searches employ multivariate analysis techniques to select events. Events are selected if they satisfy a common set of preselection requirements; then they are required to fulfill different requirements for the nonresonant and the resonant search. These further requirements are based on the BDT scores shown in tables 1 to 6. \n$m^{*}_{b\\bar{b}\\gamma\\gamma} = m_{b\\bar{b}\\gamma\\gamma} - m_{b\\bar{b}} - m_{\\gamma\\gamma} + 250$ GeV is used to implement selection criteria for both the nonresonant and resonant analyses. \n\nPreselection:\n- there are at least two photons passing the tight and isolated object selection criteria;\n- the di-photon invariant mass, built with the two leading photons, satisfies 105 GeV &lt; $m_{\\gamma\\gamma}$ &lt; 160 GeV;\n- the leading (sub-leading) photon $p_{T}$ is larger than 35% (25%) of the mass of the di-photon system;\n- there are exactly two b-tagged jets at 77% working point;\n- no electrons or muons are present;\n- fewer than six central (|$\\eta$|&lt; 2.5) jets are required, to help rejecting $t\\bar{t}H$ events where the top quarks decay hadronically.\n\n\nNon-resonant selection:\nFollowing the preselection, events are divided into two regions using the value of $m^{*}_{b\\bar{b}\\gamma\\gamma}$. High mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &gt; 350$ GeV targets the SM signal, while low mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &lt; 350$ GeV targets BSM signals. In each mass region, a dedicated BDT is trained using XGBoost, and two categories are defined based on the BDT score. Events with a BDT score below 0.881 in the low mass region or below 0.857 in the high mass region are discarded.\n\nResonant selection:\nUsing the TMVA toolkit, two BDTs are trained to better separate the signal from backgrounds of different nature (the ${\\gamma\\gamma}$ plus the ${t\\bar{t}\\gamma\\gamma}$ backgrounds and the single Higgs boson background, where ZH and ${t\\bar{t}H}$ production modes are the dominant resonant backgrounds). The combined BDT score of an event ($BDT_{tot}$) is obtained by combining the two BDT scores in quadrature. Only events passing a minimum requirement on the value of the $BDT_{tot}$ are considered in the analysis. Events with a BDT score below 0.85 for $m_{X}$ = 300 GeV or below 0.75 for $m_{X}$ = 500 GeV are discarded. The BDT thresholds for other $m_{X}$ points are listed in Table 31."
+     }
+    ],
+    "geoLocations": [],
+    "fundingReferences": [],
+    "url": "https://www.hepdata.net/record/ins1995886?version=4",
+    "contentUrl": null,
+    "metadataVersion": 3,
+    "schemaVersion": "http://datacite.org/schema/kernel-4",
+    "source": "mds",
+    "isActive": true,
+    "state": "findable",
+    "reason": null,
+    "viewCount": 0,
+    "downloadCount": 0,
+    "referenceCount": 0,
+    "citationCount": 1,
+    "partCount": 31,
+    "partOfCount": 0,
+    "versionCount": 0,
+    "versionOfCount": 1,
+    "created": "2022-06-05T02:17:25Z",
+    "registered": "2022-06-05T02:17:26Z",
+    "published": null,
+    "updated": "2025-11-04T21:08:48Z"
+   },
+   "relationships": {
+    "client": {
+     "data": {
+      "id": "cern.hepdata",
+      "type": "clients"
+     }
+    }
+   }
+  },
+  {
+   "id": "10.17182/hepdata.105864.v3",
+   "type": "dois",
+   "attributes": {
+    "doi": "10.17182/hepdata.105864.v3",
+    "identifiers": [
+     {
+      "identifier": "https://www.hepdata.net/record/ins1995886",
+      "identifierType": "HEPDataRecord"
+     },
+     {
+      "identifier": "https://www.hepdata.net/record/105864",
+      "identifierType": "HEPDataRecordAlt"
+     }
+    ],
+    "creators": [
+     {
+      "nameType": "Organizational",
+      "affiliation": [],
+      "name": "ATLAS Collaboration",
+      "nameIdentifiers": []
+     }
+    ],
+    "titles": [
+     {
+      "title": "Search for Higgs boson pair production in the two bottom quarks plus two photons final state in $pp$ collisions at $\\sqrt{s}=13$ TeV with the ATLAS detector"
+     }
+    ],
+    "publisher": "HEPData",
+    "container": {},
+    "publicationYear": 2022,
+    "subjects": [],
+    "contributors": [],
+    "dates": [
+     {
+      "date": "2022",
+      "dateType": "Issued"
+     }
+    ],
+    "language": "en",
+    "types": {
+     "schemaOrg": "Collection",
+     "resourceTypeGeneral": "Collection",
+     "citeproc": "article",
+     "bibtex": "misc",
+     "ris": "GEN",
+     "resourceType": "Collection"
+    },
+    "relatedIdentifiers": [
+     {
+      "relationType": "IsSupplementTo",
+      "relatedIdentifier": "https://inspirehep.net/literature/1995886",
+      "relatedIdentifierType": "URL"
+     },
+     {
+      "relationType": "IsSupplementTo",
+      "resourceTypeGeneral": "JournalArticle",
+      "relatedIdentifier": "10.1103/physrevd.106.052001",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "IsVersionOf",
+      "resourceTypeGeneral": "Collection",
+      "relatedIdentifier": "10.17182/hepdata.105864",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t1",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t2",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t3",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t4",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t5",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t6",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t7",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t8",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t9",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t10",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t11",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t12",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t13",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t14",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t15",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t16",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t17",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t18",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t19",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t20",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t21",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t22",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t23",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t24",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t25",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t26",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t27",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t28",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t29",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t30",
+      "relatedIdentifierType": "DOI"
+     },
+     {
+      "relationType": "HasPart",
+      "resourceTypeGeneral": "Dataset",
+      "relatedIdentifier": "10.17182/hepdata.105864.v3/t31",
+      "relatedIdentifierType": "DOI"
+     }
+    ],
+    "relatedItems": [],
+    "sizes": [],
+    "formats": [],
+    "version": "3",
+    "rightsList": [],
+    "descriptions": [
+     {
+      "descriptionType": "Abstract",
+      "description": "CERN-LHC, ATLAS.\nLimits on pair production of Higgs bosons in the final state with two bottom quarks plus two photons.\nThe search is based on 139 $fb^{-1}$ of pp collisions at $\\sqrt{s}$ = 13 TeV recorded by the ATLAS detector at the CERN Large Hadron Collider.\nData include exactly two b-tagged jets with a 77% working point and two well-identified isolated photons.\nThe search is sensitive to both resonant and nonresonant production of Higgs boson pairs.\nBoth the nonresonant and resonant searches employ multivariate analysis techniques to select events. Events are selected if they satisfy a common set of preselection requirements; then they are required to fulfill different requirements for the nonresonant and the resonant search. These further requirements are based on the BDT scores shown in tables 1 to 6. \n$m^{*}_{b\\bar{b}\\gamma\\gamma} = m_{b\\bar{b}\\gamma\\gamma} - m_{b\\bar{b}} - m_{\\gamma\\gamma} + 250$ GeV is used to implement selection criteria for both the nonresonant and resonant analyses. \n\nPreselection:\n- there are at least two photons passing the tight and isolated object selection criteria;\n- the di-photon invariant mass, built with the two leading photons, satisfies 105 GeV &lt; $m_{\\gamma\\gamma}$ &lt; 160 GeV;\n- the leading (sub-leading) photon $p_{T}$ is larger than 35% (25%) of the mass of the di-photon system;\n- there are exactly two b-tagged jets at 77% working point;\n- no electrons or muons are present;\n- fewer than six central (|$\\eta$|&lt; 2.5) jets are required, to help rejecting $t\\bar{t}H$ events where the top quarks decay hadronically.\n\n\nNon-resonant selection:\nFollowing the preselection, events are divided into two regions using the value of $m^{*}_{b\\bar{b}\\gamma\\gamma}$. High mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &gt; 350$ GeV targets the SM signal, while low mass region with $m^{*}_{b\\bar{b}\\gamma\\gamma} &lt; 350$ GeV targets BSM signals. In each mass region, a dedicated BDT is trained using XGBoost, and two categories are defined based on the BDT score. Events with a BDT score below 0.881 in the low mass region or below 0.857 in the high mass region are discarded.\n\nResonant selection:\nUsing the TMVA toolkit, two BDTs are trained to better separate the signal from backgrounds of different nature (the ${\\gamma\\gamma}$ plus the ${t\\bar{t}\\gamma\\gamma}$ backgrounds and the single Higgs boson background, where ZH and ${t\\bar{t}H}$ production modes are the dominant resonant backgrounds). The combined BDT score of an event ($BDT_{tot}$) is obtained by combining the two BDT scores in quadrature. Only events passing a minimum requirement on the value of the $BDT_{tot}$ are considered in the analysis. Events with a BDT score below 0.85 for $m_{X}$ = 300 GeV or below 0.75 for $m_{X}$ = 500 GeV are discarded. The BDT thresholds for other $m_{X}$ points are listed in Table 31."
+     }
+    ],
+    "geoLocations": [],
+    "fundingReferences": [],
+    "url": "https://www.hepdata.net/record/ins1995886?version=3",
+    "contentUrl": null,
+    "metadataVersion": 2,
+    "schemaVersion": "http://datacite.org/schema/kernel-4",
+    "source": "mds",
+    "isActive": true,
+    "state": "findable",
+    "reason": null,
+    "viewCount": 0,
+    "downloadCount": 0,
+    "referenceCount": 0,
+    "citationCount": 1,
+    "partCount": 31,
+    "partOfCount": 0,
+    "versionCount": 0,
+    "versionOfCount": 1,
+    "created": "2022-01-21T11:26:56Z",
+    "registered": "2022-01-21T11:26:58Z",
+    "published": null,
+    "updated": "2025-11-04T21:08:44Z"
+   },
+   "relationships": {
+    "client": {
+     "data": {
+      "id": "cern.hepdata",
+      "type": "clients"
+     }
+    }
+   }
+  }
+ ],
+ "meta": {
+  "total": 5,
+  "totalPages": 1,
+  "page": 1
+ },
+ "links": {
+  "self": "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%22https%3A%2F%2Finspirehep.net%2Fliterature%2F1995886%22+AND+types.resourceTypeGeneral%3ACollection&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1"
+ }
+}

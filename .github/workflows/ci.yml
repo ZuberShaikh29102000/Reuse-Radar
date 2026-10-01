@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_DB: reuse_radar
+          POSTGRES_USER: reuse_radar
+          POSTGRES_PASSWORD: ci-only
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U reuse_radar -d reuse_radar"
+          --health-interval 2s --health-timeout 3s --health-retries 30
+    env:
+      # Throwaway values for the CI database; not secrets.
+      DATABASE_URL: postgres://reuse_radar:ci-only@127.0.0.1:5432/reuse_radar
+      DJANGO_SECRET_KEY: ci-only-not-secret
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+      - name: Lint
+        run: uv run ruff check . && uv run ruff format --check .
+      - name: Types
+        run: uv run mypy reuse_radar tests scripts manage.py
+      - name: Migrations are up to date
+        run: uv run python manage.py makemigrations --check --dry-run
+      - name: Tests (no live network)
+        run: uv run pytest -q

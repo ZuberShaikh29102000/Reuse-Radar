@@ -1,0 +1,11 @@
+{
+ "data": [],
+ "meta": {
+  "total": 0,
+  "totalPages": 0,
+  "page": 1
+ },
+ "links": {
+  "self": "https://api.datacite.org/dois?query=relatedIdentifiers.relatedIdentifier%3A%22https%3A%2F%2Finspirehep.net%2Fliterature%2F1%22+AND+types.resourceTypeGeneral%3ACollection&prefix=10.17182&page%5Bsize%5D=500&page%5Bnumber%5D=1"
+ }
+}
