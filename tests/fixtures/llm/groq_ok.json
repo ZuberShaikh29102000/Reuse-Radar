@@ -1,0 +1,32 @@
+{
+ "id": "chatcmpl-823e2c34-37ed-4b25-829a-e3512ae27411",
+ "object": "chat.completion",
+ "created": 1790860798,
+ "model": "openai/gpt-oss-120b",
+ "choices": [
+  {
+   "index": 0,
+   "message": {
+    "role": "assistant",
+    "content": "{\n  \"products\": [\n    {\n      \"product_type\": \"upper_limit\",\n      \"description\": \"Observed and expected 95% CL upper limits on the cross section of nonresonant Higgs boson pair production as a function of \\\\kappa_\\\\lambda\",\n      \"evidence_span\": \"Observed and expected limits at 95% CL on the cross section of nonresonant Higgs boson pair production as a function of $\\\\kappa_\\\\lambda$.\",\n      \"passage_id\": 1,\n      \"confidence\": 0.9\n    }\n  ]\n}"
+   },
+   "logprobs": null,
+   "finish_reason": "stop"
+  }
+ ],
+ "usage": {
+  "queue_time": 0.314249279,
+  "prompt_tokens": 415,
+  "prompt_time": 0.020207275,
+  "completion_tokens": 287,
+  "completion_time": 0.621955732,
+  "total_tokens": 702,
+  "total_time": 0.642163007,
+  "completion_tokens_details": {
+   "reasoning_tokens": 150
+  }
+ },
+ "usage_breakdown": null,
+ "system_fingerprint": "fp_5082008e34",
+ "service_tier": "on_demand"
+}

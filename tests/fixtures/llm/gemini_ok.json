@@ -1,0 +1,31 @@
+{
+ "candidates": [
+  {
+   "content": {
+    "parts": [
+     {
+      "text": "{\n  \"products\": [\n    {\n      \"product_type\": \"upper_limit\",\n      \"description\": \"Observed and expected limits at 95% CL on the cross section of nonresonant Higgs boson pair production as a function of kappa_lambda.\",\n      \"evidence_span\": \"Observed and expected limits at 95\\\\% CL on the cross section of nonresonant Higgs boson pair production as a function of $\\\\kappa_\\\\lambda$.\",\n      \"passage_id\": 1,\n      \"confidence\": 0.95\n    }\n  ]\n}",
+      "thoughtSignature": "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"
+     }
+    ],
+    "role": "model"
+   },
+   "finishReason": "STOP",
+   "index": 0
+  }
+ ],
+ "usageMetadata": {
+  "promptTokenCount": 61,
+  "candidatesTokenCount": 129,
+  "totalTokenCount": 687,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 61
+   }
+  ],
+  "thoughtsTokenCount": 497,
+  "serviceTier": "standard"
+ },
+ "modelVersion": "gemini-3.5-flash"
+}
