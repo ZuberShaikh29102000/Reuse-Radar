@@ -36,6 +36,9 @@ FIELDS: tuple[str, ...] = (
     "arxiv_eprints.value",
     "collaborations.value",
     "earliest_date",
+    # {"schema": "HEPDATA", "value": "ins<id>"} when INSPIRE links a HEPData record; used to
+    # cross-check the DataCite lookup in the reconcile stage (verified live 2026-10-01).
+    "external_system_identifiers",
 )
 
 
@@ -84,6 +87,7 @@ class HarvestedPaper:
     title: str
     collaborations: list[str]
     earliest_date: str
+    inspire_links_hepdata: bool = False
 
 
 def parse_hit(hit: dict[str, Any]) -> HarvestedPaper:
@@ -121,6 +125,10 @@ def parse_hit(hit: dict[str, Any]) -> HarvestedPaper:
         title=title,
         collaborations=collaborations,
         earliest_date=earliest_date,
+        inspire_links_hepdata=any(
+            isinstance(e, dict) and e.get("schema") == "HEPDATA"
+            for e in metadata.get("external_system_identifiers") or []
+        ),
     )
 
 

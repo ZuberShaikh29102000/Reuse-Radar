@@ -94,6 +94,8 @@ def store_corpus(corpus: CorpusConfig, data_dir: Path) -> dict[str, int]:
                         status = "extraction_error"
                 if reconciled and reconciled["status"] == "ok":
                     status = "reconciled"
+                elif reconciled and reconciled["status"] == "lookup_error":
+                    status = "reconcile_error"
 
                 with transaction.atomic():
                     paper, _ = Paper.objects.update_or_create(

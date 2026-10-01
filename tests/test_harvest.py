@@ -41,7 +41,15 @@ def test_harvest_writes_one_sorted_jsonl_per_year(make_client: MakeClient, tmp_p
     ids = [r["inspire_id"] for r in rows]
     assert ids == sorted(ids)
     assert all(r["earliest_date"].startswith("2021") for r in rows)
-    assert set(rows[0]) == {"inspire_id", "arxiv_id", "title", "collaborations", "earliest_date"}
+    assert set(rows[0]) == {
+        "inspire_id",
+        "arxiv_id",
+        "title",
+        "collaborations",
+        "earliest_date",
+        "inspire_links_hepdata",
+    }
+    assert sum(r["inspire_links_hepdata"] for r in rows) > 0
     # INSPIRE's `collaboration ATLAS` also matches e.g. "ATLAS ITk"; the harvester keeps
     # exactly what the configured query returns.
     assert all(any("ATLAS" in c for c in r["collaborations"]) for r in rows)

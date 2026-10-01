@@ -215,7 +215,7 @@ class TableRecord:
 class PaperReconciliation:
     inspire_id: int
     arxiv_id: str | None
-    status: Literal["ok", "skipped"]
+    status: Literal["ok", "skipped", "lookup_error"]
     reconcile_version: str
     extraction_version: str | None
     detail: str | None = None
@@ -417,6 +417,18 @@ def _write_json_atomic(path: Path, payload: object) -> None:
     os.replace(tmp, path)
 
 
+def _inspire_hepdata_links(corpus: CorpusConfig, data_dir: Path) -> dict[int, bool]:
+    """inspire_id -> whether INSPIRE links a HEPData record (from the harvest output)."""
+    links: dict[int, bool] = {}
+    for year in corpus.years:
+        path = data_dir / "harvest" / corpus.name / f"{year}.jsonl"
+        if path.exists():
+            for line in path.read_text(encoding="utf-8").splitlines():
+                row = json.loads(line)
+                links[int(row["inspire_id"])] = bool(row.get("inspire_links_hepdata"))
+    return links
+
+
 def run_reconcile(
     source: RecordSource,
     embedder: Embedder,
@@ -437,13 +449,16 @@ def run_reconcile(
             wanted = {str(i) for i in only}
             paths = [p for p in paths if p.stem in wanted]
 
+        inspire_links = _inspire_hepdata_links(corpus, data_dir)
         statuses: dict[str, int] = {}
         scores: list[float] = []
+        lookup_errors = 0
         for path in paths:
             extraction = json.loads(path.read_text(encoding="utf-8"))
             inspire_id = int(extraction["inspire_id"])
             with tracer.start_as_current_span("reconcile.paper") as paper_span:
                 paper_span.set_attribute("inspire_id", inspire_id)
+                record = source.find_record(inspire_id) if extraction["status"] == "ok" else None
                 if extraction["status"] != "ok":
                     result = PaperReconciliation(
                         inspire_id,
@@ -453,8 +468,23 @@ def run_reconcile(
                         extraction.get("extraction_version"),
                         detail=f"extract status {extraction['status']}",
                     )
+                elif record is None and inspire_links.get(inspire_id):
+                    # INSPIRE says a HEPData record exists but the DataCite lookup found none.
+                    # Reporting "no_record" gaps here would be confidently wrong; flag instead.
+                    lookup_errors += 1
+                    logger.error(
+                        "INSPIRE links a HEPData record that DataCite does not return",
+                        extra={"inspire_id": inspire_id},
+                    )
+                    result = PaperReconciliation(
+                        inspire_id,
+                        extraction.get("arxiv_id"),
+                        "lookup_error",
+                        RECONCILE_VERSION,
+                        extraction.get("extraction_version"),
+                        detail="INSPIRE links a HEPData record; DataCite returned none",
+                    )
                 else:
-                    record = source.find_record(inspire_id)
                     tables = source.list_tables(record) if record else []
                     result = reconcile_paper(extraction, record, tables, embedder)
                     for product in result.products:
@@ -478,6 +508,7 @@ def run_reconcile(
             "reconcile_version": RECONCILE_VERSION,
             "papers": len(paths),
             "products_by_status": statuses,
+            "lookup_errors": lookup_errors,
             "mean_readiness_score": round(sum(scores) / len(scores), 1) if scores else None,
         }
         _write_json_atomic(out_dir / "_summary.json", summary)

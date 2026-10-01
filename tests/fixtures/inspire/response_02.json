@@ -2,8 +2,9 @@
  "hits": {
   "hits": [
    {
-    "id": "3209397",
-    "updated": "2026-09-30T19:48:04.894733+00:00",
+    "metadata": {
+     "control_number": 3209397
+    },
     "links": {
      "bibtex": "https://inspirehep.net/api/literature/3209397?format=bibtex",
      "latex-eu": "https://inspirehep.net/api/literature/3209397?format=latex-eu",
@@ -13,10 +14,9 @@
      "cv": "https://inspirehep.net/api/literature/3209397?format=cv",
      "citations": "https://inspirehep.net/api/literature/?q=refersto%3Arecid%3A3209397"
     },
-    "metadata": {
-     "control_number": 3209397
-    },
-    "created": "2026-09-30T14:28:18.069908+00:00"
+    "created": "2026-09-30T14:28:18.069908+00:00",
+    "updated": "2026-09-30T19:48:04.894733+00:00",
+    "id": "3209397"
    }
   ],
   "total": 24887

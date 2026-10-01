@@ -26,6 +26,7 @@ class ProcessingStatus(models.TextChoices):
     FILTER_ERROR = "filter_error"
     EXTRACTION_ERROR = "extraction_error"
     EXTRACTED = "extracted"
+    RECONCILE_ERROR = "reconcile_error"
     RECONCILED = "reconciled"
 
 

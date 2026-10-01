@@ -31,6 +31,13 @@ The lookup **fails loudly** in these cases:
 The first of these caught a real bug: the first version skipped `/r` resources, which are the
 likelihood files.
 
+**Cross-check with INSPIRE.** The harvest also requests `external_system_identifiers`. INSPIRE
+lists `{"schema": "HEPDATA", "value": "ins<id>"}` when it links a HEPData record (verified live).
+If INSPIRE links a record but DataCite returns none, reconcile marks the paper `lookup_error`
+(`processing_status = reconcile_error`) instead of emitting "no_record" gaps that would be
+confidently wrong. On the first 15 processed papers the two sources agreed on all 15: 13 with a
+record and 2 without. Corpus-wide, INSPIRE links a HEPData record for 326 of 624 papers.
+
 *Rejected:* imitating a browser or solving the challenge. That evades the site's protection, and
 SPEC section 2, item 5 requires respecting upstream APIs.
 

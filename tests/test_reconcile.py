@@ -239,3 +239,21 @@ def test_run_reconcile_requires_extract_output(tmp_path: Path) -> None:
         run_reconcile(
             StubSource(None), BagOfWordsEmbedder(), CorpusConfig("c", "q", 2021, 2021), tmp_path
         )
+
+
+def test_inspire_link_without_datacite_record_is_flagged_not_a_gap(tmp_path: Path) -> None:
+    """Fail loudly: never report "no_record" gaps when INSPIRE says a HEPData record exists."""
+    corpus = CorpusConfig("c", "q", 2021, 2021)
+    harvest = tmp_path / "harvest" / "c" / "2021.jsonl"
+    harvest.parent.mkdir(parents=True)
+    row = {"inspire_id": 9, "inspire_links_hepdata": True}
+    harvest.write_text(json.dumps(row) + "\n", encoding="utf-8")
+    extract_dir = tmp_path / "extract" / "c"
+    extract_dir.mkdir(parents=True)
+    ok = _extraction(_product("upper_limit", "Limits", LIMIT_CAPTION))
+    (extract_dir / "9.json").write_text(json.dumps(ok), encoding="utf-8")
+
+    summary = run_reconcile(StubSource(None), BagOfWordsEmbedder(), corpus, tmp_path)
+    out = json.loads((tmp_path / "reconcile" / "c" / "9.json").read_text(encoding="utf-8"))
+    assert out["status"] == "lookup_error" and out["products"] == []
+    assert summary["lookup_errors"] == 1
