@@ -18,6 +18,7 @@ from reuse_radar.llm.router import (
     ProviderFatalError,
     RequestTooLargeError,
     Router,
+    router_from_env,
 )
 from reuse_radar.llm.schemas import EXTRACTION_JSON_SCHEMA
 
@@ -229,7 +230,7 @@ def test_invalid_json_from_last_provider_is_returned_to_caller(
 def test_all_providers_exhausted_raises(tmp_path: Path, clock: FakeClock) -> None:
     rec = Recorder(
         [httpx.Response(429, headers={"retry-after": "7200"})],
-        [httpx.Response(503)] * 3,
+        [httpx.Response(503)] * 4,
     )
     router, *_ = _router(tmp_path, clock, rec)
     with pytest.raises(AllProvidersExhaustedError):
@@ -288,3 +289,45 @@ def test_estimate_counts_unescaped_text() -> None:
     plain = LLMRequest("s", (("user", "xGeVx" * 1000),), "n", {}, 0)
     groq = GroqProvider("k")
     assert groq.estimate_tokens(groq.payload(latex)) == groq.estimate_tokens(groq.payload(plain))
+
+
+def test_unavailable_waits_with_growing_backoff(tmp_path: Path, clock: FakeClock) -> None:
+    rec = Recorder([httpx.Response(503), httpx.Response(503), _ok_groq()], [])
+    router, *_ = _router(tmp_path, clock, rec)
+    assert router.complete(REQUEST).provider == "groq"
+    assert clock.sleeps[-2:] == [15.0, 30.0]
+
+
+def test_pausing_is_per_model(tmp_path: Path, clock: FakeClock) -> None:
+    """Two Gemini models must not pause each other: quotas are per model."""
+    http = httpx.Client(
+        transport=httpx.MockTransport(
+            lambda r: (
+                httpx.Response(429, headers={"retry-after": "7200"})
+                if "gemini-a" in str(r.url)
+                else _ok_gemini()
+            )
+        )
+    )
+    a = GeminiProvider(
+        "k", "gemini-a", http=http, budget=MinuteBudget(1000, None, clock, clock.sleep)
+    )
+    b = GeminiProvider(
+        "k", "gemini-b", http=http, budget=MinuteBudget(1000, None, clock, clock.sleep)
+    )
+    router = Router([a, b], LLMCache(tmp_path), sleep=clock.sleep, clock=clock)
+    assert router.complete(REQUEST).model == "gemini-b"
+    assert set(router.paused_until) == {"gemini:gemini-a"}
+
+
+def test_router_from_env_builds_gemini_chain(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setenv("GROQ_API_KEY", "g")
+    monkeypatch.setenv("GEMINI_API_KEY", "m")
+    monkeypatch.setenv("GEMINI_MODELS", "gemini-x, gemini-y")
+    router = router_from_env(tmp_path)
+    assert [(p.name, p.model) for p in router.providers][1:] == [
+        ("gemini", "gemini-x"),
+        ("gemini", "gemini-y"),
+    ]

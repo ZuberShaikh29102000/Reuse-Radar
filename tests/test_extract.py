@@ -25,6 +25,7 @@ from reuse_radar.pipeline.extract import (
     load_system_prompt,
     locate_span,
     run_extract,
+    split_text,
     verify,
 )
 from reuse_radar.pipeline.harvest import CorpusConfig
@@ -276,12 +277,28 @@ def test_chunks_respect_budget_and_restart_ids() -> None:
     assert [p.passage_id for p in chunks[1]] == [1, 2]
 
 
-def test_oversized_candidate_gets_its_own_chunk() -> None:
-    cands = [
-        {"section_name": "S", "kind": "paragraph", "text": "a" * 40},
-        {"section_name": "S", "kind": "paragraph", "text": "b" * 4000},
-    ]
-    assert [len(c) for c in chunk_passages(cands, budget=100)] == [1, 1]
+def test_oversized_candidate_is_split_into_verbatim_pieces() -> None:
+    """Regression: one oversized request could not go to Groq and stopped a live run."""
+    paragraphs = [f"Paragraph {i} " + "word " * 60 for i in range(6)]
+    text = "\n\n".join(paragraphs)
+    cands = [{"section_name": "Data availability", "kind": "paragraph", "text": text}]
+    chunks = chunk_passages(cands, budget=100)
+    pieces = [p.text for chunk in chunks for p in chunk]
+    assert len(pieces) > 1
+    assert all(piece in text for piece in pieces)
+    assert all(len(piece) <= 100 * 4 for piece in pieces)
+    assert all(p.section_name == "Data availability" for chunk in chunks for p in chunk)
+
+
+def test_split_prefers_paragraphs_then_lines_then_sentences() -> None:
+    assert split_text("aaaa\n\nbbbb", max_tokens=1) == ["aaaa", "bbbb"]
+    assert split_text("aaaa\nbbbb", max_tokens=1) == ["aaaa", "bbbb"]
+    assert split_text("aaa. bbb.", max_tokens=1) == ["aaa.", "bbb."]
+    assert split_text("x" * 20, max_tokens=2) == ["x" * 8, "x" * 8, "x" * 4]
+
+
+def test_small_text_is_not_split() -> None:
+    assert split_text("short", max_tokens=100) == ["short"]
 
 
 # --- stage runner -----------------------------------------------------------------------------

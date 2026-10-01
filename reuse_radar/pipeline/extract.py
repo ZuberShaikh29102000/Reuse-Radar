@@ -21,9 +21,12 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import math
 import os
+import re
 from collections.abc import Sequence
 from dataclasses import asdict, dataclass, field
+from itertools import pairwise
 from pathlib import Path
 from typing import Any, Literal, Protocol
 
@@ -40,7 +43,7 @@ from reuse_radar.llm.router import (
 )
 from reuse_radar.llm.schemas import EXTRACTION_JSON_SCHEMA, ExtractedProduct, ExtractionOutput
 from reuse_radar.log import configure_logging
-from reuse_radar.pipeline.filter import FILTER_VERSION, approx_tokens
+from reuse_radar.pipeline.filter import FILTER_VERSION
 from reuse_radar.pipeline.harvest import CorpusConfig
 
 PROMPT_VERSION = "extract_v1"
@@ -48,9 +51,14 @@ PROMPT_VERSION = "extract_v1"
 EXTRACTION_VERSION = f"{PROMPT_VERSION}+filter_{FILTER_VERSION}"
 PROMPT_PATH = Path(__file__).resolve().parent.parent / "llm" / "prompts" / f"{PROMPT_VERSION}.md"
 
-# Sized for Groq's free tier (8K tokens/minute, budgeted at 7.6K): ~2.3K passage tokens + ~1.6K of
-# system prompt and schema + 3K output (medium reasoning uses ~1.8K) fits one minute's budget.
+# Sized for Groq's free tier (8K tokens/minute, budgeted at 7.6K): <=2K passage tokens (chars/4;
+# ~2.3K by the router's chars/3.5 estimate) + ~1.6K of system prompt and schema + 3K output fits
+# one minute's budget: the worst request over 31 real papers estimates at 7.3K. A candidate over
+# the budget is split (seen live: one 8.3K request could not go to Groq, its fallback was
+# overloaded, and the whole run stopped). Changing this measure moves chunk boundaries and so
+# invalidates cached LLM answers: only change it together with the prompt version.
 MAX_PASSAGE_TOKENS_PER_REQUEST = 2_000
+CHARS_PER_TOKEN = 4.0
 MAX_OUTPUT_TOKENS = 3_000
 MIN_SPAN_CHARS = 20
 
@@ -148,22 +156,61 @@ def chunk_passages(
     current: list[Passage] = []
     used = 0
     for candidate in candidates:
-        tokens = approx_tokens(candidate["text"])
-        if current and used + tokens > budget:
-            chunks.append(current)
-            current, used = [], 0
-        current.append(
-            Passage(
-                passage_id=len(current) + 1,
-                section_name=candidate["section_name"],
-                kind=candidate["kind"],
-                text=candidate["text"],
+        for piece in split_text(candidate["text"], budget):
+            tokens = passage_tokens(piece)
+            if current and used + tokens > budget:
+                chunks.append(current)
+                current, used = [], 0
+            current.append(
+                Passage(
+                    passage_id=len(current) + 1,
+                    section_name=candidate["section_name"],
+                    kind=candidate["kind"],
+                    text=piece,
+                )
             )
-        )
-        used += tokens
+            used += tokens
     if current:
         chunks.append(current)
     return chunks
+
+
+def passage_tokens(text: str) -> int:
+    return math.ceil(len(text) / CHARS_PER_TOKEN)
+
+
+# Preferred break points, coarsest first: paragraph, line, sentence end.
+_BREAKS = (re.compile(r"\n[ \t]*\n"), re.compile(r"\n"), re.compile(r"(?<=[.;])\s+"))
+
+
+def split_text(text: str, max_tokens: int, level: int = 0) -> list[str]:
+    """Split `text` into pieces of at most `max_tokens`, each a verbatim (stripped) slice.
+
+    Tries paragraph breaks, then line breaks, then sentence ends; only an unbroken run longer
+    than the budget is cut at a fixed width. Pieces stay exact substrings of the source, so
+    evidence spans can still be verified against them.
+    """
+    if passage_tokens(text) <= max_tokens:
+        return [text]
+    if level >= len(_BREAKS):
+        width = int(max_tokens * CHARS_PER_TOKEN)
+        return [p for i in range(0, len(text), width) if (p := text[i : i + width].strip())]
+    cuts = [m.end() for m in _BREAKS[level].finditer(text)]
+    bounds = [0, *cuts, len(text)]
+    pieces: list[str] = []
+    start = end = 0
+    for a, b in pairwise(bounds):
+        if end > start and passage_tokens(text[start:b]) > max_tokens:
+            pieces.append(text[start:end])
+            start = a
+        end = b
+    pieces.append(text[start:end])
+    return [
+        part
+        for piece in pieces
+        if piece.strip()
+        for part in split_text(piece.strip(), max_tokens, level + 1)
+    ]
 
 
 def render_passages(passages: Sequence[Passage]) -> str:

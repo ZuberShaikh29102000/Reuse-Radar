@@ -58,6 +58,7 @@ GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:ge
 DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
 # gemini-3.8-flash answered 503 "high demand" repeatedly on 2026-10-01; 3.5-flash was reliable.
 DEFAULT_GEMINI_MODEL = "gemini-3.5-flash"
+DEFAULT_GEMINI_MODELS = (DEFAULT_GEMINI_MODEL, "gemini-3.8-flash")
 
 
 # --- request / result types -------------------------------------------------------------------
@@ -423,7 +424,10 @@ class Router:
     sleep: Sleep = time.sleep
     clock: Clock = time.monotonic
     max_wait_s: float = 65.0  # longest Retry-After worth waiting for (per-minute limits)
-    max_attempts: int = 3
+    # 4 attempts with 15/30/60 s backoff: Gemini 503 "high demand" spells last minutes, and a
+    # batch job can afford to wait (seen live: 15 s of patience stopped a whole run).
+    max_attempts: int = 4
+    unavailable_backoff_s: float = 15.0
     # When a provider reports a long rate limit (a daily quota), skip it until it resets
     # instead of spending a request per paper to rediscover the 429.
     default_pause_s: float = 3600.0
@@ -443,7 +447,7 @@ class Router:
         _cache_counter.add(1, {"result": "miss"})
 
         for index, (provider, prompt) in enumerate(prompts):
-            if self.paused_until.get(provider.name, 0.0) > self.clock():
+            if self.paused_until.get(_key(provider), 0.0) > self.clock():
                 continue
             completion = self._try_provider(provider, request)
             has_next = index + 1 < len(prompts)
@@ -509,7 +513,7 @@ class Router:
                 wait = exc.retry_after
                 if wait is None or wait > self.max_wait_s or attempt + 1 == self.max_attempts:
                     pause = wait if wait is not None else self.default_pause_s
-                    self.paused_until[provider.name] = self.clock() + pause
+                    self.paused_until[_key(provider)] = self.clock() + pause
                     logger.warning(
                         "llm provider rate-limited; pausing it",
                         extra={"provider": provider.name, "retry_after": wait},
@@ -523,20 +527,32 @@ class Router:
                         extra={"provider": provider.name, "error": str(exc)},
                     )
                     return None
-                self.sleep(5.0 * 2**attempt)
+                self.sleep(self.unavailable_backoff_s * 2**attempt)
         return None
 
 
+def _key(provider: Provider) -> str:
+    # Quotas are per model (Groq and Gemini both), so pausing is too.
+    return f"{provider.name}:{provider.model}"
+
+
 def router_from_env(cache_dir: Path) -> Router:
-    """Build the default router (Groq, then Gemini) from environment variables."""
+    """Build the default router from environment variables: Groq, then each Gemini model.
+
+    GEMINI_MODELS is a comma-separated fallback chain. Each Gemini model has its own free quota
+    and its own overload spells, so a second model keeps a run going when the first is busy.
+    """
+    gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    gemini_models = [
+        m.strip()
+        for m in os.environ.get("GEMINI_MODELS", ",".join(DEFAULT_GEMINI_MODELS)).split(",")
+        if m.strip()
+    ]
     providers: list[Provider] = [
         GroqProvider(
             os.environ.get("GROQ_API_KEY", "").strip(),
             os.environ.get("GROQ_MODEL", DEFAULT_GROQ_MODEL),
         ),
-        GeminiProvider(
-            os.environ.get("GEMINI_API_KEY", "").strip(),
-            os.environ.get("GEMINI_MODEL", DEFAULT_GEMINI_MODEL),
-        ),
+        *(GeminiProvider(gemini_key, model) for model in gemini_models),
     ]
     return Router(providers=providers, cache=LLMCache(cache_dir / "llm"))
