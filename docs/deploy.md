@@ -27,7 +27,30 @@ into `.env` locally and the Render dashboard in production.
    uv run python -m reuse_radar.pipeline.store
    ```
 
-   The store stage is idempotent: rerun it after every pipeline run.
+   The store stage is idempotent: rerun it after every pipeline run. From a laptop far from the
+   database region it is slow (several round trips per row; about 40 minutes for the current
+   corpus from India to us-east-1). The nightly GitHub Actions run sits close to the database.
+5. **Lock down Supabase's Data API.** Supabase exposes every `public` table through a REST API
+   reachable with the project's anon key, which is public by design. Reuse Radar never uses that
+   API: Django connects directly as the table owner, which bypasses row-level security. So switch
+   RLS on and give the API roles nothing. Run this in the SQL editor after `migrate`:
+
+   ```sql
+   do $$ declare t text; begin
+     for t in select tablename from pg_tables where schemaname = 'public' loop
+       execute format('alter table public.%I enable row level security', t);
+     end loop;
+   end $$;
+   revoke all on all tables in schema public from anon, authenticated;
+   revoke all on all sequences in schema public from anon, authenticated;
+   alter default privileges in schema public revoke all on tables from anon, authenticated;
+   alter default privileges in schema public revoke all on sequences from anon, authenticated;
+   ```
+
+   The default-privileges lines cover tables that later migrations create, but RLS must be
+   switched on for each new table: rerun the block after a migration that adds one. The Security
+   Advisor then shows no "RLS Disabled in Public" errors. Its "Extension in Public" (pgvector) and
+   "Unused Index" notices are expected and harmless.
 
 Free-tier notes:
 - Supabase pauses free projects after a period of inactivity. The nightly pipeline run (Phase 6
