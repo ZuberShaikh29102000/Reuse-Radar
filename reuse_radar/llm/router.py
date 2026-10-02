@@ -222,7 +222,8 @@ class GroqProvider:
         budget: MinuteBudget | None = None,
         # "low" found 5 of ~12 products on a test paper (missed a likelihood scan and yield
         # tables); "medium" found 12 for ~5x the output tokens. See docs/adr/0003.
-        reasoning_effort: str = "medium",
+        # None omits the parameter, for models that do not accept it.
+        reasoning_effort: str | None = "medium",
     ) -> None:
         if not api_key:
             raise ValueError("GROQ_API_KEY is empty")
@@ -236,14 +237,15 @@ class GroqProvider:
         self._reasoning_effort = reasoning_effort
 
     def payload(self, request: LLMRequest) -> dict[str, Any]:
-        return {
+        # Keys are sorted when hashed for the cache, so adding or omitting reasoning_effort
+        # leaves existing cache entries for the default configuration valid.
+        body: dict[str, Any] = {
             "model": self.model,
             "messages": [
                 {"role": "system", "content": request.system},
                 *({"role": r, "content": t} for r, t in request.messages),
             ],
             "temperature": 0,
-            "reasoning_effort": self._reasoning_effort,
             "include_reasoning": False,
             "max_completion_tokens": request.max_output_tokens,
             "response_format": {
@@ -255,6 +257,9 @@ class GroqProvider:
                 },
             },
         }
+        if self._reasoning_effort is not None:
+            body["reasoning_effort"] = self._reasoning_effort
+        return body
 
     def estimate_tokens(self, payload: dict[str, Any]) -> int:
         return _estimate(payload, int(payload["max_completion_tokens"]))
@@ -446,6 +451,11 @@ class Router:
                 )
         _cache_counter.add(1, {"result": "miss"})
 
+        # An output the provider itself rejected (Groq json_validate_failed). Kept so that, if no
+        # fallback can answer, the caller still gets it and can run its corrective schema retry
+        # instead of the whole stage stopping (seen live: one rejected output plus a busy
+        # fallback ended a run that still had quota).
+        invalid_fallback: tuple[Provider, Completion] | None = None
         for index, (provider, prompt) in enumerate(prompts):
             if self.paused_until.get(_key(provider), 0.0) > self.clock():
                 continue
@@ -454,6 +464,9 @@ class Router:
             # Groq strict mode intermittently rejects its own output; another provider usually
             # answers the same request fine, so prefer that over failing the caller.
             invalid = completion is not None and completion.finish_reason == "json_validate_failed"
+            if invalid and invalid_fallback is None:
+                assert completion is not None
+                invalid_fallback = (provider, completion)
             if completion is None or (invalid and has_next):
                 if has_next:
                     reason = "invalid_output" if invalid else "exhausted"
@@ -495,6 +508,17 @@ class Router:
                 completion.output_tokens,
                 False,
                 completion.finish_reason or "stop",
+            )
+        if invalid_fallback is not None:
+            provider, completion = invalid_fallback
+            return LLMResult(
+                provider.name,
+                provider.model,
+                completion.text,
+                completion.input_tokens,
+                completion.output_tokens,
+                False,
+                completion.finish_reason,
             )
         raise AllProvidersExhaustedError("every LLM provider is rate-limited or unavailable")
 

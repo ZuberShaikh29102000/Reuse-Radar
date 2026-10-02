@@ -331,3 +331,13 @@ def test_router_from_env_builds_gemini_chain(
         ("gemini", "gemini-x"),
         ("gemini", "gemini-y"),
     ]
+
+
+def test_rejected_output_is_returned_when_fallbacks_fail(tmp_path: Path, clock: FakeClock) -> None:
+    """Regression: Groq rejected its output, Gemini was busy, and the whole run stopped."""
+    failed = {"error": {"code": "json_validate_failed", "failed_generation": "{bad"}}
+    rec = Recorder([httpx.Response(400, json=failed)], [httpx.Response(503)] * 4)
+    router, *_ = _router(tmp_path, clock, rec)
+    result = router.complete(REQUEST)
+    assert result.provider == "groq"
+    assert result.finish_reason == "json_validate_failed"  # the extractor's schema retry follows
