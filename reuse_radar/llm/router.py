@@ -436,10 +436,36 @@ class Router:
     # When a provider reports a long rate limit (a daily quota), skip it until it resets
     # instead of spending a request per paper to rediscover the 429.
     default_pause_s: float = 3600.0
+    # If every provider is paused only briefly, wait for the first to come back instead of
+    # stopping the stage (seen live: a 102 s Groq pause plus a busy Gemini ended a run).
+    max_pause_wait_s: float = 600.0
+    max_total_wait_s: float = 1800.0  # never wait longer than this for one request
+    unavailable_pause_s: float = 120.0
     used_live: dict[str, int] = field(default_factory=dict)
     paused_until: dict[str, float] = field(default_factory=dict)
 
     def complete(self, request: LLMRequest) -> LLMResult:
+        """Answer from cache or a provider; wait out short pauses before giving up."""
+        started = self.clock()
+        while True:
+            try:
+                return self._complete_once(request)
+            except AllProvidersExhaustedError:
+                now = self.clock()
+                waits = [until - now for until in self.paused_until.values() if until > now]
+                if (
+                    not waits
+                    or min(waits) > self.max_pause_wait_s
+                    or (now - started) + min(waits) > self.max_total_wait_s
+                ):
+                    raise
+                logger.warning(
+                    "all llm providers briefly paused; waiting",
+                    extra={"wait_s": round(min(waits), 1)},
+                )
+                self.sleep(min(waits) + 1.0)
+
+    def _complete_once(self, request: LLMRequest) -> LLMResult:
         prompts = [(p, canonical_prompt(p.payload(request))) for p in self.providers]
 
         for provider, prompt in prompts:
@@ -546,8 +572,9 @@ class Router:
                 self.sleep(wait)
             except UnavailableError as exc:
                 if attempt + 1 == self.max_attempts:
+                    self.paused_until[_key(provider)] = self.clock() + self.unavailable_pause_s
                     logger.warning(
-                        "llm provider unavailable",
+                        "llm provider unavailable; pausing it",
                         extra={"provider": provider.name, "error": str(exc)},
                     )
                     return None

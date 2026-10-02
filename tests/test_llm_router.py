@@ -232,7 +232,7 @@ def test_all_providers_exhausted_raises(tmp_path: Path, clock: FakeClock) -> Non
         [httpx.Response(429, headers={"retry-after": "7200"})],
         [httpx.Response(503)] * 4,
     )
-    router, *_ = _router(tmp_path, clock, rec)
+    router, *_ = _router(tmp_path, clock, rec, max_pause_wait_s=0)
     with pytest.raises(AllProvidersExhaustedError):
         router.complete(REQUEST)
 
@@ -341,3 +341,32 @@ def test_rejected_output_is_returned_when_fallbacks_fail(tmp_path: Path, clock: 
     result = router.complete(REQUEST)
     assert result.provider == "groq"
     assert result.finish_reason == "json_validate_failed"  # the extractor's schema retry follows
+
+
+def test_short_pauses_are_waited_out_instead_of_stopping(tmp_path: Path, clock: FakeClock) -> None:
+    """Regression: a 102 s Groq pause plus a busy Gemini stopped a run that had quota left."""
+    rec = Recorder(
+        [httpx.Response(429, headers={"retry-after": "102"}), _ok_groq()],
+        [httpx.Response(503)] * 4,
+    )
+    router, *_ = _router(tmp_path, clock, rec)
+    assert router.complete(REQUEST).provider == "groq"
+    assert any(s >= 102 for s in clock.sleeps)
+
+
+def test_long_pauses_still_stop_the_stage(tmp_path: Path, clock: FakeClock) -> None:
+    long = httpx.Response(429, headers={"retry-after": "7200"})
+    rec = Recorder([long], [long])
+    router, *_ = _router(tmp_path, clock, rec)
+    with pytest.raises(AllProvidersExhaustedError):
+        router.complete(REQUEST)
+
+
+def test_endless_overload_stops_after_the_total_wait_cap(tmp_path: Path, clock: FakeClock) -> None:
+    rec = Recorder(
+        [httpx.Response(429, headers={"retry-after": "7200"})], [httpx.Response(503)] * 200
+    )
+    router, *_ = _router(tmp_path, clock, rec)
+    with pytest.raises(AllProvidersExhaustedError):
+        router.complete(REQUEST)
+    assert sum(clock.sleeps) < router.max_total_wait_s + 600
