@@ -52,7 +52,17 @@ Free-tier notes:
   wake the service.
 - Logs are JSON lines, one per request, readable in the Render dashboard.
 
-## 3. Check it
+## 3. Curator UI (Cloudflare Pages, free)
+
+1. dash.cloudflare.com → **Workers & Pages → Create → Pages → Connect to Git** → select the
+   repository.
+2. Build settings: **root directory** `frontend`, **build command** `npm run build`, **output
+   directory** `dist`.
+3. Environment variable: `VITE_API_URL` = `https://<service>.onrender.com`.
+4. After the first deploy, put the Pages URL (e.g. `https://reuse-radar.pages.dev`) into the
+   API's `CORS_ALLOWED_ORIGINS` on Render.
+
+## 4. Check it
 
 ```
 GET https://<service>.onrender.com/healthz           -> {"status": "ok"}
