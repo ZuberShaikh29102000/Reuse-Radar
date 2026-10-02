@@ -1,0 +1,89 @@
+# Nightly batch pipeline (production orchestration, SPEC section 4): the same stage functions the
+# local Airflow DAG calls. Free: GitHub Actions minutes, Groq/Gemini free tiers, Supabase/Neon.
+#
+# Required repository secrets:
+#   INSPIRE_CONTACT_EMAIL  contact address for the INSPIRE/arXiv/DataCite User-Agent
+#   GROQ_API_KEY, GEMINI_API_KEY
+#   DATABASE_URL           Supabase/Neon Postgres (pooler URL, ?sslmode=require)
+#   DJANGO_SECRET_KEY      any random value (the store stage sets up Django)
+# Optional: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_HEADERS (Grafana Cloud), SENTRY_DSN
+name: pipeline
+
+on:
+  schedule:
+    - cron: "15 3 * * *" # daily, 03:15 UTC
+  workflow_dispatch:
+    inputs:
+      stages:
+        description: "Stages to run (space-separated)"
+        default: "harvest filter extract reconcile store"
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      INSPIRE_CONTACT_EMAIL: ${{ secrets.INSPIRE_CONTACT_EMAIL }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+      OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      REUSE_RADAR_CACHE_DIR: .cache
+      REUSE_RADAR_DATA_DIR: data
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --locked --no-dev --extra pipeline
+
+      # HTTP/LLM caches and stage outputs carry over between runs, so reruns cost no API calls
+      # and the free-tier backlog progresses a little every night. A new cache entry is saved
+      # per run; the newest is restored.
+      - name: Restore pipeline state
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .cache
+            data
+          key: pipeline-state-${{ github.run_id }}
+          restore-keys: pipeline-state-
+
+      - name: Migrate database
+        run: uv run python manage.py migrate --noinput
+
+      - name: Run pipeline
+        # The input goes through an env var, never interpolated into the script (injection);
+        # argparse rejects anything that is not a known stage name.
+        env:
+          STAGES: ${{ github.event.inputs.stages || 'harvest filter extract reconcile store' }}
+        run: |
+          read -r -a stages <<< "$STAGES"
+          uv run python -m reuse_radar.pipeline.run --stages "${stages[@]}"
+
+      - name: Save pipeline state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .cache
+            data
+          key: pipeline-state-${{ github.run_id }}
+
+      - name: Summary
+        if: always()
+        run: |
+          for stage in filter extract reconcile; do
+            f=$(ls data/$stage/*/_summary.json 2>/dev/null | head -1)
+            if [ -n "$f" ]; then echo "### $stage" >> "$GITHUB_STEP_SUMMARY"; echo '```json' >> "$GITHUB_STEP_SUMMARY"; cat "$f" >> "$GITHUB_STEP_SUMMARY"; echo '```' >> "$GITHUB_STEP_SUMMARY"; fi
+          done

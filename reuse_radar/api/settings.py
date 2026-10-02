@@ -122,3 +122,8 @@ TEMPLATES = [
         "OPTIONS": {"context_processors": []},
     }
 ]
+
+# Error reporting (Sentry free tier) when SENTRY_DSN is set; off otherwise.
+from reuse_radar.telemetry import configure_sentry  # noqa: E402
+
+configure_sentry("reuse-radar-api")

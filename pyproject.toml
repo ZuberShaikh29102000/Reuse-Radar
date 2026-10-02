@@ -16,11 +16,14 @@ dependencies = [
     "psycopg[binary]>=3.2",
     "pydantic>=2.7",
     "python-dotenv>=1.2.4",
+    "sentry-sdk>=2.0",
 ]
 
 [project.optional-dependencies]
 pipeline = [
     "fastembed>=0.5",
+    "opentelemetry-exporter-otlp-proto-http>=1.25",
+    "opentelemetry-sdk>=1.25",
 ]
 
 [dependency-groups]

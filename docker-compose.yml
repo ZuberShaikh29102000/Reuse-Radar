@@ -1,7 +1,10 @@
-# Local development services. Phase 4 needs Postgres with pgvector; Airflow, Prometheus and
-# Grafana (SPEC section 6) are added in the phases that use them.
+# Local development services.
 #
-#   docker compose up -d db
+#   docker compose up -d db                    # Postgres + pgvector (API, store stage, tests)
+#   docker compose --profile airflow up -d     # + Airflow running dags/reuse_radar_daily.py
+#
+# Production does not use these: GitHub Actions runs the pipeline (.github/workflows/pipeline.yml)
+# and telemetry goes to Grafana Cloud's free tier (see docs/adr/0007 for what was left out).
 #
 # Credentials below are for a throwaway local database only; production uses DATABASE_URL.
 
@@ -21,6 +24,28 @@ services:
       interval: 2s
       timeout: 3s
       retries: 30
+
+  airflow:
+    profiles: ["airflow"]
+    image: apache/airflow:2.10.5-python3.12
+    command: standalone # scheduler + webserver + SQLite metadata DB; dev only
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: .env # API keys and contact email
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/reuse-radar/dags
+      # The project is mounted and installed into Airflow's environment at start-up.
+      _PIP_ADDITIONAL_REQUIREMENTS: "/opt/reuse-radar[pipeline]"
+      DATABASE_URL: postgres://reuse_radar:local-dev-only@db:5432/reuse_radar
+      REUSE_RADAR_CORPUS: /opt/reuse-radar/config/corpus.toml
+      REUSE_RADAR_CACHE_DIR: /opt/reuse-radar/.cache
+      REUSE_RADAR_DATA_DIR: /opt/reuse-radar/data
+    volumes:
+      - .:/opt/reuse-radar
+    ports:
+      - "127.0.0.1:8080:8080"
 
 volumes:
   pgdata:
