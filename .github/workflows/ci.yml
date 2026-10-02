@@ -31,7 +31,8 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-      - run: uv sync --locked
+      # The pipeline extra (fastembed, OpenTelemetry) is needed for mypy and the pipeline tests.
+      - run: uv sync --locked --extra pipeline
       - name: Lint
         run: uv run ruff check . && uv run ruff format --check .
       - name: Types
