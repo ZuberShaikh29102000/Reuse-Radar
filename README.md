@@ -16,6 +16,13 @@ API and an MCP server for AI agents.
 It is the detection layer that neither INSPIRE nor HEPData provides. Everything runs on free
 tiers.
 
+**Live:**
+- Curator UI: <https://reuse-radar.work-zubershaikh.workers.dev>
+- API docs: <https://reuse-radar-api.onrender.com/api/docs>
+
+The API runs on Render's free plan, which sleeps when idle, so the first request after a pause
+can take about 50 seconds.
+
 ## How it works
 
 ```
