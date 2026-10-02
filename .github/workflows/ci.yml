@@ -40,3 +40,11 @@ jobs:
         run: uv run python manage.py makemigrations --check --dry-run
       - name: Tests (no live network)
         run: uv run pytest -q
+      - name: Extraction eval gate (replayed from committed fixtures, no API calls)
+        run: uv run python -m reuse_radar.eval.run_eval --out eval-report
+      - name: Upload eval report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: eval-report/

@@ -132,6 +132,9 @@ class PaperExtraction:
     cached_requests: int = 0
     input_tokens: int = 0
     output_tokens: int = 0
+    # One entry per LLM request, cached or live: provider, model, tokens and the latency of the
+    # original live call. Feeds the eval report's cost and p95 latency.
+    request_stats: list[dict[str, object]] = field(default_factory=list)
 
 
 class SchemaFailureError(RuntimeError):
@@ -332,6 +335,7 @@ class _Tally:
     input_tokens: int = 0
     output_tokens: int = 0
     dropped: list[DroppedProduct] = field(default_factory=list)
+    stats: list[dict[str, object]] = field(default_factory=list)
 
     def add(self, result: LLMResult) -> None:
         self.requests += 1
@@ -339,6 +343,16 @@ class _Tally:
         if not result.cached:
             self.input_tokens += result.input_tokens
             self.output_tokens += result.output_tokens
+        self.stats.append(
+            {
+                "provider": result.provider,
+                "model": result.model,
+                "input_tokens": result.input_tokens,
+                "output_tokens": result.output_tokens,
+                "latency_s": round(result.latency_s, 3),
+                "cached": result.cached,
+            }
+        )
 
 
 def _extract_chunk(
@@ -410,6 +424,7 @@ def extract_paper(router: Completer, system: str, filter_record: dict[str, Any])
             cached_requests=tally.cached,
             input_tokens=tally.input_tokens,
             output_tokens=tally.output_tokens,
+            request_stats=tally.stats,
         )
 
     products = _dedupe(products)
@@ -437,6 +452,7 @@ def extract_paper(router: Completer, system: str, filter_record: dict[str, Any])
         cached_requests=tally.cached,
         input_tokens=tally.input_tokens,
         output_tokens=tally.output_tokens,
+        request_stats=tally.stats,
     )
 
 

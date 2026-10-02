@@ -18,6 +18,7 @@ Request and response shapes were checked against the live APIs on 2026-10-01 (do
 
 from __future__ import annotations
 
+import dataclasses
 import logging
 import math
 import os
@@ -82,6 +83,7 @@ class LLMResult:
     output_tokens: int
     cached: bool
     finish_reason: str = "stop"
+    latency_s: float = 0.0  # live call duration (for cached results: of the original call)
 
 
 class LLMError(RuntimeError):
@@ -117,6 +119,7 @@ class Completion:
     input_tokens: int
     output_tokens: int
     finish_reason: str
+    latency_s: float = 0.0
 
 
 class Provider(Protocol):
@@ -473,7 +476,13 @@ class Router:
             if hit is not None:
                 _cache_counter.add(1, {"result": "hit"})
                 return LLMResult(
-                    hit.provider, hit.model, hit.text, hit.input_tokens, hit.output_tokens, True
+                    hit.provider,
+                    hit.model,
+                    hit.text,
+                    hit.input_tokens,
+                    hit.output_tokens,
+                    True,
+                    latency_s=hit.latency_s,
                 )
         _cache_counter.add(1, {"result": "miss"})
 
@@ -521,6 +530,7 @@ class Router:
                         input_tokens=completion.input_tokens,
                         output_tokens=completion.output_tokens,
                         created_at=time.time(),
+                        latency_s=round(completion.latency_s, 3),
                     ),
                 )
             _tokens_counter.add(completion.input_tokens, {"provider": provider.name, "dir": "in"})
@@ -534,6 +544,7 @@ class Router:
                 completion.output_tokens,
                 False,
                 completion.finish_reason or "stop",
+                completion.latency_s,
             )
         if invalid_fallback is not None:
             provider, completion = invalid_fallback
@@ -553,7 +564,9 @@ class Router:
         payload = provider.payload(request)
         for attempt in range(self.max_attempts):
             try:
-                return provider.send(payload)
+                started = time.perf_counter()
+                completion = provider.send(payload)
+                return dataclasses.replace(completion, latency_s=time.perf_counter() - started)
             except RequestTooLargeError as exc:
                 logger.warning(
                     "llm request too large", extra={"provider": provider.name, "error": str(exc)}

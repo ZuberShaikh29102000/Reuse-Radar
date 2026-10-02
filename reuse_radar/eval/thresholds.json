@@ -1,0 +1,7 @@
+{
+  "min_precision": 0.85,
+  "min_recall": 0.6,
+  "min_f1": 0.7,
+  "price_per_million": {"input": 0.0, "output": 0.0},
+  "_note": "Gates sit just below the first baseline (precision 0.91, recall 0.65, F1 0.76 on gold rev 2; docs/adr/0006). Raise them as the prompt improves; never lower them to make a change pass. Prices are 0 because the free tiers cost nothing; set list prices to estimate paid runs."
+}

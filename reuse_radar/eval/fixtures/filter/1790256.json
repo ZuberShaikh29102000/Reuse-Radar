@@ -1,0 +1,49 @@
+{
+ "inspire_id": 1790256,
+ "arxiv_id": "2004.03540",
+ "status": "ok",
+ "filter_version": "1",
+ "detail": null,
+ "main_file": "ANA-STDM-2018-57-PAPER.tex",
+ "body_tokens": 6726,
+ "candidate_tokens": 1957,
+ "reduction_ratio": 3.437,
+ "missing_inputs": [],
+ "candidates": [
+  {
+   "section_name": "Body",
+   "kind": "paragraph",
+   "text": "The Lund plane is a powerful representation for providing insight into jet substructure; however, the plane is not observable because it is built from quarks and gluons. A recent proposal~\\cite{Dreyer:2018nbf} describes a method to construct an observable analog of the Lund plane using jets, which captures the salient features of this representation. Jets are formed using clustering algorithms that sequentially combine pairs of proto-jets starting from the initial set of constituents~\\cite{Salam:2009jx}. Following the proposal, a jet's constituents are reclustered using the Cambridge/Aachen (C/A) algorithm~\\cite{Dokshitzer:1997in,Wobisch:1998wt}, which imposes an angle-ordered hierarchy on the clustering history. Then, the C/A history is followed in reverse (`declustered'), starting from the hardest proto-jet.  The Lund plane can be approximated by using the softer (harder) proto-jet to represent the emission (core) in the original theoretical depiction. For each proto-jet pair, at each step in the C/A declustering sequence, an entry is made in the approximate Lund plane (henceforth, the `primary Lund jet plane' or LJP) using the observables $\\ln{(1/z)}$ and $\\ln{(R/\\Delta R)}$, with\n\\[\nz = \\frac{\\pt^{\\mathrm{emission}}}{\\pt^{\\mathrm{emission}}+\\pt^{\\mathrm{core}}}\\hspace{4mm}\\text{and}\\hspace{4mm}\\; \\Delta R^2 = (y_\\text{emission}-y_\\text{core})^2+ (\\phi_\\text{emission}-\\phi_\\text{core})^2,\n\\]\nwhere \\pt is transverse momentum,\\footnote{ATLAS uses a right-handed coordinate system with its origin at the nominal interaction point (IP) in the center of the detector and the $z$-axis along the beam pipe. The $x$-axis points from the IP to the center of the LHC ring, and the $y$-axis points upward. Cylindrical coordinates ($r$, $\\phi$) are used in the transverse plane, $\\phi$ being the azimuthal angle around the beam pipe. The pseudorapidity is defined in terms of the polar angle $\\vartheta$ as $\\eta = -\\ln \\tan(\\vartheta/2)$.} $y$ is rapidity, $R$ is the jet radius parameter, and $\\Delta R$ measures the angular separation. Using this approach, individual jets are represented as a set of points within the LJP. Ensembles of jets may be studied by measuring the double-differential cross section in this space. The substructure of emissions, which may themselves be composite objects, is not considered in this analysis. To leading-logarithm (LL) accuracy, the average density of emissions within the LJP is uniform~\\cite{Dreyer:2018nbf}:\n\\begin{equation}\\label{eqn:ll}\n\\frac{1}{N_{\\mathrm{jets}}} \\frac{d^{2}N_{\\mathrm{emissions}}}{d\\ln(1/z) d\\ln(R/\\DeltaR)} \\propto \\text{constant},\n\\end{equation}\nwhere $N_{\\mathrm{jets}}$ is the number of jets. This construction of the plane is selected to separate momentum and angular measurements, although other choices such as $\\left(\\ln(R/\\Delta R),k_{t} = z\\Delta R\\right)$ are valid."
+  },
+  {
+   "section_name": "Body",
+   "kind": "paragraph",
+   "text": "This Letter presents a double-differential cross-section measurement of the LJP, corrected for detector effects, using an integrated luminosity of 139~\\ifb\\ of $\\sqrt{s} = 13~\\TeV$ proton--proton ($pp$) collision data collected by the ATLAS detector. A unique feature of this measurement is that contributions from various QCD effects such as initial-state radiation, the underlying event and multi-parton interactions, hadronization, and perturbative emissions are well-localized in the LJP. This factorization is shown in Figure~\\ref{fig:intro:schematic}, which qualitatively indicates the regions populated by soft \\emph{vs}.\\ hard, wide-angle \\emph{vs}.\\ collinear, and perturbative \\emph{vs}.\\ nonperturbative radiation. Since different regions are dominated by factorized processes, the LJP measurement can be useful for tuning nonperturbative models and for constraining the model parameters of advanced parton shower (PS) Monte Carlo (MC) programs~\\cite{Fischer:2016vfv,Hoche:2015sya,Nagy:2015hwa,Bellm:2015jjp}."
+  },
+  {
+   "section_name": "Body",
+   "kind": "paragraph",
+   "text": "Emissions at detector level and charged-particle level are uniquely matched in $\\eta$$-$$\\phi$ to construct the response matrix. The matching procedure follows the order of the C/A declustering, starting from the widest-angle detector-level emission and iterating towards the jet core. The closest charged-particle-level match with angular separation $\\Delta R < 0.1$ takes precedence. Unmatched emissions from tracks not due to a single charged particle (detector level) and from nonreconstructed charged particles (charged-particle level) are accounted for with purity and efficiency corrections.  Corrections are applied before (purity) and after (efficiency) the regularized inversion of the response matrix. Both the purity and efficiency corrections are about 20\\% for wide-angle, hard emissions (lower-left quadrant of the LJP), increasing to 80\\% for the most collinear splittings and 50\\% in the lowest-$z$ bins. For matched emissions, the $\\ln(1/z)$ and $\\ln(R/\\Delta R)$ bin migrations between particle and detector levels are largely independent.  Furthermore, since the differential cross section varies slowly across the LJP, the purities and efficiencies are approximately the same across the entire LJP.  The $\\ln(R/\\Delta R)$ migrations in a given $\\ln(1/z)$ bin are less than 60\\% for the smallest opening angles and decrease to less than 40\\% for the widest angles.  The $\\ln(1/z)$ migrations decrease from about 50\\% for the softest to about 20\\% for the hardest emissions, with some degradation for the softest emissions at small opening angles. Migrations for both observables are nearly symmetric except for $\\ln(R/\\Delta R) > 3$, where harder-to-resolve small opening angles are measured with asymmetric resolution. In less than $10\\%$ of these cases, particle-level and detector-level emissions are mismatched and therefore measured with the wrong $\\ln(1/z)$. While the $\\ln(R/\\Delta R)$ migrations are nearly the same when $\\ln(1/z)$ migrates by one bin, the $\\ln(1/z)$ migrations increase by about 30\\% when $\\ln(R/\\Delta R)$ migrates by one bin."
+  },
+  {
+   "section_name": "Body",
+   "kind": "paragraph",
+   "text": "The unfolded distribution is normalized to the number of jets that pass the event selection, rendering the measurement insensitive to the total jet cross section. After normalization, the integral of the LJP is the average number of emissions within the fiducial region."
+  },
+  {
+   "section_name": "Body",
+   "kind": "caption",
+   "text": "\\caption{\nThe LJP measured using jets in 13~\\TeV~$pp$ collision data, corrected to particle level. The inner set of axes indicates the coordinates of the LJP itself, while the outer set indicates corresponding values of $z$ and $\\DeltaR$.\n}"
+  },
+  {
+   "section_name": "Body",
+   "kind": "caption",
+   "text": "\\caption{\nRepresentative horizontal and vertical slices through the LJP. Unfolded data are compared with particle-level simulation from several MC generators.  The uncertainty band includes all sources of systematic and statistical uncertainty.  The inset triangle illustrates which slice of the plane is depicted: (a) $0.67 < \\ln(R/\\Delta R) < 1.00$, (b) $1.80<\\ln(1/z) < 2.08$, (c) $3.33 < \\ln(R/\\Delta R) < 3.67$, and (d) $5.13<\\ln(1/z) < 5.41$.\n}"
+  },
+  {
+   "section_name": "Body",
+   "kind": "paragraph",
+   "text": "In summary, a measurement of the jet substructure based on the Lund jet plane is reported. The analysis dataset corresponds to an integrated luminosity of 139~\\ifb\\ of 13~\\TeV\\ LHC proton--proton collisions recorded by the ATLAS detector. The measurement is performed on an inclusive selection of dijet events, with a leading jet \\pt > 675~\\GeV. Selected jets are reconstructed from topological clusters using the \\akt algorithm with $R=0.4$, and their associated charged-particle tracks are used to construct the observables of interest. The data are presented as an unfolded double-differential cross section, and compared with several Monte Carlo generators with various degrees of modeling accuracy.  This measurement illustrates the ability of the Lund jet plane to isolate various physical effects, and will provide useful input to both perturbative and nonperturbative model development and tuning."
+  }
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "inspire_id": 1775750,
+ "arxiv_id": "2001.05178",
+ "status": "ok",
+ "filter_version": "1",
+ "detail": null,
+ "main_file": "ANA-HDBS-2018-18-PAPER.tex",
+ "body_tokens": 12063,
+ "candidate_tokens": 2006,
+ "reduction_ratio": 6.013,
+ "missing_inputs": [],
+ "candidates": [
+  {
+   "section_name": "Event selection",
+   "kind": "caption",
+   "text": "\\caption{Summary of the selection criteria for capturing the VBF topology, identifying $HH \\to b \\bar{b} b \\bar{b}$ decays, and suppressing background events. Possible remnants of the VBF process are identified using the two highest-\\pt forward jets. Labels ``lead'' and ``subl'' refer to the leading and subleading Higgs boson candidates (ordered in \\pt), respectively. The definitions of the different analysis regions are also provided. The transverse momenta and masses are expressed in \\GeV.}"
+  },
+  {
+   "section_name": "Event selection > Selection for background suppression",
+   "kind": "caption",
+   "text": "\\caption{Cumulative acceptance times efficiency at each stage of the event selection, as detailed in Section~\\ref{sec:selection}. The number of events surviving the selection divided by the number of\ngenerated events is reported separately for the non-resonant signal as a function of the \\ktv\\ coupling modifier and for the narrow- and broad-width resonance production hypotheses as a function of the generated mass.}"
+  },
+  {
+   "section_name": "Event selection > Selection for background suppression",
+   "kind": "caption",
+   "text": "\\caption{Two-dimensional mass regions used in the analysis. The signal region is inside the inner (red) dashed curve, the validation region is outside the signal region and within the\nintermediate (orange) circle, and the sideband is outside the validation region and within the outer (yellow) circle. The regions are shown for \\subref{fig:resolvedRegions:nores}~simulated\nevents from the SM non-resonant $HH$ process and \\subref{fig:resolvedRegions:mj}~the estimated multijet background.}"
+  },
+  {
+   "section_name": "Systematic uncertainties",
+   "kind": "paragraph",
+   "text": "Background normalisation uncertainties are propagated from the fit, described in the previous section, which determines the multijet and all-hadronic \\ttbar\\ yields. The statistical\nuncertainty of the multijet and all-hadronic \\ttbar\\ normalisation parameters is accounted for,\nincluding their correlations. Two nuisance parameters are defined in the final fit described in Section~\\ref{sec:results} by calculating two eigenvectors from the covariance matrix\nof the normalisation fit. Furthermore, the normalisation of the multijet background\nestimate is verified in the VR, where agreement with data is found; its statistical uncertainty in the VR is thus applied as a normalisation systematic uncertainty of the multijet background."
+  },
+  {
+   "section_name": "Results",
+   "kind": "paragraph",
+   "text": "Following the statistical procedures outlined in Ref.~\\cite{HIGG-2012-27}, a test statistic based on the profile likelihood ratio~\\cite{Cowan:2010js} is\nused to test hypothesised values $\\sigma_\\text{VBF}$ of the cross-section of the signal model in units of fb. This test statistic extracts\nthe information about the signal cross-section from a likelihood fit to the data. The likelihood function includes all parameters which describe the\nsystematic uncertainties and their correlations discussed in Section~\\ref{sec:systematics}. As no significant excess over the background prediction is\nobserved, exclusion limits are computed using the asymptotic formula~\\cite{Cowan:2010js}. The exclusion limits are based on the CL$_\\text{s}$\nmethod~\\cite{Read:2002hq}, where a value of $\\sigma_\\text{VBF}$ is regarded as excluded at the 95\\% confidence level (CL) when CL$_\\text{s}$\nis smaller than 5\\%. The accuracy of the asymptotic approximation is verified with sampling distributions generated using pseudo-experiments."
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Post-fit mass distribution of the $HH$ candidates in the~\\subref{fig:SRmassdist} signal and~\\subref{fig:addmassdist:VR}\nvalidation regions. The expected background is shown after the profile-likelihood fit to data with the background-only hypothesis; the narrow-width resonant\nsignal at 800~\\gev\\ and the non-resonant signal at $\\ktv=3$ are overlaid in the signal region, both normalised to the corresponding observed upper limits on\nthe cross-section. The lower panel shows the ratio of the observed data to the estimated SM background. The distribution of events is shown per mass interval\ncorresponding to the bin width of 40~\\gev, while the overflow events are included in the last bin.}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "paragraph",
+   "text": "Upper limits on the cross-section are set for all tested models. Figure~\\ref{fig:CombinedLimits} shows the 95\\% CL upper limits for resonant $HH$ production via VBF\nas a function of the resonance mass $m_X$ for narrow- and broad-width resonance hypotheses. The significance of the excess over the background-only prediction is quantified using the local $p_0$-value, defined as the probability of the\nbackground-only model to produce a signal-like fluctuation at least as large as that observed in the data. The most extreme $p_0$-value corresponds\nto a local significance of $1.5$ standard deviations at 550~\\gev."
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Observed and expected 95\\% CL upper limits on the production cross-section for resonant $HH$ production via VBF as a function of the\nmass $m_X$. The \\subref{fig:CombinedLimits:narrow} narrow- and \\subref{fig:CombinedLimits:broad} broad-width resonance hypotheses are presented.}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "paragraph",
+   "text": "The expected and observed limits on SM non-resonant $HH$ production via VBF are given in Table~\\ref{tab:smrwMhhlims}. Limits are also calculated as a function\nof \\ktv, as presented in Figure~\\ref{fig:c2vLimits}. The observed excluded region corresponds to $\\ktv < -0.43$ and $\\ktv > 2.56$, while the expected exclusion is\n$\\ktv < -0.55$ and $\\ktv > 2.72$. For \\ktv\\ values deviating from the SM prediction, growing non-cancellation effects result in a harder $m_{HH}$ spectrum, and\nthereby higher-\\pt $b$-jets, which in turn lead to increased signal acceptance times efficiency as shown in Figure~\\ref{fig:resolvedEfficiency}. This search is therefore\nnot sensitive to the region close to the SM prediction, corresponding to $\\ktv = 1$ ."
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Upper limits at 95\\% CL for SM non-resonant $HH$ production via VBF in fb (first row) and normalised to its SM expectation,\n$\\sigma^\\text{SM}_\\text{VBF}$ (second row). Uncertainties related to the branching ratio of the $H \\to b \\bar{b}$ decay are not considered.}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Observed and expected 95\\% CL upper limits on the production cross-section for non-resonant $HH$ production via VBF as a\nfunction of the di-vector-boson--di-Higgs-boson coupling modifier \\ktv. The theory prediction of the cross-section\nas a function of \\ktv\\ is also shown.  More details on the predicted cross-section can be found in Section~\\ref{sec:samples}. }"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Dominant relative uncertainties in the best-fit signal cross-section $\\sigma^\\text{best fit}_\\text{VBF}(pp\\rightarrow Xjj \\rightarrow HHjj)$ of hypothesised resonant $HH$ signal production.\nThe leading sources of systematic uncertainty, the total systematic uncertainty and the data statistical uncertainty are provided. Two mass points are selected: $m_X = 300$~\\gev\\ with the\nbest-fit cross-section of $140$~fb and $m_X = 800$~\\gev\\ with $4.7$~fb, which correspond to the low and high mass regions.\nThe groups of uncertainties do not add up in quadrature to the total uncertainty, because only the dominant uncertainties are shown and also due to correlations between the uncertainties.}"
+  },
+  {
+   "section_name": "Conclusion",
+   "kind": "paragraph",
+   "text": "A search for both resonant and non-resonant production of pairs of Standard Model Higgs bosons via\nvector-boson fusion has been carried out in the \\bbbb\\ channel. The analysed data were collected from\n$\\sqrt{s} =$ 13~\\tev\\ proton--proton collisions by the ATLAS detector at the LHC in 2016--2018 and\ncorrespond to an integrated luminosity of \\lumi~\\ifb. Results for resonant $HH$ production are reported in the mass range\n\\mlow--\\mhigh~\\gev. The largest deviation from the background-only hypothesis is observed\nat 550~\\gev\\ with a local significance of 1.5 standard deviations. Upper limits on the production cross-section are set for narrow-\nand broad-width scalar resonances at 95\\% CL. Limits are also set on the cross-section for non-resonant $HH$ production, and as\na function of the di-vector-boson--di-Higgs-boson coupling modifier, \\ktv. The observed 95\\% CL upper limit on the SM non-resonant\n$HH$ production cross-section is 1460~fb, compatible with the expected limit at a level below two standard deviations. The observed\nexcluded region corresponds to $\\ktv < -0.43$ and $\\ktv > 2.56$, while the expected exclusion is $\\ktv < -0.55$ and $\\ktv >$ 2.72."
+  }
+ ]
+}

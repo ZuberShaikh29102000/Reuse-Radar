@@ -13,3 +13,4 @@ __pycache__/
 # Pipeline outputs and HTTP/LLM caches (regenerable)
 .cache/
 data/
+eval-report/

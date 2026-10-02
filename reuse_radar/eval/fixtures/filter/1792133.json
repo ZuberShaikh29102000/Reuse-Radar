@@ -1,0 +1,129 @@
+{
+ "inspire_id": 1792133,
+ "arxiv_id": "2004.10612",
+ "status": "ok",
+ "filter_version": "1",
+ "detail": null,
+ "main_file": "ANA-STDM-2017-19-PAPER.tex",
+ "body_tokens": 11913,
+ "candidate_tokens": 1340,
+ "reduction_ratio": 8.89,
+ "missing_inputs": [],
+ "candidates": [
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Probing electroweak symmetry breaking at the LHC",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Event selection",
+   "kind": "caption",
+   "text": "\\caption{\n\\textbf{Observed data and expected event yields in 139~\\ifb{} of data in the \\lllljj and \\llvvjj signal regions.}\nAll the minor backgrounds are summed together as `Others', and the $WWjj$ and \\ttbar~processes are referred to as the \\nonresll~backgrounds.\nUncertainties in the predictions include both the statistical and systematic components on the predicted yields before fit.\n}"
+  },
+  {
+   "section_name": "Event selection",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Event selection",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Event selection",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Event selection",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Event selection",
+   "kind": "caption",
+   "text": "\\caption{\\textbf{Observed and expected distributions.} a-d. The \\mjj distributions in the (a) \\lllljj QCD CR and\nthe (b) \\lllljj and (c) \\llvvjj signal regions,\nas well as the $m_{ZZ}$ distribution in the (d) \\lllljj signal region.\nThe error bands represent standard deviations and include the expected experimental and theoretical systematic uncertainties.\nThe contributions from the QCD and EW production of $ZZjj$ events are scaled by 0.99 and 0.92, respectively,\nwhich correspond to the observed normalisation factors in the statistical fit to the combined channel (Table~\\ref{tab:fit_result}).\nThe ZZ (EW), ZZ (QCD) and ggZZ represent contributions from EW, non-$gg$ QCD and $gg$ QCD $ZZjj$ processes, respectively.\nThe WZ represents contribution from $WZjj$ process.\nAll the minor backgrounds are summed together as `Others',\nand the $WWjj$ and \\ttbar~processes are referred to as `NonRes'.\nThe last bin includes the overflow events.\nThe statistical uncertainties of the data are shown as error bars.\nThe open arrows represent the out-of-range markers.\nThe horizontal bin width is indicated on the vertical axis legend.\n}"
+  },
+  {
+   "section_name": "Observation of EW $ZZjj$",
+   "kind": "caption",
+   "text": "\\caption{\n\\textbf{Significance of EW $ZZjj$ processes.} Observed \\muEW and \\muQCD, as well as the observed and expected significance of EW $ZZjj$ processes from the individual \\lllljj and \\llvvjj channels, and the combined fits.\nThe full set of statistical and systematic uncertainties is included.\n}"
+  },
+  {
+   "section_name": "Observation of EW $ZZjj$",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Observation of EW $ZZjj$",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Observation of EW $ZZjj$",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Observation of EW $ZZjj$",
+   "kind": "caption",
+   "text": "\\caption{\\textbf{Observed and expected multivariate discriminant distributions.}\nDistributions after the statistical fit\nin the (a) \\lllljj QCD CR,\nand in the (b) \\lllljj and (c) \\llvvjj signal regions.\nThe error bands represent standard deviations and include the experimental and theoretical systematic uncertainties,\nas well as the uncertainties in \\muEW and \\muQCD.\nThe ZZ (EW), ZZ (QCD) and ggZZ represent contributions from EW, non-$gg$ QCD and $gg$ QCD $ZZjj$ processes, respectively.\nThe WZ represents contribution from $WZjj$ process.\nAll the minor backgrounds are summed together as `Others',\nand the $WWjj$ and \\ttbar~processes are referred to as `NonRes'.\nThe statistical uncertainties of the data are shown as error bars.\nThe open arrows represent the out-of-range markers.\nThe horizontal bin width is indicated on the vertical axis legend.\n}"
+  },
+  {
+   "section_name": "Measurement of fiducial cross-sections",
+   "kind": "paragraph",
+   "text": "In addition to the observation of the EW $ZZjj$ process, the cross-sections for the production of inclusive $ZZjj$ are also measured in the \\lllljj and \\llvvjj channels. This measurement, corrected for detector inefficiency and resolution without any further theoretical interpretation, provides the most model-independent results. The cross-sections are measured following the formula\n$\\sigma = (N_{\\mathrm{data}} - N_{\\mathrm{bkg}}) / (L \\times C)$,\nwhere\n$N_{\\mathrm{data}}$ and $N_{\\mathrm{bkg}}$\nrefer to the number of events in data and the expected number of background events from non-$ZZjj$ processes respectively, $L$ refers to the integrated luminosity, and $C$ is the correction factor to extrapolate the QCD and EW $ZZjj$ events from detector level to the fiducial volume, calculated as the ratio of the number of $ZZjj$ events passing the detector-level event selection to the number of events selected in the fiducial volume."
+  },
+  {
+   "section_name": "Measurement of fiducial cross-sections",
+   "kind": "paragraph",
+   "text": "The $C$-factors are found to be ($69.9 \\pm 3.1$)\\% in the \\lllljj channel, and ($22.4 \\pm 1.2$)\\% in the \\llvvjj channel, where the errors reflect the total uncertainties. The smaller $C$-factor in the \\llvvjj channel is due to the large event migration effect in events passing the \\met selection requirement at particle level that have a small \\met-significance at detector level. The measured and predicted fiducial cross-sections are presented in Table~\\ref{tab:xs}. Uncertainties from different sources are presented explicitly. The data statistical uncertainty dominates, while the experimental uncertainties related to jet measurements and the background estimates are the major systematic uncertainties in the \\lllljj and \\llvvjj channels, respectively. The measurements of $1.27 \\pm 0.14$~fb for the \\lllljj channel and $1.13 \\pm 0.32$~fb for the \\llvvjj channel are compatible with the SM predictions. The measurement precision in the \\lllljj channel is better than the accuracy of the theoretical prediction."
+  },
+  {
+   "section_name": "Measurement of fiducial cross-sections",
+   "kind": "caption",
+   "text": "\\caption{\n\\textbf{Measured and predicted fiducial cross-sections.} Cross-sections are presented in both the \\lllljj and \\llvvjj channels for the inclusive $ZZjj$ processes.\nUncertainties due to different sources are presented explicitly,\nincluding the one from the statistical uncertainty of the data and simulated samples (stat), the one from the theoretical predictions (theo), the experimental ones due to the lepton and jet calibrations (exp), the ones from background estimates (bkg), and the one from the luminosity (lumi).\n}"
+  }
+ ]
+}

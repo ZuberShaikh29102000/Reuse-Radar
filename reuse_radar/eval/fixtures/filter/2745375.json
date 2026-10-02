@@ -1,0 +1,184 @@
+{
+ "inspire_id": 2745375,
+ "arxiv_id": "2401.05299",
+ "status": "ok",
+ "filter_version": "1",
+ "detail": null,
+ "main_file": "ANA-TOPQ-2019-30-PAPER.tex",
+ "body_tokens": 37519,
+ "candidate_tokens": 5370,
+ "reduction_ratio": 6.987,
+ "missing_inputs": [],
+ "candidates": [
+  {
+   "section_name": "Introduction",
+   "kind": "caption",
+   "text": "\\caption{Summary of theoretical predictions with NNLO precision in the strong coupling~\\cite{Buonocore_2023} and using FxFx NLO multijet merging~\\cite{Frederix:2021agh}, both including NLO EWK corrections. The first uncertainty is due to variations of the chosen renormalisation and factorisation scales. Where there is a second contribution to the uncertainty, this corresponds to the approximation used in the 2-loop calculation. Uncertainties due to the choice of PDF and \\alphas are omitted. \\label{tab:intro_ttW}}"
+  },
+  {
+   "section_name": "Data and simulated event samples",
+   "kind": "caption",
+   "text": "\\caption{\nThe configurations used to generate events from signal and background processes.\nThe samples used to estimate the systematic uncertainties are indicated in parentheses and in grey.\n}"
+  },
+  {
+   "section_name": "Event reconstruction and object identification",
+   "kind": "caption",
+   "text": "\\caption{\\label{tbl:tightleps} Description of the loose inclusive ($L$), medium inclusive ($M$), medium exclusive ($M_{\\mathrm{ex}}$), and tight ($T$)  lepton definitions. The electron $e^{*}$ is required to fulfil, in addition to the corresponding lepton definition requirements, those corresponding to an internal or material conversion candidate.}"
+  },
+  {
+   "section_name": "Analysis strategy",
+   "kind": "caption",
+   "text": "\\caption{Event selection summary in the signal regions.\nLeptons are ordered in \\pt in the \\llSS regions. In the \\lll regions the lepton with opposite-sign charge is called the first lepton, followed by the two same-sign leptons.\nIn the lepton selection, \\textit{T} and \\textit{L} stand for tight and loose lepton definitions (see Table~\\ref{tbl:tightleps}).\nIn the \\bjet multiplicity categorisation, \\nbjets is defined to be 2 or more if the events contain at least two \\bloose jets, or 1 if the events contain exactly one \\btight jet.\nFor each of the \\llSS and \\lll signal regions in the inclusive and differential measurements, each categorisation split affects all regions above.\n}"
+  },
+  {
+   "section_name": "Analysis strategy",
+   "kind": "caption",
+   "text": "\\caption{Event selection summary in the control regions. The lepton types $L$, $M$, $M_{\\mathrm{ex}}$, and $T$ correspond to the loose inclusive, medium inclusive, medium exclusive, and tight lepton definitions, as described in Table~\\ref{tbl:tightleps}. The notation $e^*$ is used to denote material conversion or internal conversion candidates, as described in Section~\\ref{sec:objects}.\n}"
+  },
+  {
+   "section_name": "Analysis strategy > Fiducial-volume definition",
+   "kind": "caption",
+   "text": "\\caption{Definition of objects and selections for fiducial regions.}"
+  },
+  {
+   "section_name": "Background estimation > Irreducible backgrounds > \\VV and \\ttdy backgrounds",
+   "kind": "caption",
+   "text": "\\caption{\nComparison between data and the signal-plus-background prediction for (a) the total yield in the \\lllVV CR and (b) the distribution of the $b$-jet multiplicity in the \\lllttZ CR after the \\VV jet multiplicity correction.\nThe signal and background contributions after the likelihood fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis are shown as filled histograms.\nThe total signal-plus-background prediction before the likelihood fit to data (\\enquote{Pre-Fit Bkg.}) is shown as a dashed blue histogram in the upper panel.\nThe ratio of the data to the total prediction (\\enquote{Pred.}) is shown in the lower panel, separately for the post-fit prediction (black points) and pre-fit background (dashed blue line).\nThe combined statistical and systematic uncertainty in the prediction is indicated by the blue hatched band.\nThe \\enquote{Other} background contribution is dominated by $tZ$ and $WtZ$ production.\n}"
+  },
+  {
+   "section_name": "Background estimation > Reducible backgrounds > Non-prompt leptons",
+   "kind": "caption",
+   "text": "\\caption{\nComparison between data and the signal-plus-background prediction for the distribution of the transverse momentum of the sub-leading lepton ($p_\\textrm{T}^{\\ell 1}$) in (a) the \\llttetm CR and (b) the \\llttmutm CR.\nThe signal and background contributions after the likelihood fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis are shown as filled histograms.\nThe total signal-plus-background prediction before the likelihood fit to data (\\enquote{Pre-Fit Bkg.}) is shown as a dashed blue histogram in the upper panel.\nThe ratio of the data to the total prediction (\\enquote{Pred.}) is shown in the lower panel, separately for the post-fit prediction (black points) and pre-fit background (dashed blue line).\nThe combined statistical and systematic uncertainty in the prediction is indicated by the blue hatched band.\nThe last bin in each figure contains the overflow.}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Comparison between data and the signal-plus-background prediction for the event yields in the ten control region categories.\nThe signal and background contributions after the likelihood fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis are shown as filled histograms.\nThe total signal-plus-background prediction before the likelihood fit to data (\\enquote{Pre-Fit Bkg.}) is shown as a dashed blue histogram in the upper panel.\nThe ratio of the data to the total prediction (\\enquote{Pred.}) is shown in the lower panel, separately for the post-fit prediction (black points) and pre-fit background (dashed blue line).\nThe combined statistical and systematic uncertainty in the prediction is indicated by the blue hatched band. }"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Comparison between data and the signal-plus-background prediction for the event yields in the (a) \\twopp, (b) \\twomm, (c) \\threep~and (d) \\threem~signal region categories.\nThe signal and background contributions after the likelihood fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis are shown as filled histograms.\nThe ratio of the data to the total post-fit prediction (\\enquote{Pred.}) is shown in the lower panel.\nThe combined statistical and systematic uncertainty in the prediction is indicated by the blue hatched band.\n}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Summary of observed and predicted yields in the four signal region categories. The background prediction is shown after the combined likelihood fit to data under the signal-plus-background hypothesis across all control region and signal region categories. The quoted uncertainties consider all statistical and systematic uncertainties after the fit to data. The uncertainty on the total yield can be smaller than the quadratic sum of uncertainties of the individual contributions due to the anti-correlations resulting from the likelihood fit. \\label{tab:SRspostfityields}}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Summary of observed and predicted yields in the \\llSS control region categories. The background prediction is shown after the combined likelihood fit to data under the signal-plus-background hypothesis across all control region and signal region categories. The quoted uncertainties consider all statistical and systematic uncertainties after the fit to data. The uncertainty on the total yield can be smaller than the quadratic sum of uncertainties of the individual contributions due to the anti-correlations resulting from the likelihood fit. \\label{tab:CRspostfityields2L}}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Summary of observed and predicted yields in the \\lll control region categories. The background prediction is shown after the combined likelihood fit to data under the signal-plus-background hypothesis across all control region and signal region categories.\\label{tab:CRspostfityields3L}}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Comparison of (a) the measured inclusive \\ttW \\xs and (b) the $\\ttW^{+}/\\ttW^{-}$ \\xs ratio with theoretical predictions from \\SHERPA, the \\MGPY[8] FxFx prescription including EWK corrections from Ref.~\\cite{Frederix:2021agh}, the NLO+NNLL calculation from Ref.~\\cite{Kulesza:2020nfh}, and the NNLO calculation from Ref.~\\cite{Buonocore_2023}, and also the measurement from CMS~\\cite{CMS-TOP-21-011}. The theoretical uncertainty in $\\ttW^{+}/\\ttW^{-}$ is calculated assuming scale variations are fully correlated between $\\ttW^{+}$ and $\\ttW^{-}$.}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Two-dimensional likelihood scan of the $\\ttW^{+}$ and $\\ttW^{-}$ cross-sections. The black cross indicates the best-fit point and the green and lilac markers show the SM predictions from Refs.~\\cite{Frederix:2021agh} and~\\cite{Buonocore_2023}, respectively. The blue dashed and solid lines correspond to the 68\\% and 95\\% confidence interval contours, respectively.}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "paragraph",
+   "text": "Figure~\\ref{fig:results_pmcorr} shows a two-dimensional likelihood\nscan of the fitted values of $\\ttW^{+}$ and $\\ttW^{-}$ compared to the\nSM prediction. There is a 58\\% correlation between the $\\ttW^{+}$ and\n$\\ttW^{-}$ measurements."
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{The impact of the main sources of uncertainty on the measured quantities. The impact of each uncertainty on $\\sigma(\\ttW)$ is assessed by fixing the relevant fit parameters for a given uncertainty and re-fitting to data. The reduction in the total uncertainty in this modified fit gives the quoted impact. Different individual components used in the\nfit are combined into categories. The leading contributions to the prompt-lepton background normalisation uncertainty are the \\ttH and \\tttt normalisation uncertainties. In the fourth row, \\enquote{Fakes} stands for non-prompt leptons.}"
+  },
+  {
+   "section_name": "Results > Inclusive \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Ranking of the nuisance parameters and background normalisation factors included in the fit according to their impact on (a) the \\ttW \\xs, $\\sigma(\\ttW)$, and (b) $R(\\ttW)$. In both (a) and (b), only the 15 nuisance parameters with the largest impacts are shown.\nThe empty (solid) blue rectangles illustrate the pre-fit (post-fit) impacts on the parameter of interest, $\\sigma(\\ttW)$ in (a) and $R(\\ttW)$ in (b), corresponding to the top axis. The pre-fit (post-fit) impact of each nuisance parameter, $\\Delta\\sigma(\\ttW)$ in (a) and $\\Delta R(\\ttW)$ in (b), is calculated as the difference in the fitted value of (a) $\\sigma(\\ttW)$ or (b) $R(\\ttW)$ between the nominal fit and the fit when fixing the corresponding nuisance parameter to $\\boldsymbol{\\hat{\\theta}} \\pm \\boldsymbol{\\Delta\\theta}$ $(\\boldsymbol{\\hat{\\theta}} \\pm \\boldsymbol{\\Delta\\hat{\\theta}})$, where $\\boldsymbol{\\hat{\\theta}}$ is the best-fit value of the nuisance parameter and  $\\boldsymbol{\\Delta\\theta}$  $(\\boldsymbol{\\Delta\\hat{\\theta}})$ is its pre-fit (post-fit) uncertainty.\nThe black points show the pulls of the nuisance parameters relative to zero, $\\boldsymbol{\\theta}_{0}=0$.\nThese pulls and their relative post-fit errors, $\\boldsymbol{\\Delta\\hat{\\theta}}/\\boldsymbol{\\Delta\\theta}$, refer to the bottom axis.\nThe background normalisation factors $\\lambda$ (red points) are pulled relative to one, $\\boldsymbol{\\theta}_{0}=1$. The fitted values and their post-fit errors refer to the bottom axis.\nThe systematic uncertainties with \\enquote{[T]} affect only the \\enquote{tight} leptons.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Definition of observables measured. \\label{tab:unfold_vars}}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Choice of regularisation parameter $\\tau$ used for each observable and region. \\label{tab:tau_values}}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{The (a) normalised migration matrix and (b) efficiency/acceptance corrections for $N_\\text{jets}$ calculated in \\Sherpa[2.2.10] with EWK corrections. The \\lll regions are split according to the number of OS-SF lepton pairs, shown in brackets. The highest jet-multiplicity bin in each subregion is inclusive.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Signal region datasets for the \\njets unfolding in (a) the pre-fit case and (b) the post-fit case. The \\lll regions are split according to the number of OS-SF lepton pairs, shown in brackets.  The highest jet-multiplicity bin in each subregion is inclusive. The signal and background contributions before and after the likelihood fit to data under the signal-plus-background hypothesis are shown as filled histograms. The ratio of the data to the total pre-fit and post-fit predictions (\\enquote{Pred.}) is shown in the lower panel. The combined statistical and systematic uncertainty in the prediction is indicated by the blue hatched band. The blue triangles indicate points that are outside the vertical range of the figure.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "paragraph",
+   "text": "Tikhonov regularisation~\\cite{Phillips:1962ofa,Tikhonov63,Tikhonov77,Cowan:1998ji}\nin the PLU technique is implemented by an additional term, $R(\\sigma_j,\\tau_j)$, in the\nlikelihood function that constrains the discrete second derivative of\nthe generator-level bin normalisation factors to be close to zero. The\nregularisation strengths, $\\tau_j$, are fixed parameters that assume a common\nvalue across bins in each signal region and observable. The chosen $\\tau_j$ values are optimised\nindependently for each signal region and observable.  The optimisation\nprocedure is based on statistical bootstrapping to estimate the value of $\\tau$ that minimises\nthe global correlation coefficient $\\rho$ of the unfolded covariance matrix~\\cite{Schmitt:2017}.\nIt is given by the following expression:\n\\begin{equation*}\n\\rho = \\left<\\sqrt{1-\\left(V_{ii}V^{-1}_{ii}\\right)^{-1}}\\right>_{i\\in{1,\\dots,N_\\mathrm{bins}}},\n\\end{equation*}\nwhere $V_{ij}$ is the covariance matrix of the bin normalisation factors.\nPseudo-experiments are sampled from detector-level templates obtained\nfrom the background predictions and alternative \\ttW sample.\nAnother optimisation procedure is studied, which selects the maximum value of $\\tau$ that does not\nincrease the $\\chi^2$ between the unfolded observable's distribution and the alternative \\ttW generator-level\ntemplate. The $\\chi^2$ is defined as:\n\\begin{equation*}\n\\chi^2 = \\sum_{i,j}^n \\Delta\\sigma_i C_{i,j}^{-1} \\Delta\\sigma_j,\n\\end{equation*}\nwhere $\\Delta \\sigma_i$ is the difference between the unfolded data and the MC prediction and $C_{i,j}^{-1}$ is the inverse of the covariance matrix of the unfolded cross sections.\nThe $\\chi^2$-based procedure yields larger values for $\\tau$ than the $\\rho$-based procedure.\nThe $\\rho$-based procedure is ultimately chosen because it is not sensitive to the choice of\nalternative \\ttW generator-level template, while the $\\chi^2$-based procedure will give a large bias when\nthe shape of the observed data distribution differs from the nominal \\ttW prediction more than the alternative \\ttW prediction does."
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{$\\chi^2$ and $p$-values calculated for unfolded normalised \\xs distributions in the \\llSS region.\\label{tab:chi22lSSnorm}}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{$\\chi^2$ and $p$-values calculated for unfolded normalised \\xs distributions in the \\lll region.\\label{tab:chi23lnorm}}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{$\\chi^2$ and $p$-values calculated for unfolded asymmetry distributions in the \\llSS region.\\label{tab:unfolded_chi2_2lSS_asym}}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{$\\chi^2$ and $p$-values calculated for unfolded asymmetry distributions in the \\lll region.\\label{tab:unfolded_chi2_3l_asym}}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "paragraph",
+   "text": "Figure~\\ref{fig:main:Unfolding:nJets}(a) shows the measured\nabsolute \\xs, normalised \\xs and \\rqasym as a function\nof \\njets. The corresponding uncertainty breakdown is shown in\nFigure~\\ref{fig:main:Unfolding:nJets}(b). In most bins the largest\nuncertainties come from the limited amount of data; these dominate\nacross all bins of the \\lll channel and at low and high jet\nmultiplicities in the \\llSS channel. The dominant systematic\nuncertainty stems from the \\ttW model and is due to the difference between\nthe unfolded results from different choices of \\ttW reference\nsample. At large jet multiplicities the theoretical uncertainty of\nthe background model and non-prompt-lepton BDT are the largest.  The total uncertainty in the normalised \\xs\nmeasurements is somewhat reduced; a major contribution to this is the\nsmaller \\ttW model uncertainty after removing normalisation effects.\nThe \\rqasym measurement uncertainty is dominated by the statistical\nuncertainty across the range of jet multiplicities because many systematic\nuncertainties cancel each other out in the ratio.\nThe absolute \\xs measured in data is higher than all the theoretical predictions,\nthe largest discrepancy being at low jet multiplicities in the \\llSS channel.\nAt high multiplicities the predictions with additional partons using NLO\nmerging are in better agreement with the data than the NLO+PS\nprediction from \\POWHEG, as expected, for both the \\llSS and \\lll\nchannels. Taking the scale uncertainties into account, these are\ncompatible with the data for jet multiplicities greater than four.\nUncertainties due to the scales are approximately 10\\% for low jet\nmultiplicities and increase to about 40\\% for higher\nmultiplicities.  The main \\ttW contribution to the \\llSS selection is\nthe final state with two leptonically decaying $W$ bosons, one from\nthe decay of a top quark and one from the associated $W$ boson. This\ngives rise to a final state with four partons from the hadronic decay\nof the remaining $W$ boson and the $b$-quarks from the top quark\ndecays. Therefore, the disagreement between theory and data at lower\njet multiplicities is independent of the modelling of additional\npartons and is observed for both the NLO+PS generators and those with\nadditional partons using NLO merging.  The shape of the \\rqasym\ndistribution as a function of the number of jets shows some tension\nbetween data and the predictions. The measured asymmetry is\nlarger at low and high jet multiplicities while being in agreement at\nintermediate numbers of four or five jets in the \\llSS channel. This is\ndriven by a large mismodelling in the \\twopp~region, while\nthe \\twomm~jet multiplicity distribution is in better agreement in\nboth shape and overall \\xs. This can be seen in right panel of\nFigure~\\ref{fig:main:Unfolding:nJets}(c) for the\nnormalised \\xs measurements, where, especially for the \\llSS channel,\nthe agreement in shape is rather good for the predictions with\nadditional partons using NLO merging."
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Unfolded distributions of (a) the lepton-charge-combined absolute \\xs, the normalised \\xs and \\rqasym, (b) the corresponding uncertainty breakdowns, and (c) unfolded distributions of the lepton-charge-split absolute and normalised \\xs{}s, as a function of jet multiplicity. The coloured markers overlaid upon the \\xs measurements show different theoretical predictions. The breakdown of statistical-only uncertainties is shown in light grey in the bottom panels, and combined statistical and systematic uncertainties are shown in dark grey. The dotted/dashed/full lines in (b) show the relative contributions of grouped sources of systematic uncertainty. The triangles indicate points that are outside the vertical range of the figure.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Unfolded distributions of (a) the lepton-charge-combined absolute \\xs, the normalised \\xs and \\rqasym, (b) the corresponding uncertainty breakdowns, and (c) unfolded distributions of the lepton-charge-split absolute and normalised \\xs{}s, as a function of \\HTjet. The coloured markers overlaid upon the \\xs measurements show different theoretical predictions. The breakdown of statistical-only uncertainties is shown in light grey in the bottom panels, and combined statistical and systematic uncertainties are shown in dark grey. The dotted/dashed/full lines in (b) show the relative contributions of grouped sources of systematic uncertainty. The triangles indicate points that are outside the vertical range of the figure.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Unfolded distributions of (a) the lepton-charge-combined absolute \\xs, the normalised \\xs and \\rqasym, (b) the corresponding uncertainty breakdowns, and (c) unfolded distributions of the lepton-charge-split absolute and normalised \\xs{}s, as a function of \\HTlep. The coloured markers overlaid upon the \\xs measurements show different theoretical predictions. The breakdown of statistical-only uncertainties is shown in light grey in the bottom panels, and combined statistical and systematic uncertainties are shown in dark grey. The dotted/dashed/full lines in (b) show the relative contributions of grouped sources of systematic uncertainty. The triangles indicate points that are outside the vertical range of the figure.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Unfolded distributions of (a) the lepton-charge-combined absolute \\xs, the normalised \\xs and \\rqasym, (b) the corresponding uncertainty breakdowns, and (c) unfolded distributions of the lepton-charge-split absolute and normalised \\xs{}s, as a function of \\DRlb. The coloured markers overlaid upon the \\xs measurements show different theoretical predictions. The breakdown of statistical-only uncertainties is shown in light grey in the bottom panels, and combined statistical and systematic uncertainties are shown in dark grey. The dotted/dashed/full lines in (b) show the relative contributions of grouped sources of systematic uncertainty. The triangles indicate points that are outside the vertical range of the figure.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Unfolded distributions of (a) the lepton-charge-combined absolute \\xs, the normalised \\xs and \\rqasym, (b) the corresponding uncertainty breakdowns, and (c) unfolded distributions of the lepton-charge-split absolute and normalised \\xs{}s, as a function of \\DPhillSS. The coloured markers overlaid upon the \\xs measurements show different theoretical predictions. The breakdown of statistical-only uncertainties is shown in light grey in the bottom panels, and combined statistical and systematic uncertainties are shown in dark grey. The dotted/dashed/full lines in (b) show the relative contributions of grouped sources of systematic uncertainty. The triangles indicate points that are outside the vertical range of the figure.}"
+  },
+  {
+   "section_name": "Results > Differential \\xs measurement",
+   "kind": "caption",
+   "text": "\\caption{Unfolded distributions of (a) the lepton-charge-combined absolute \\xs, the normalised \\xs and \\rqasym, (b) the corresponding uncertainty breakdowns, and (c) unfolded distributions of the lepton-charge-split absolute and normalised \\xs{}s, as a function of \\DEtallSS. The coloured markers overlaid upon the \\xs measurements show different theoretical predictions. The breakdown of statistical-only uncertainties is shown in light grey in the bottom panels, and combined statistical and systematic uncertainties are shown in dark grey. The dotted/dashed/full lines in (b) show the relative contributions of grouped sources of systematic uncertainty. The triangles indicate points that are outside the vertical range of the figure.}"
+  }
+ ]
+}

@@ -27,6 +27,9 @@ class CachedResponse:
     input_tokens: int
     output_tokens: int  # includes reasoning/thinking tokens: they count against quotas too
     created_at: float
+    latency_s: float = (
+        0.0  # wall time of the original live call; 0 for entries made before 2026-10-02
+    )
 
 
 def canonical_prompt(payload: dict[str, Any]) -> str:

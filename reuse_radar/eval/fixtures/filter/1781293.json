@@ -1,0 +1,174 @@
+{
+ "inspire_id": 1781293,
+ "arxiv_id": "2002.07546",
+ "status": "ok",
+ "filter_version": "1",
+ "detail": null,
+ "main_file": "ANA-TOPQ-2018-01-PAPER.tex",
+ "body_tokens": 15461,
+ "candidate_tokens": 1462,
+ "reduction_ratio": 10.575,
+ "missing_inputs": [],
+ "candidates": [
+  {
+   "section_name": "Signal and control regions",
+   "kind": "caption",
+   "text": "\\caption{\nOverview of the requirements applied when selecting events in the signal and control regions.\nOSSF is an opposite-sign same-flavour lepton pair. OSDF is an opposite-sign different-flavour lepton pair.\n}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{Variables used as input to the neural network in SR 2j1b and SR 3j1b.\nThe ranking of the variables in each of the SRs is given in the 2$^\\text{nd}$ and 3$^\\text{rd}$ columns, respectively. The untagged jet is denoted \\jf. When two untagged jets are selected, \\jf (\\jr) refers to the one for which the invariant mass of this untagged jet and the \\Pqb-tagged jet is the largest (smallest).\nThe \\btag score indicates whether the \\bjet would also satisfy a tighter \\btag requirement corresponding to a working point with an efficiency of 60\\% instead of 70\\%.}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Multivariate analysis",
+   "kind": "caption",
+   "text": "\\caption{Comparison between data and prediction (\\enquote{Pred.}) for the three most discriminating NN input variables after the fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis. The variables displayed are: (a) and (d) the invariant mass of the \\Pqb-jet and the untagged jet, (b) and (e) the mass of the reconstructed top quark, and (c) and (f) the absolute value of the $\\eta$ of the \\jf jet, shown in the SR 2j1b (top row) and SR 3j1b (bottom row).\nThe jet denoted \\jf is the untagged jet for which the invariant mass of this untagged jet and the \\Pqb-tagged jet is the largest.\nThe uncertainty band includes both the statistical and systematic uncertainties as obtained by the fit.\nThe rightmost bin includes overflow events. The lower panels show the ratios of the data to the prediction.\nThe open triangles indicate points that are outside the vertical range of the figure.\n}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "paragraph",
+   "text": "The results of the fit yield a \\tZq production cross-section, including non-resonant dilepton pairs with $m_{\\ell^+\\ell^-} > 30\\,\\text{GeV}$, of \\tZxsect,\nassuming $\\mtop = \\SI{172.5}{\\GeV}$,\ncorresponding to a total uncertainty of $\\pm$14\\%.\nThe SM cross-section for this process is $\\SI[parse-numbers=false]{102^{+5}_{-2}}{\\fb}$.\nThe statistical uncertainty of 13\\% in the measurement, which is dominant for this result, is obtained by performing the fit after fixing all nuisance parameters to their post-fit values.\nThe systematic uncertainty is computed by subtracting in quadrature the statistical\ncomponent of the uncertainty from the total.\nThe impact of the systematic uncertainties on the \\tZq cross-section, broken down into major categories, is summarised in \\cref{tab:sys}."
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Comparison between data and prediction (\\enquote{Pred.}) after the fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis for the fitted distributions of the neural network output \\ONN in the SRs (a) 2j1b and (b) 3j1b.\nThe uncertainty band includes both the statistical and systematic uncertainties as obtained by the fit. The lower panels show the ratios of the data to the prediction.\n}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Comparison between data and prediction (\\enquote{Pred.}) after the fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis for the fitted distributions in the CRs.\nThe fitted distributions are: (a) and (d) the $m_{\\text{T}}(\\Pl,\\MET)$ distribution in the diboson CRs, (b) and (e) the event yields in the \\ttbar CRs, and (c) and (f) the \\ONN distribution in the \\ttZ CRs.\nThe uncertainty band includes both the statistical and systematic uncertainties as obtained by the fit. The lower panels show the ratios of the data to the prediction.\n}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{\nPredicted and observed yields in each of the analysis regions considered.\nThe signal and background predictions are shown after the fit to data.\nThe quoted uncertainties include the statistical and systematic uncertainties of the yields,\ncomputed taking into account correlations among nuisance parameters and among processes.\n}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Impact of systematic uncertainties on the \\tZq cross-section, broken down into major categories.\nFor each category the impact is calculated by performing a fit where the nuisance parameters in the group are fixed to their best-fit values,\nand then subtracting the resulting uncertainty in the parameter of interest in quadrature from the uncertainty from the nominal fit.\nFor simplicity, the impact is given as the average of the up and down variations.\nDetails of the systematic uncertainties are provided in the text.\nMC statistics refers to the effect of the limited size of the MC samples.\nThe total systematic uncertainty is a bit larger than the quadratic sum of the individual contributions due to correlations.\n}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Results",
+   "kind": "caption",
+   "text": "\\caption{Comparison between data and prediction (\\enquote{Pred.}) after the fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis for the reconstructed \\pT of\n(a) the top quark and (b) the \\PZ boson in the SR 2j1b, for events with $\\ONN > 0.4$.\nThe uncertainty band includes both the statistical and systematic uncertainties as obtained by the fit.\nThe rightmost bin includes overflow events. The lower panels show the ratios of the data to the prediction.\n}"
+  },
+  {
+   "section_name": "Appendix > Appendix",
+   "kind": "appendix_header",
+   "text": "\\part*{Appendix}"
+  },
+  {
+   "section_name": "Appendix > Validation regions",
+   "kind": "appendix_header",
+   "text": "\\section{Validation regions}"
+  },
+  {
+   "section_name": "Appendix > Validation regions",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Appendix > Validation regions",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Appendix > Validation regions",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Appendix > Validation regions",
+   "kind": "caption",
+   "text": "\\caption{}"
+  },
+  {
+   "section_name": "Appendix > Validation regions",
+   "kind": "caption",
+   "text": "\\caption{Comparison between data and prediction (\\enquote{Pred.}) after the fit to data (\\enquote{Post-Fit}) under the signal-plus-background hypothesis for the \\ONN distributions in the VRs (a) diboson 2j1Lb, (b) diboson 3j1Lb, (c) \\ttbar +~\\ttV 2j1b and (d) \\ttbar +~\\ttV 3j1b.\nThe uncertainty band includes both the statistical and systematic uncertainties as obtained by the fit. The lower panels show the ratios of the data to the prediction.\nThe open triangles indicate points that are outside the vertical range of the figure.\n}"
+  }
+ ]
+}
