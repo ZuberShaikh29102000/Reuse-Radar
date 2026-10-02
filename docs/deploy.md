@@ -75,15 +75,23 @@ Free-tier notes:
   wake the service.
 - Logs are JSON lines, one per request, readable in the Render dashboard.
 
-## 3. Curator UI (Cloudflare Pages, free)
+## 3. Curator UI (Cloudflare Workers static assets, free)
 
-1. dash.cloudflare.com → **Workers & Pages → Create → Pages → Connect to Git** → select the
+Cloudflare's Git import now creates a Worker by default. `frontend/wrangler.jsonc` tells it to
+serve the built `dist/` folder as a static single-page app; no Worker code runs.
+
+1. dash.cloudflare.com → **Workers & Pages → Create → Import a repository** → select the
    repository.
-2. Build settings: **root directory** `frontend`, **build command** `npm run build`, **output
-   directory** `dist`.
-3. Environment variable: `VITE_API_URL` = `https://<service>.onrender.com`.
-4. After the first deploy, put the Pages URL (e.g. `https://reuse-radar.pages.dev`) into the
-   API's `CORS_ALLOWED_ORIGINS` on Render.
+2. Settings: **root directory** `frontend`, **build command** `npm run build`, **deploy
+   command** `npx wrangler deploy`.
+3. **Build** variables (Settings → Build → Variables and secrets, not the runtime variables;
+   Vite bakes them in at build time): `VITE_API_URL` = `https://<service>.onrender.com`,
+   `NODE_VERSION` = `22`.
+4. After the first deploy, put the Worker URL (e.g. `https://reuse-radar.<account>.workers.dev`)
+   into the API's `CORS_ALLOWED_ORIGINS` on Render.
+
+Cloudflare Pages also works: root directory `frontend`, build command `npm run build`, output
+directory `dist`, the same variables.
 
 ## 4. Check it
 

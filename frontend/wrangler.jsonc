@@ -1,0 +1,12 @@
+// Cloudflare Workers static-assets deploy of the curator UI (free plan).
+// Cloudflare's Git integration runs `npm run build` (needs the build variable VITE_API_URL,
+// the Render API URL), then `npx wrangler deploy`, which uploads ./dist. No Worker code runs:
+// the UI is static and calls the API directly.
+{
+  "name": "reuse-radar",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
