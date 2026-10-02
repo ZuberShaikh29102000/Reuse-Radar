@@ -54,6 +54,13 @@ reports errors to Sentry.
   which is where production metrics live. A local Prometheus would need a separate metrics
   endpoint that nothing in production uses. Add them only if someone needs offline dashboards.
 
+## Verified
+
+On 2026-10-02 the Airflow container (`apache/airflow:2.10.5-python3.12`) installed the project,
+listed `reuse_radar_daily` with no import errors and all five tasks, and ran
+`airflow tasks test reuse_radar_daily store` to SUCCESS against the compose Postgres. The shared
+runner also ran `reconcile` and `store` live from the CLI.
+
 ## Not verified here
 
 - The nightly workflow has not run on GitHub yet: the repository has no remote. It needs the
