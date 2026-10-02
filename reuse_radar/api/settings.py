@@ -74,7 +74,7 @@ USE_TZ = True
 TIME_ZONE = "UTC"
 
 CORS_ALLOWED_ORIGINS = _csv("CORS_ALLOWED_ORIGINS")
-CORS_ALLOW_METHODS = ["GET", "OPTIONS"]
+CORS_ALLOW_METHODS = ["GET", "POST", "OPTIONS"]  # POST only for curator reviews
 
 # Render terminates TLS at its proxy.
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -91,7 +91,10 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     # Protects the free-tier instance and database from a single noisy client.
     "DEFAULT_THROTTLE_CLASSES": ["rest_framework.throttling.AnonRateThrottle"],
-    "DEFAULT_THROTTLE_RATES": {"anon": os.environ.get("API_RATE_LIMIT", "120/min")},
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": os.environ.get("API_RATE_LIMIT", "120/min"),
+        "reviews": os.environ.get("REVIEW_RATE_LIMIT", "60/min"),
+    },
 }
 SPECTACULAR_SETTINGS = {
     "TITLE": "Reuse Radar API",

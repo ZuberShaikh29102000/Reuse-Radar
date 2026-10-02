@@ -41,6 +41,9 @@ Free-tier notes:
 3. When asked, enter:
    - `DATABASE_URL`: the same Supabase URI as above
    - `CORS_ALLOWED_ORIGINS`: the frontend URL once it exists (Phase 6). Leave it empty until then.
+   - `REVIEWER_TOKENS`: `name:token` for each curator allowed to accept or reject. Generate tokens
+     with `python -c "import secrets; print(secrets.token_urlsafe(32))"` and send each curator
+     their own token privately. Remove an entry to revoke access.
 4. Deploy. Render builds with `uv sync --locked --no-dev`, applies migrations at start-up, and
    checks `GET /healthz`.
 

@@ -16,6 +16,12 @@ urlpatterns: list[URLPattern | URLResolver] = [
         views.SimilarProductsView.as_view(),
         name="product-similar",
     ),
+    path("api/reviews", views.ReviewCreateView.as_view(), name="review-create"),
+    path(
+        "api/products/<int:pk>/reviews",
+        views.ProductReviewsView.as_view(),
+        name="product-reviews",
+    ),
     path("api/schema", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"),
     path("healthz", views.health, name="health"),

@@ -17,19 +17,30 @@ from django.http import HttpRequest, JsonResponse
 from django.shortcuts import get_object_or_404
 from drf_spectacular.utils import OpenApiParameter, extend_schema, inline_serializer
 from pgvector.django import CosineDistance
-from rest_framework import serializers
+from rest_framework import serializers, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
+from rest_framework.throttling import ScopedRateThrottle
 from rest_framework.views import APIView
 
-from reuse_radar.api.models import DeclaredProduct, Gap, GapStatus, Paper, ProcessingStatus
+from reuse_radar.api.auth import Curator, CuratorTokenAuthentication, IsCurator
+from reuse_radar.api.models import (
+    DeclaredProduct,
+    Gap,
+    GapStatus,
+    Paper,
+    ProcessingStatus,
+    Review,
+)
 from reuse_radar.api.serializers import (
     GapSerializer,
     PaperGapSerializer,
     PaperGapsSerializer,
     PaperSummarySerializer,
+    ReviewCreateSerializer,
+    ReviewSerializer,
     SearchResultSerializer,
     SimilarProductSerializer,
 )
@@ -99,6 +110,7 @@ class GapListView(ListAPIView[Gap]):
         queryset = Gap.objects.filter(
             status__in=statuses, declared_product__is_current=True
         ).select_related("declared_product__paper", "matched_table")
+        queryset = queryset.prefetch_related("declared_product__reviews")
         if types := _choices(request, "product_type", PRODUCT_TYPES):
             queryset = queryset.filter(declared_product__product_type__in=types)
         if (year := _int(request, "year", 1900, 2100)) is not None:
@@ -165,6 +177,7 @@ class PaperGapsView(APIView):
         gaps = Gap.objects.filter(
             declared_product__paper=paper, declared_product__is_current=True
         ).select_related("declared_product", "matched_table")
+        gaps = gaps.prefetch_related("declared_product__reviews")
         if statuses := _choices(request, "status", _GAP_STATUSES):
             gaps = gaps.filter(status__in=statuses)
         ordered = gaps.order_by("-severity", "-declared_product__confidence", "id")
@@ -273,6 +286,49 @@ class SimilarProductsView(APIView):
             .order_by("distance")[:limit]
         )
         return Response(SimilarProductSerializer(similar, many=True).data)
+
+
+# --- curator reviews (the one write endpoint) ------------------------------------------------
+
+
+class ReviewCreateView(APIView):
+    """Record a curator's verdict on a declared product. Requires a curator token."""
+
+    authentication_classes = [CuratorTokenAuthentication]
+    permission_classes = [IsCurator]
+    throttle_scope = "reviews"
+    throttle_classes = [ScopedRateThrottle]
+
+    @extend_schema(
+        summary="Accept or reject a declared product (curators only)",
+        request=ReviewCreateSerializer,
+        responses={201: ReviewSerializer},
+    )
+    def post(self, request: Request) -> Response:
+        payload = ReviewCreateSerializer(data=request.data)
+        payload.is_valid(raise_exception=True)
+        product = get_object_or_404(
+            DeclaredProduct, pk=payload.validated_data["product_id"], is_current=True
+        )
+        assert isinstance(request.user, Curator)
+        review = Review.objects.create(
+            declared_product=product,
+            verdict=payload.validated_data["verdict"],
+            reviewer=request.user.name,
+            note=payload.validated_data["note"],
+        )
+        return Response(ReviewSerializer(review).data, status=status.HTTP_201_CREATED)
+
+
+class ProductReviewsView(APIView):
+    @extend_schema(
+        summary="Review history of a declared product",
+        responses=ReviewSerializer(many=True),
+    )
+    def get(self, request: Request, pk: int) -> Response:
+        product = get_object_or_404(DeclaredProduct, pk=pk)
+        reviews = product.reviews.order_by("-created_at")
+        return Response(ReviewSerializer(reviews, many=True).data)
 
 
 # --- health -----------------------------------------------------------------------------------

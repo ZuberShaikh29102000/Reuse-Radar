@@ -7,7 +7,7 @@ from typing import Any
 from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
-from reuse_radar.api.models import DeclaredProduct, Gap, Paper, PublishedTable
+from reuse_radar.api.models import DeclaredProduct, Gap, Paper, PublishedTable, Review, Verdict
 
 
 class PaperSummarySerializer(serializers.ModelSerializer[Paper]):
@@ -63,6 +63,8 @@ class TableSerializer(serializers.ModelSerializer[PublishedTable]):
 
 
 class ProductSerializer(serializers.ModelSerializer[DeclaredProduct]):
+    latest_review = serializers.SerializerMethodField()
+
     class Meta:
         model = DeclaredProduct
         fields = [
@@ -75,7 +77,31 @@ class ProductSerializer(serializers.ModelSerializer[DeclaredProduct]):
             "confidence",
             "merged_duplicates",
             "extraction_version",
+            "latest_review",
         ]
+
+    @extend_schema_field(
+        {
+            "type": "object",
+            "nullable": True,
+            "properties": {
+                "verdict": {"type": "string"},
+                "reviewer": {"type": "string"},
+                "created_at": {"type": "string", "format": "date-time"},
+            },
+        }
+    )
+    def get_latest_review(self, product: DeclaredProduct) -> dict[str, Any] | None:
+        # Uses the prefetched reviews (views prefetch them) to avoid a query per row.
+        reviews = sorted(product.reviews.all(), key=lambda r: r.created_at, reverse=True)
+        if not reviews:
+            return None
+        latest = reviews[0]
+        return {
+            "verdict": latest.verdict,
+            "reviewer": latest.reviewer,
+            "created_at": latest.created_at.isoformat(),
+        }
 
 
 class GapFieldsMixin(serializers.Serializer[Gap]):
@@ -155,3 +181,18 @@ class SearchResultSerializer(serializers.ModelSerializer[DeclaredProduct]):
             "severity",
             "paper",
         ]
+
+
+class ReviewSerializer(serializers.ModelSerializer[Review]):
+    product_id = serializers.IntegerField(source="declared_product_id", read_only=True)
+
+    class Meta:
+        model = Review
+        fields = ["id", "product_id", "verdict", "reviewer", "note", "created_at"]
+        read_only_fields = fields
+
+
+class ReviewCreateSerializer(serializers.Serializer[Review]):
+    product_id = serializers.IntegerField(min_value=1)
+    verdict = serializers.ChoiceField(choices=Verdict.choices)
+    note = serializers.CharField(required=False, allow_blank=True, max_length=2000, default="")

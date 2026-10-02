@@ -51,6 +51,7 @@ select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
 # Django/DRF `class Meta` lists (indexes, constraints, fields) are the framework idiom.
 "reuse_radar/api/models.py" = ["RUF012"]
 "reuse_radar/api/serializers.py" = ["RUF012"]
+"reuse_radar/api/views.py" = ["RUF012"]
 
 [tool.mypy]
 strict = true

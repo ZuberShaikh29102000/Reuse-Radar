@@ -26,3 +26,5 @@ services:
         sync: false # the Cloudflare Pages URL of the frontend (Phase 6)
       - key: API_RATE_LIMIT
         value: 120/min
+      - key: REVIEWER_TOKENS
+        sync: false # curator write access: name:token,name:token (tokens >= 24 chars)
