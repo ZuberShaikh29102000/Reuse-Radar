@@ -47,11 +47,75 @@ ALLOWED_HOSTS = [
     h.strip() for h in os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",") if h.strip()
 ]
 
-INSTALLED_APPS = ["reuse_radar.api.apps.RadarConfig"]
-MIDDLEWARE: list[str] = []
+
+def _csv(name: str) -> list[str]:
+    return [v.strip() for v in os.environ.get(name, "").split(",") if v.strip()]
+
+
+INSTALLED_APPS = [
+    "corsheaders",
+    "rest_framework",
+    "drf_spectacular",
+    "reuse_radar.api.apps.RadarConfig",
+]
+# A public, read-only JSON API: no sessions, cookies, templates or admin, so none of that
+# middleware is installed. CORS lets the Cloudflare Pages frontend (Phase 6) call it.
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+]
 ROOT_URLCONF = "reuse_radar.api.urls"
+WSGI_APPLICATION = "reuse_radar.api.wsgi.application"
 DATABASES = {"default": database_from_url(_required("DATABASE_URL"))}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 USE_TZ = True
 TIME_ZONE = "UTC"
+
+CORS_ALLOWED_ORIGINS = _csv("CORS_ALLOWED_ORIGINS")
+CORS_ALLOW_METHODS = ["GET", "OPTIONS"]
+
+# Render terminates TLS at its proxy.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = not DEBUG and os.environ.get("DJANGO_SECURE_SSL_REDIRECT", "1") == "1"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+REST_FRAMEWORK = {
+    # Anonymous, read-only: no authentication backends, so django.contrib.auth is not needed.
+    "DEFAULT_AUTHENTICATION_CLASSES": [],
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
+    "UNAUTHENTICATED_USER": None,
+    "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
+    "DEFAULT_PAGINATION_CLASS": "reuse_radar.api.pagination.Pagination",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    # Protects the free-tier instance and database from a single noisy client.
+    "DEFAULT_THROTTLE_CLASSES": ["rest_framework.throttling.AnonRateThrottle"],
+    "DEFAULT_THROTTLE_RATES": {"anon": os.environ.get("API_RATE_LIMIT", "120/min")},
+}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Reuse Radar API",
+    "DESCRIPTION": (
+        "Reusable data products declared in high-energy-physics papers, and which of them are "
+        "missing from HEPData. Read-only; every value is precomputed by the offline pipeline."
+    ),
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {"json": {"()": "reuse_radar.log.JsonFormatter"}},
+    "handlers": {"console": {"class": "logging.StreamHandler", "formatter": "json"}},
+    "root": {"handlers": ["console"], "level": "INFO"},
+}
+
+# Only the OpenAPI docs page (Swagger UI from drf-spectacular) renders a template.
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "APP_DIRS": True,
+        "OPTIONS": {"context_processors": []},
+    }
+]
