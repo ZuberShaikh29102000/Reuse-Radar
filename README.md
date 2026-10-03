@@ -45,8 +45,9 @@ The API, UI and MCP server only read precomputed rows. No model is ever called w
 ## Current status
 
 - **Corpus:** 624 papers harvested; 530 have LaTeX source and are queued for extraction.
-- **Processed so far:** 24 papers, with 185 declared products (77 on HEPData, 66 missing, 42 for
-  review). The rest is limited by the free LLM quota, about 20 papers a day.
+- **Processed so far:** 53 papers, with 423 declared products: 150 on HEPData, 87 missing from
+  the paper's HEPData record, 94 from papers with no HEPData record, and 92 for review. The rest
+  is limited by the free LLM quota, about 20 papers a day.
 - **Quality**, measured on 6 hand-labelled papers (`reuse_radar/eval`):
 
   | Measure | Value |
