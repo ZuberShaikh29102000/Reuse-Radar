@@ -23,7 +23,10 @@ honest `Accept: application/json`. `hepdata.net/robots.txt` also disallows `/sea
 - **Cache.** Responses are cached for 7 days, since records gain versions.
 
 The lookup **fails loudly** in these cases:
-- the number of parts found differs from the record's `HasPart` list
+- the number of parts found differs from the record's `HasPart` list, after fetching any part the
+  search missed directly by its DOI. DataCite's search index can omit a DOI that exists: on
+  2026-10-03 `hepdata.103063.v1/t175` was findable and linked to its record but absent from the
+  search. A part that the direct lookup also cannot find (404) is still fatal.
 - an INSPIRE id maps to two HEPData records
 - a table title has an unknown format
 - a page comes back short

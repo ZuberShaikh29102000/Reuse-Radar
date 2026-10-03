@@ -111,8 +111,16 @@ def test_lookups_are_cached(make_client: MakeClient) -> None:
 
 
 def test_missing_parts_fail_loudly(make_client: MakeClient) -> None:
-    """Regression: resources (/r1...) were once skipped; the count check caught it."""
-    client, _ = make_client()
+    """Regression: resources (/r1...) were once skipped; the count check caught it.
+
+    A part absent from the search is fetched directly; DataCite answers 404 for one that truly
+    does not exist, and that stays fatal.
+    """
+
+    def not_found(request: httpx.Request, body: dict[str, Any] | None) -> httpx.Response | None:
+        return httpx.Response(404) if request.url.path.endswith("/t99") else None
+
+    client, _ = make_client(not_found)
     record = client.find_record(2745375)
     assert record is not None
     padded = HepDataRecord(
@@ -122,8 +130,34 @@ def test_missing_parts_fail_loudly(make_client: MakeClient) -> None:
         record.url,
         (*record.table_dois, f"{record.record_doi}/t99"),
     )
-    with pytest.raises(HepDataError, match="missing"):
+    with pytest.raises(HepDataError, match="404"):
         client.list_tables(padded)
+
+
+def test_part_missing_from_search_index_is_fetched_directly(make_client: MakeClient) -> None:
+    """Regression: DataCite's search omitted hepdata.103063.v1/t175, which exists (2026-10-03)."""
+    dropped: dict[str, Any] = {}
+
+    def drop_first_table(
+        request: httpx.Request, body: dict[str, Any] | None
+    ) -> httpx.Response | None:
+        tables = [item for item in (body or {}).get("data", []) if "/t" in item["id"]]
+        if body is not None and tables:
+            dropped.update(tables[0])
+            body["data"].remove(tables[0])
+            body["meta"]["total"] -= 1
+            return httpx.Response(200, json=body)
+        if dropped and request.url.path == f"/dois/{dropped['id']}":
+            return httpx.Response(200, json={"data": dropped})
+        return None
+
+    client, seen = make_client(drop_first_table)
+    record = client.find_record(2745375)
+    assert record is not None
+    parts = client.list_tables(record)
+    assert sorted(p.table_doi for p in parts) == sorted(record.table_dois)
+    assert dropped["id"] in {p.table_doi for p in parts}
+    assert seen[-1].url.path == f"/dois/{dropped['id']}"
 
 
 def test_unknown_table_title_format_fails_loudly(make_client: MakeClient) -> None:

@@ -131,7 +131,8 @@ class HepDataClient:
 
     # -- HTTP -----------------------------------------------------------------------------------
 
-    def _get(self, url: str) -> dict[str, Any]:
+    def _get(self, url: str, *, single: bool = False) -> dict[str, Any]:
+        """GET a DataCite URL: a search page (`data` is a list) or, with `single`, one DOI."""
         cached = self._cache.get(url, max_age_s=self._ttl)
         if cached is not None:
             return cached
@@ -147,7 +148,9 @@ class HepDataClient:
             _requests_counter.add(1, {"status": response.status_code})
             if response.status_code == 200:
                 body = response.json()
-                if not isinstance(body, dict) or not isinstance(body.get("data"), list):
+                if not isinstance(body, dict) or not isinstance(
+                    body.get("data"), dict if single else list
+                ):
                     raise UnexpectedMetadataError(f"unexpected DataCite response for {url}")
                 self._cache.set(url, body)
                 return body
@@ -225,47 +228,63 @@ class HepDataClient:
     def list_tables(self, record: HepDataRecord) -> list[PublishedTable]:
         """Every table and resource of a record version, with name and description."""
         items = self._search(f'relatedIdentifiers.relatedIdentifier:"{record.record_doi}"')
-        tables: list[PublishedTable] = []
-        for item in items:
-            doi = str(item.get("id", ""))
-            prefix = record.record_doi + "/"
-            suffix = doi[len(prefix) :] if doi.startswith(prefix) else ""
-            if suffix[:1] not in ("t", "r") or not suffix[1:].isdigit():
-                continue
-            attributes = _attributes(item)
-            titles = attributes.get("titles")
-            if not isinstance(titles, list) or not titles or "title" not in titles[0]:
-                raise UnexpectedMetadataError(f"{doi} has no title")
-            match = _TABLE_TITLE.match(str(titles[0]["title"]))
-            if match is None:
-                raise UnexpectedMetadataError(f"{doi} title has an unknown format: {titles[0]!r}")
-            descriptions = attributes.get("descriptions") or []
-            description = (
-                str(descriptions[0].get("description", ""))
-                if descriptions and isinstance(descriptions[0], dict)
-                else ""
-            )
-            raw_types = attributes.get("types")
-            types: dict[str, Any] = raw_types if isinstance(raw_types, dict) else {}
-            tables.append(
-                PublishedTable(
-                    table_doi=doi,
-                    name=match.group("name"),
-                    description=description,
-                    record_doi=record.record_doi,
-                    kind="table" if suffix[0] == "t" else "resource",
-                    resource_type=str(types.get("resourceType") or ""),
-                )
-            )
+        tables = [t for t in (_table_from_item(item, record) for item in items) if t is not None]
 
         expected = set(record.table_dois)
         found = {t.table_doi for t in tables}
+        # DataCite's search index can miss a DOI that exists (seen live: hepdata.103063.v1/t175,
+        # findable and linked to its record, absent from the search). Fetch those directly; a
+        # DOI that is truly missing raises from _get with DataCite's 404.
+        unindexed = sorted(expected - found)
+        if unindexed:
+            logger.warning(
+                "DataCite search missed record parts; fetching them directly",
+                extra={"record_doi": record.record_doi, "count": len(unindexed)},
+            )
+            for doi in unindexed:
+                item = self._get(f"{BASE_URL}/{doi}", single=True)["data"]
+                table = _table_from_item(item, record)
+                if table is not None:
+                    tables.append(table)
+            found = {t.table_doi for t in tables}
         if expected and found != expected:
             raise HepDataError(
                 f"{record.record_doi}: {len(found)} tables listed but the record has "
                 f"{len(expected)} (missing {sorted(expected - found)[:5]})"
             )
         return sorted(tables, key=_part_order)
+
+
+def _table_from_item(item: dict[str, Any], record: HepDataRecord) -> PublishedTable | None:
+    """A table or resource of `record` from its DataCite item; None for any other DOI."""
+    doi = str(item.get("id", ""))
+    prefix = record.record_doi + "/"
+    suffix = doi[len(prefix) :] if doi.startswith(prefix) else ""
+    if suffix[:1] not in ("t", "r") or not suffix[1:].isdigit():
+        return None
+    attributes = _attributes(item)
+    titles = attributes.get("titles")
+    if not isinstance(titles, list) or not titles or "title" not in titles[0]:
+        raise UnexpectedMetadataError(f"{doi} has no title")
+    match = _TABLE_TITLE.match(str(titles[0]["title"]))
+    if match is None:
+        raise UnexpectedMetadataError(f"{doi} title has an unknown format: {titles[0]!r}")
+    descriptions = attributes.get("descriptions") or []
+    description = (
+        str(descriptions[0].get("description", ""))
+        if descriptions and isinstance(descriptions[0], dict)
+        else ""
+    )
+    raw_types = attributes.get("types")
+    types: dict[str, Any] = raw_types if isinstance(raw_types, dict) else {}
+    return PublishedTable(
+        table_doi=doi,
+        name=match.group("name"),
+        description=description,
+        record_doi=record.record_doi,
+        kind="table" if suffix[0] == "t" else "resource",
+        resource_type=str(types.get("resourceType") or ""),
+    )
 
 
 def _part_order(table: PublishedTable) -> tuple[int, int]:
