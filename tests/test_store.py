@@ -126,6 +126,25 @@ def test_store_loads_papers_products_tables_and_gaps(tmp_path: Path) -> None:
 
 
 @pytest.mark.django_db
+def test_shared_table_and_repeated_product_become_one_row_each(tmp_path: Path) -> None:
+    """A batched upsert cannot touch one row twice, so duplicates are merged before writing.
+
+    Seen live: two papers listed the same HEPData table DOI (1774 parts, 1773 rows).
+    """
+    _write(tmp_path, products=[_product("a span")])
+    paper_9 = json.loads((tmp_path / "reconcile" / "c" / "9.json").read_text(encoding="utf-8"))
+    published = _product("shared span", "published", "10.17182/hepdata.1.v2/t1")
+    paper_10 = {**paper_9, "products": [published, published]}
+    (tmp_path / "reconcile" / "c" / "10.json").write_text(json.dumps(paper_10), encoding="utf-8")
+
+    counts = store_corpus(CORPUS, tmp_path)
+    assert counts["tables"] == 2 and PublishedTable.objects.count() == 1
+    assert DeclaredProduct.objects.filter(paper_id=10).count() == 1
+    gap = Gap.objects.get(declared_product__paper_id=10)
+    assert gap.matched_table is not None and gap.matched_table.table_doi.endswith("/t1")
+
+
+@pytest.mark.django_db
 def test_store_is_idempotent(tmp_path: Path) -> None:
     _write(tmp_path, products=[_product("a span"), _product("b span")])
     store_corpus(CORPUS, tmp_path)

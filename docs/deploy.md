@@ -27,9 +27,9 @@ into `.env` locally and the Render dashboard in production.
    uv run python -m reuse_radar.pipeline.store
    ```
 
-   The store stage is idempotent: rerun it after every pipeline run. From a laptop far from the
-   database region it is slow (several round trips per row; about 40 minutes for the current
-   corpus from India to us-east-1). The nightly GitHub Actions run sits close to the database.
+   The store stage is idempotent: rerun it after every pipeline run. It writes batched upserts in
+   one transaction. Writing row by row took 1.5 hours from India to us-east-1; batched, it takes
+   15 seconds for 53 analysed papers.
 5. **Lock down Supabase's Data API.** Supabase exposes every `public` table through a REST API
    reachable with the project's anon key, which is public by design. Reuse Radar never uses that
    API: Django connects directly as the table owner, which bypasses row-level security. So switch
