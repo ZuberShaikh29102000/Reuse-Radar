@@ -2,12 +2,32 @@ import { useEffect, useState } from "react";
 import { api, PAGE_SIZE, type Gap, type GapFilters, type Page, type Stats } from "./api";
 import { Filters } from "./components/Filters";
 import { GapRow } from "./components/GapRow";
+import { Intro } from "./components/Intro";
 import { PaperPanel } from "./components/PaperPanel";
 import { StatsBar } from "./components/StatsBar";
 import { TokenField } from "./components/TokenField";
 import { loadToken } from "./token";
 
 const INITIAL: GapFilters = { status: [], productType: [], year: "", minSeverity: "", page: 1 };
+const INTRO_KEY = "reuse-radar-intro-hidden";
+
+// Per-browser convenience only: if storage is unavailable the introduction simply shows.
+function introHidden(): boolean {
+  try {
+    return localStorage.getItem(INTRO_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function rememberIntro(hidden: boolean): void {
+  try {
+    if (hidden) localStorage.setItem(INTRO_KEY, "1");
+    else localStorage.removeItem(INTRO_KEY);
+  } catch {
+    // storage unavailable: the choice lasts for this page view
+  }
+}
 
 export default function App() {
   const [stats, setStats] = useState<Stats | null>(null);
@@ -17,6 +37,12 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [token, setToken] = useState(loadToken);
   const [openPaper, setOpenPaper] = useState<number | null>(null);
+  const [showIntro, setShowIntro] = useState(() => !introHidden());
+
+  const toggleIntro = (show: boolean) => {
+    rememberIntro(!show);
+    setShowIntro(show);
+  };
 
   useEffect(() => {
     api.stats().then(setStats).catch(() => setStats(null));
@@ -49,12 +75,21 @@ export default function App() {
         <div>
           <h1>Reuse Radar</h1>
           <p className="tagline">
-            Data products declared in ATLAS papers that never reached HEPData, most urgent first.
+            Results reported in ATLAS papers that are missing from HEPData, most urgent first.
+            {!showIntro && (
+              <>
+                {" "}
+                <button type="button" className="link" onClick={() => toggleIntro(true)}>
+                  About this project
+                </button>
+              </>
+            )}
           </p>
         </div>
         <TokenField token={token} onChange={setToken} />
       </header>
       <main>
+        {showIntro && <Intro onHide={() => toggleIntro(false)} />}
         <StatsBar stats={stats} />
         <Filters filters={filters} onChange={changeFilters} />
         <section aria-labelledby="queue-title">

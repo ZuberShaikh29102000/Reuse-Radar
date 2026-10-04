@@ -69,8 +69,41 @@ function mockFetch(extra?: Handler) {
   return calls;
 }
 
-beforeEach(() => sessionStorage.clear());
+beforeEach(() => {
+  sessionStorage.clear();
+  localStorage.clear();
+});
 afterEach(() => vi.unstubAllGlobals());
+
+describe("introduction", () => {
+  it("explains the project, links the code and states independence", async () => {
+    mockFetch();
+    render(<App />);
+    const intro = screen.getByRole("region", { name: /never made reusable/ });
+    expect(within(intro).getByRole("link", { name: "Source code" })).toHaveAttribute(
+      "href",
+      "https://github.com/ZuberShaikh29102000/Reuse-Radar",
+    );
+    expect(within(intro).getByRole("link", { name: "API documentation" })).toHaveAttribute("href", "/api/docs");
+    expect(within(intro).getByText(/not affiliated with or endorsed by CERN/)).toBeInTheDocument();
+    await screen.findByText(/likelihood scan of ttW/);
+  });
+
+  it("can be hidden, stays hidden on reload, and can be reopened", async () => {
+    mockFetch();
+    const user = userEvent.setup();
+    const { unmount } = render(<App />);
+    await user.click(screen.getByRole("button", { name: "Hide introduction" }));
+    expect(screen.queryByRole("region", { name: /never made reusable/ })).not.toBeInTheDocument();
+    unmount();
+
+    render(<App />);
+    expect(screen.queryByRole("region", { name: /never made reusable/ })).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "About this project" }));
+    expect(screen.getByRole("region", { name: /never made reusable/ })).toBeInTheDocument();
+    await screen.findByText(/likelihood scan of ttW/);
+  });
+});
 
 describe("triage queue", () => {
   it("shows corpus stats and the gaps", async () => {
@@ -78,7 +111,7 @@ describe("triage queue", () => {
     render(<App />);
     expect(await screen.findByText("Two-dimensional likelihood scan of ttW+ and ttW-")).toBeInTheDocument();
     expect(screen.getByText("108")).toBeInTheDocument();
-    const queue = screen.getByRole("list");
+    const queue = within(screen.getByRole("region", { name: /Triage queue/ })).getByRole("list");
     expect(within(queue).getByText("Missing from HEPData")).toBeInTheDocument();
     expect(within(queue).getByText("High")).toBeInTheDocument();
   });

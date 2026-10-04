@@ -125,6 +125,7 @@ export class ApiError extends Error {
 // the Render service URL.
 const BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
 export const PAGE_SIZE = 25;
+export const API_DOCS_URL = `${BASE}/api/docs`;
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${BASE}${path}`, {
