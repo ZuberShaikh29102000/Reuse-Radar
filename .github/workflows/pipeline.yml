@@ -7,6 +7,10 @@
 #   DATABASE_URL           Supabase/Neon Postgres (pooler URL, ?sslmode=require)
 #   DJANGO_SECRET_KEY      any random value (the store stage sets up Django)
 # Optional: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_HEADERS (Grafana Cloud), SENTRY_DSN
+# Without the required secrets the run job is skipped, not failed.
+#
+# Before adding them: the first run starts with an empty cache, so it re-extracts every paper
+# already processed locally, and a run here shares the Groq key's daily quota with local runs.
 name: pipeline
 
 on:
@@ -26,7 +30,29 @@ permissions:
   contents: read
 
 jobs:
+  # Until the repository secrets exist, skip instead of failing every night. A job-level `if`
+  # cannot read secrets, so this job reports whether they are set.
+  configured:
+    runs-on: ubuntu-latest
+    outputs:
+      ok: ${{ steps.check.outputs.ok }}
+    steps:
+      - id: check
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          INSPIRE_CONTACT_EMAIL: ${{ secrets.INSPIRE_CONTACT_EMAIL }}
+        run: |
+          if [ -n "$DATABASE_URL" ] && [ -n "$GROQ_API_KEY" ] && [ -n "$INSPIRE_CONTACT_EMAIL" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Pipeline secrets are not configured; skipping (see the header of pipeline.yml)."
+          fi
+
   run:
+    needs: configured
+    if: needs.configured.outputs.ok == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 340
     env:
