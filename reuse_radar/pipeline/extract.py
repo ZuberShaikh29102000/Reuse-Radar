@@ -473,11 +473,18 @@ def run_extract(
     *,
     limit: int | None = None,
     only: Sequence[int] | None = None,
+    force: bool = False,
 ) -> dict[str, object]:
     """Extract every filtered paper of the corpus. Entry point for Airflow and GitHub Actions.
 
     Stops with AllProvidersExhaustedError when every provider's quota is spent; papers finished
-    so far are already written, and the next run replays them from the cache at no cost.
+    so far are already written, and the next run resumes after them.
+
+    A paper whose stored output is "ok" for the current EXTRACTION_VERSION is kept, not re-run
+    (unless `force`). The LLM cache alone cannot guarantee a free replay: a chunk that needed a
+    corrective retry was retried with the uncached first answer inside the prompt, so a rerun
+    makes live calls again. On 2026-10-06 such a rerun hit a truncated answer and overwrote a
+    good extraction (INSPIRE 1790439) with a schema_error.
     """
     with tracer.start_as_current_span("extract") as span:
         span.set_attribute("corpus", corpus.name)
@@ -498,6 +505,16 @@ def run_extract(
         stopped: str | None = None
         for path in paths:
             record = json.loads(path.read_text(encoding="utf-8"))
+            existing = out_dir / f"{record['inspire_id']}.json"
+            if not force and existing.exists():
+                previous = json.loads(existing.read_text(encoding="utf-8"))
+                if (
+                    previous.get("status") == "ok"
+                    and previous.get("extraction_version") == EXTRACTION_VERSION
+                ):
+                    statuses["ok"] = statuses.get("ok", 0) + 1
+                    totals["products"] += len(previous.get("products") or [])
+                    continue
             with tracer.start_as_current_span("extract.paper") as paper_span:
                 paper_span.set_attribute("inspire_id", int(record["inspire_id"]))
                 try:
@@ -538,6 +555,9 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--corpus", type=Path, default=Path("config/corpus.toml"))
     parser.add_argument("--limit", type=int, default=None, help="only the first N papers")
     parser.add_argument("--only", type=int, nargs="*", help="only these INSPIRE ids")
+    parser.add_argument(
+        "--force", action="store_true", help="re-extract papers that already have an ok output"
+    )
     args = parser.parse_args(argv)
 
     configure_logging()
@@ -549,6 +569,7 @@ def main(argv: list[str] | None = None) -> None:
         settings.data_dir,
         limit=args.limit,
         only=args.only,
+        force=args.force,
     )
 
 

@@ -334,6 +334,36 @@ def test_quota_exhaustion_keeps_finished_papers_and_raises(tmp_path: Path) -> No
     assert summary["stopped_early"]
 
 
+def test_finished_papers_are_kept_not_rerun(tmp_path: Path) -> None:
+    """Regression: a rerun overwrote a good extraction with a schema_error (2026-10-06)."""
+    _write_filter(tmp_path, _record(1))
+    run_extract(ScriptedRouter([_result(OK)]), CORPUS, tmp_path)
+    path = tmp_path / "extract" / "c" / "1.json"
+    before = path.read_text(encoding="utf-8")
+
+    idle = ScriptedRouter([])
+    summary = run_extract(idle, CORPUS, tmp_path)
+    assert idle.requests == [] and path.read_text(encoding="utf-8") == before
+    assert summary["statuses"] == {"ok": 1} and summary["products"] == 1
+
+    forced = ScriptedRouter([_result(OK)])
+    run_extract(forced, CORPUS, tmp_path, force=True)
+    assert len(forced.requests) == 1
+
+
+def test_outputs_from_an_older_extraction_version_are_redone(tmp_path: Path) -> None:
+    _write_filter(tmp_path, _record(1))
+    run_extract(ScriptedRouter([_result(OK)]), CORPUS, tmp_path)
+    path = tmp_path / "extract" / "c" / "1.json"
+    old = {**json.loads(path.read_text(encoding="utf-8")), "extraction_version": "extract_v0"}
+    path.write_text(json.dumps(old), encoding="utf-8")
+
+    router = ScriptedRouter([_result(OK)])
+    run_extract(router, CORPUS, tmp_path)
+    assert len(router.requests) == 1
+    assert json.loads(path.read_text(encoding="utf-8"))["extraction_version"] != "extract_v0"
+
+
 def test_only_filter_selects_papers(tmp_path: Path) -> None:
     _write_filter(tmp_path, _record(1), _record(2))
     summary = run_extract(ScriptedRouter([_result(OK)]), CORPUS, tmp_path, only=[2])
