@@ -650,3 +650,223 @@ button.expander[aria-expanded="true"]::before {
     padding-left: 0.6rem;
   }
 }
+
+/* Paper panel: the original PDF with highlights, next to the HEPData record. */
+.paper-panel--wide {
+  width: min(1500px, 98vw);
+}
+
+.reader {
+  display: grid;
+  grid-template-columns: minmax(250px, 32%) 1fr;
+  gap: 1rem;
+  height: 72vh;
+}
+
+.reader-side,
+.reader-pdf {
+  overflow: auto;
+  min-height: 0;
+}
+
+.reader-side h3 {
+  font-size: 1rem;
+  margin: 0.9rem 0 0.4rem;
+}
+
+.reader-side details summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+.side-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.side-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.side-item .clamp {
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.side-on {
+  border-color: var(--ok);
+  background: var(--ok-bg);
+}
+
+.side-review {
+  border-color: var(--sev-1);
+  background: var(--sev-1-bg);
+}
+
+.side-missing {
+  border-color: var(--sev-3);
+  background: var(--sev-3-bg);
+}
+
+.side-none {
+  background: var(--code-bg);
+}
+
+.side-item.active {
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.side-item:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.picked {
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  margin: 0.6rem 0;
+  font-size: 0.9rem;
+  border: 2px solid var(--border);
+}
+
+.picked p {
+  margin: 0.3rem 0 0;
+}
+
+.picked-on {
+  border-color: var(--ok);
+}
+
+.picked-review {
+  border-color: var(--sev-1);
+}
+
+.picked-missing {
+  border-color: var(--sev-3);
+}
+
+.small {
+  font-size: 0.8rem;
+}
+
+.reader-pdf {
+  background: #525659;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.pdf-page {
+  position: relative;
+  flex: none;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+}
+
+.pdf-page canvas {
+  display: block;
+}
+
+/* pdf.js text layer (from pdfjs-dist/web/pdf_viewer.css): invisible text positioned over the
+   canvas, which is what the highlights are painted on. */
+.textLayer {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  line-height: 1;
+  text-align: initial;
+  transform-origin: 0 0;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  forced-color-adjust: none;
+  --min-font-size: 1;
+  --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv: calc(1 / var(--min-font-size));
+}
+
+.textLayer :is(span, br) {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+}
+
+.textLayer > :not(.markedContent),
+.textLayer .markedContent span:not(.markedContent) {
+  z-index: 1;
+  --font-height: 0;
+  font-size: calc(var(--text-scale-factor) * var(--font-height));
+  --scale-x: 1;
+  --rotate: 0deg;
+  transform: rotate(var(--rotate)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv));
+}
+
+.textLayer .markedContent {
+  display: contents;
+}
+
+.textLayer ::selection {
+  background: rgb(0 0 255 / 25%);
+}
+
+/* Highlights: fixed colours, since the PDF page is always white. */
+.textLayer .hl {
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.textLayer .hl-on {
+  background: rgb(22 163 74 / 30%);
+}
+
+.textLayer .hl-review {
+  background: rgb(234 179 8 / 38%);
+}
+
+.textLayer .hl-missing {
+  background: rgb(220 38 38 / 28%);
+}
+
+.textLayer .hl-selected {
+  outline: 2px solid #1d4ed8;
+  background-blend-mode: multiply;
+}
+
+@media (max-width: 760px) {
+  .reader {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 80vh;
+  }
+
+  .reader-side {
+    max-height: 32vh;
+  }
+}

@@ -39,7 +39,18 @@ Click the ▸ on a row.
   stored, so a curator can see *why* something was called missing.
 
 Click the paper title: the panel shows the whole paper's profile and its readiness score (the
-weighted share of declared products already on HEPData; uncertain matches count half).
+weighted share of declared products already on HEPData; uncertain matches count half). It has
+three views:
+
+- **Paper with highlights** (the default, and the most striking). The original arXiv PDF,
+  loaded by the browser straight from arXiv, with every extracted result highlighted where the
+  paper states it: green when it is on HEPData, yellow when a curator should check the match,
+  red when it is missing. HEPData's tables are on the left; click one and the paper scrolls to
+  the passage it matches, or click a highlight to see what it matched. Quotes come from the LaTeX
+  source and are found in the typeset PDF approximately; any that cannot be located are counted.
+- **Side by side with HEPData.** The same match as two columns: HEPData's tables against the
+  paper's results, including HEPData tables nothing matched (often results the extractor missed).
+- **List and review.** Every result with its quote and scores, and the curator buttons.
 
 ## 4. Curator review (30 s)
 

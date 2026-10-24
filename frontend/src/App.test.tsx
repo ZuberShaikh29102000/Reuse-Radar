@@ -69,6 +69,11 @@ function mockFetch(extra?: Handler) {
   return calls;
 }
 
+// jsdom cannot render PDFs; the reader is exercised end to end in a real browser instead.
+vi.mock("./components/PaperReader", () => ({
+  PaperReader: ({ arxivId }: { arxivId: string }) => <div>PDF reader for {arxivId}</div>,
+}));
+
 beforeEach(() => {
   sessionStorage.clear();
   localStorage.clear();
@@ -173,6 +178,10 @@ describe("paper panel", () => {
     const user = userEvent.setup();
     render(<App />);
     await user.click(await screen.findByRole("button", { name: "Measurement of ttW cross-sections" }));
+
+    // The original paper with highlights is the default view when the paper is on arXiv.
+    expect(await screen.findByText("PDF reader for 2401.05299")).toBeInTheDocument();
+    await user.click(screen.getByText("Side by side with HEPData"));
 
     const comparison = (await screen.findByText("1 matched")).closest(".comparison") as HTMLElement;
     const view = within(comparison);

@@ -127,4 +127,5 @@ Step by step: [docs/deploy.md](docs/deploy.md).
 Paper metadata from [INSPIRE-HEP](https://inspirehep.net). Source files from
 [arXiv](https://arxiv.org) (thank you to arXiv for use of its open access interoperability).
 HEPData record metadata via [DataCite](https://datacite.org). Reuse Radar links back to every
-source and redistributes no paper text beyond short evidence quotes.
+source and redistributes no paper text beyond short evidence quotes. The highlighted paper view
+shows the arXiv PDF as the visitor's browser downloads it from arXiv; nothing is re-hosted.
