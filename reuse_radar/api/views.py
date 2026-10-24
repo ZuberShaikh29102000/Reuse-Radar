@@ -32,6 +32,7 @@ from reuse_radar.api.models import (
     GapStatus,
     Paper,
     ProcessingStatus,
+    PublishedTable,
     Review,
 )
 from reuse_radar.api.serializers import (
@@ -43,6 +44,7 @@ from reuse_radar.api.serializers import (
     ReviewSerializer,
     SearchResultSerializer,
     SimilarProductSerializer,
+    TableSerializer,
 )
 from reuse_radar.llm.schemas import PRODUCT_TYPES
 
@@ -181,12 +183,27 @@ class PaperGapsView(APIView):
         if statuses := _choices(request, "status", _GAP_STATUSES):
             gaps = gaps.filter(status__in=statuses)
         ordered = gaps.order_by("-severity", "-declared_product__confidence", "id")
+        tables: list[PublishedTable] = []
+        if paper.hepdata_record_doi:
+            # Table DOIs carry the record version, so this excludes other versions' tables.
+            tables = sorted(
+                PublishedTable.objects.filter(table_doi__startswith=f"{paper.hepdata_record_doi}/"),
+                key=_part_order,
+            )
         return Response(
             {
                 "paper": PaperSummarySerializer(paper).data,
                 "gaps": PaperGapSerializer(ordered, many=True).data,
+                "hepdata_tables": TableSerializer(tables, many=True).data,
             }
         )
+
+
+def _part_order(table: PublishedTable) -> tuple[int, int]:
+    """HEPData's order: tables (/t1, /t2, ...) before resources (/r1, ...), numerically."""
+    tail = table.table_doi.rsplit("/", 1)[-1]
+    number = int(tail[1:]) if tail[1:].isdigit() else 0
+    return (0 if tail[:1] == "t" else 1, number)
 
 
 # --- statistics -------------------------------------------------------------------------------

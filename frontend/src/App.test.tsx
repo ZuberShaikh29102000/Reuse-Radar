@@ -145,6 +145,60 @@ describe("triage queue", () => {
   });
 });
 
+describe("paper panel", () => {
+  it("shows the paper side by side with its HEPData record, and a list view", async () => {
+    const table = (n: number, name: string) => ({
+      table_doi: `10.17182/hepdata.149762.v1/t${n}`,
+      name,
+      description: `${name} description`,
+      kind: "table" as const,
+      resource_type: "",
+      doi_url: `https://doi.org/10.17182/hepdata.149762.v1/t${n}`,
+    });
+    const limits = table(1, "Observed limits");
+    const { paper, ...missing } = gap;
+    const published = {
+      ...missing,
+      id: 2,
+      status: "published" as const,
+      severity: 0,
+      product: { ...gap.product, id: 43, description: "Upper limits on ttW" },
+      matched_table: limits,
+    };
+    mockFetch((url) =>
+      url.startsWith("/api/papers/2745375/gaps")
+        ? Response.json({ paper, gaps: [missing, published], hepdata_tables: [limits, table(2, "Cut-flow")] })
+        : undefined!,
+    );
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(await screen.findByRole("button", { name: "Measurement of ttW cross-sections" }));
+
+    const comparison = (await screen.findByText("1 matched")).closest(".comparison") as HTMLElement;
+    const view = within(comparison);
+    expect(view.getByText("1 missing from HEPData")).toBeInTheDocument();
+    expect(view.getByText("1 only on HEPData")).toBeInTheDocument();
+    expect(view.getByText("Observed limits").closest("li")).toHaveTextContent("Upper limits on ttW");
+    expect(view.getByText("Cut-flow").closest("li")).toHaveTextContent("Nothing in the paper matched this");
+
+    await user.click(screen.getByText("List and review"));
+    expect(screen.queryByText("1 matched")).not.toBeInTheDocument();
+  });
+
+  it("falls back to the list when the API does not send the HEPData tables yet", async () => {
+    const { paper, ...missing } = gap;
+    mockFetch((url) =>
+      url.startsWith("/api/papers/2745375/gaps") ? Response.json({ paper, gaps: [missing] }) : undefined!,
+    );
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(await screen.findByRole("button", { name: "Measurement of ttW cross-sections" }));
+    expect(await screen.findByText(/1 declared data products/)).toBeInTheDocument();
+    expect(screen.queryByText("Side by side with HEPData")).not.toBeInTheDocument();
+    expect(screen.queryByText(/missing from HEPData$/)).not.toBeInTheDocument();
+  });
+});
+
 describe("curator review", () => {
   it("posts a verdict with the token and shows it", async () => {
     const calls = mockFetch((url, init) =>

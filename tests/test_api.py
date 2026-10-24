@@ -185,6 +185,22 @@ def test_paper_gaps_lists_all_current_products(corpus: dict[str, Any]) -> None:
     )
 
 
+def test_paper_gaps_include_the_whole_hepdata_record_in_order(corpus: dict[str, Any]) -> None:
+    """The side-by-side view needs every table, including ones no product matched."""
+    Paper.objects.filter(inspire_id=100).update(hepdata_record_doi="10.17182/hepdata.1.v1")
+    for doi in ("1.v1/t10", "1.v1/t2", "1.v1/r1", "1.v2/t3"):  # v2 is another record version
+        PublishedTable.objects.create(
+            hepdata_record_id=1,
+            table_doi=f"10.17182/hepdata.{doi}",
+            name=doi,
+            embedding=_vector(1),
+        )
+    tables = get("/api/papers/100/gaps")["hepdata_tables"]
+    tails = [t["table_doi"].rsplit(".", 1)[1] for t in tables]
+    assert tails == ["v1/t1", "v1/t2", "v1/t10", "v1/r1"]
+    assert get("/api/papers/200/gaps")["hepdata_tables"] == []  # no HEPData record
+
+
 def test_unknown_paper_is_404(corpus: dict[str, Any]) -> None:
     assert status("/api/papers/999/gaps") == 404
 

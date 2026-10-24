@@ -78,6 +78,13 @@ export interface Gap {
 
 export type PaperGap = Omit<Gap, "paper">;
 
+export interface PaperDetail {
+  paper: Paper;
+  gaps: PaperGap[];
+  /** Every table and resource of the paper's HEPData record, in HEPData's order. */
+  hepdata_tables: PublishedTable[];
+}
+
 export interface Page<T> {
   count: number;
   next: string | null;
@@ -160,7 +167,7 @@ export const api = {
   stats: () => request<Stats>("/api/stats"),
   gaps: (filters: GapFilters) => request<Page<Gap>>(`/api/gaps?${gapQuery(filters)}`),
   paper: (inspireId: number) =>
-    request<{ paper: Paper; gaps: PaperGap[] }>(`/api/papers/${inspireId}/gaps`),
+    request<PaperDetail>(`/api/papers/${inspireId}/gaps`),
   review: (token: string, productId: number, verdict: "accept" | "reject", note = "") =>
     request<Review>("/api/reviews", {
       method: "POST",

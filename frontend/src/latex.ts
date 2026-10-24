@@ -1,5 +1,5 @@
-// Readable text for LaTeX in paper *titles* (INSPIRE stores them with math markup).
-// Evidence quotes are never passed through this: they must stay verbatim.
+// Readable text for LaTeX in paper *titles* (INSPIRE stores them with math markup) and HEPData
+// table descriptions. Evidence quotes are never passed through this: they must stay verbatim.
 
 const SYMBOLS: Record<string, string> = {
   alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ε", eta: "η", theta: "θ",
@@ -24,7 +24,7 @@ function script(text: string, map: Record<string, string>, marker: string): stri
 }
 
 export function latexToText(input: string): string {
-  let s = input;
+  let s = input.replace(/\\([%&#])/g, "$1"); // escaped characters: 95\% -> 95%
   // \overline{t} -> t̄ (combining overline), \bar{b} -> b̄
   s = s.replace(/\\(?:overline|bar)\{([^{}]*)\}/g, (_, x: string) => `${x}̄`);
   s = s.replace(/\\sqrt\{([^{}]*)\}/g, "√$1");

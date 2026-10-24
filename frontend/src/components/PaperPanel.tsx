@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { api, type Paper, type PaperGap } from "../api";
+import { api, type PaperDetail } from "../api";
 import { latexToText } from "../latex";
+import { Comparison } from "./Comparison";
 import { GapRow } from "./GapRow";
 
 interface Props {
@@ -10,8 +11,9 @@ interface Props {
 }
 
 export function PaperPanel({ inspireId, token, onClose }: Props) {
-  const [data, setData] = useState<{ paper: Paper; gaps: PaperGap[] } | null>(null);
+  const [data, setData] = useState<PaperDetail | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [view, setView] = useState<"compare" | "list">("compare");
   const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -26,6 +28,7 @@ export function PaperPanel({ inspireId, token, onClose }: Props) {
     };
   }, [inspireId]);
 
+  const canCompare = Array.isArray(data?.hepdata_tables);
   const counts = data?.gaps.reduce<Record<string, number>>((acc, g) => {
     acc[g.status] = (acc[g.status] ?? 0) + 1;
     return acc;
@@ -62,11 +65,35 @@ export function PaperPanel({ inspireId, token, onClose }: Props) {
               .map(([status, n]) => `${n} ${status.replace("_", " ")}`)
               .join(", ")}
           </p>
-          <ul className="gaps">
-            {data.gaps.map((g) => (
-              <GapRow key={g.id} gap={g} token={token} />
-            ))}
-          </ul>
+          {/* An API deployed before hepdata_tables existed omits it; without the table list the
+              comparison would show every product as missing, so only the list is offered. */}
+          {canCompare && (
+            <div className="view-switch" role="group" aria-label="View">
+              <button
+                type="button"
+                aria-pressed={view === "compare"}
+                onClick={() => setView("compare")}
+              >
+                Side by side with HEPData
+              </button>
+              <button type="button" aria-pressed={view === "list"} onClick={() => setView("list")}>
+                List and review
+              </button>
+            </div>
+          )}
+          {canCompare && view === "compare" ? (
+            <Comparison
+              gaps={data.gaps}
+              tables={data.hepdata_tables}
+              hasRecord={Boolean(data.paper.hepdata_url)}
+            />
+          ) : (
+            <ul className="gaps">
+              {data.gaps.map((g) => (
+                <GapRow key={g.id} gap={g} token={token} />
+              ))}
+            </ul>
+          )}
         </>
       )}
     </dialog>

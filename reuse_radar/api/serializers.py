@@ -151,6 +151,9 @@ class PaperGapSerializer(GapFieldsMixin, serializers.ModelSerializer[Gap]):
 class PaperGapsSerializer(serializers.Serializer[Paper]):
     paper = PaperSummarySerializer(source="*")
     gaps = PaperGapSerializer(many=True)
+    # Every table and resource of the paper's HEPData record version, in HEPData's order
+    # (tables, then resources), including those no declared product matched.
+    hepdata_tables = TableSerializer(many=True)
 
 
 class SimilarProductSerializer(serializers.ModelSerializer[DeclaredProduct]):
