@@ -381,7 +381,11 @@ def test_local_payload_matches_groq_without_groq_only_fields() -> None:
     local = OpenAICompatibleProvider("http://localhost:8001/v1").payload(REQUEST)
     groq = GroqProvider("k").payload(REQUEST)
     assert "include_reasoning" not in local
-    assert local == {k: v for k, v in groq.items() if k != "include_reasoning"}
+    assert local["max_completion_tokens"] == 12_000  # room for reasoning; no quota to respect
+    assert local == {
+        **{k: v for k, v in groq.items() if k != "include_reasoning"},
+        "max_completion_tokens": 12_000,
+    }
     plain = OpenAICompatibleProvider("http://x/v1", structured_output=False).payload(REQUEST)
     assert "response_format" not in plain  # for servers without schema-constrained decoding
 

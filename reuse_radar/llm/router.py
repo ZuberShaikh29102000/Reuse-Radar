@@ -337,9 +337,14 @@ class OpenAICompatibleProvider:
         http: httpx.Client | None = None,
         reasoning_effort: str | None = "medium",
         structured_output: bool = True,
+        min_output_tokens: int = 12_000,
     ) -> None:
         if not base_url:
             raise ValueError("LOCAL_LLM_BASE_URL is empty")
+        # Reasoning tokens count against max_completion_tokens; at the 3K cap sized for Groq's
+        # per-minute quota, about one paper in six was cut off (seen live). An own GPU has no
+        # such quota, so give the answer room, as for Gemini.
+        self._min_output_tokens = min_output_tokens
         self.model = model
         self._url = base_url.rstrip("/") + "/chat/completions"
         self._key = api_key
@@ -356,7 +361,7 @@ class OpenAICompatibleProvider:
                 *({"role": r, "content": t} for r, t in request.messages),
             ],
             "temperature": 0,
-            "max_completion_tokens": request.max_output_tokens,
+            "max_completion_tokens": max(request.max_output_tokens, self._min_output_tokens),
         }
         if self._structured:
             body["response_format"] = {
