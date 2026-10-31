@@ -15,9 +15,11 @@ from reuse_radar.llm.router import (
     GroqProvider,
     LLMRequest,
     MinuteBudget,
+    OpenAICompatibleProvider,
     ProviderFatalError,
     RequestTooLargeError,
     Router,
+    UnavailableError,
     router_from_env,
 )
 from reuse_radar.llm.schemas import EXTRACTION_JSON_SCHEMA
@@ -370,3 +372,59 @@ def test_endless_overload_stops_after_the_total_wait_cap(tmp_path: Path, clock: 
     with pytest.raises(AllProvidersExhaustedError):
         router.complete(REQUEST)
     assert sum(clock.sleeps) < router.max_total_wait_s + 600
+
+
+# --- self-hosted OpenAI-compatible server (vLLM on a rented GPU) -------------------------------
+
+
+def test_local_payload_matches_groq_without_groq_only_fields() -> None:
+    local = OpenAICompatibleProvider("http://localhost:8001/v1").payload(REQUEST)
+    groq = GroqProvider("k").payload(REQUEST)
+    assert "include_reasoning" not in local
+    assert local == {k: v for k, v in groq.items() if k != "include_reasoning"}
+    plain = OpenAICompatibleProvider("http://x/v1", structured_output=False).payload(REQUEST)
+    assert "response_format" not in plain  # for servers without schema-constrained decoding
+
+
+def test_local_server_response_parses_and_is_cached_under_its_own_name(
+    tmp_path: Path, clock: FakeClock
+) -> None:
+    seen: list[httpx.Request] = []
+
+    def server(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(200, json=GROQ_OK)  # vLLM answers in the same OpenAI shape
+
+    local = OpenAICompatibleProvider(
+        "http://localhost:8001/v1/",
+        api_key="local-key",
+        http=httpx.Client(transport=httpx.MockTransport(server)),
+    )
+    router = Router(
+        providers=[local], cache=LLMCache(tmp_path / "llm"), sleep=clock.sleep, clock=clock
+    )
+    result = router.complete(REQUEST)
+    assert (result.provider, result.model) == ("vllm", "openai/gpt-oss-120b")
+    assert result.text == GROQ_OK["choices"][0]["message"]["content"]
+    assert str(seen[0].url) == "http://localhost:8001/v1/chat/completions"
+    assert seen[0].headers["Authorization"] == "Bearer local-key"
+    assert router.complete(REQUEST).cached and len(seen) == 1
+
+
+@pytest.mark.parametrize(("status", "error"), [(503, UnavailableError), (401, ProviderFatalError)])
+def test_local_server_errors(status: int, error: type[Exception]) -> None:
+    local = OpenAICompatibleProvider(
+        "http://x/v1",
+        http=httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(status))),
+    )
+    with pytest.raises(error):
+        local.send(local.payload(REQUEST))
+
+
+def test_router_from_env_uses_only_the_local_server_when_configured(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)  # not needed for a local run
+    monkeypatch.setenv("LOCAL_LLM_BASE_URL", "http://localhost:8001/v1")
+    router = router_from_env(tmp_path)
+    assert [(p.name, p.model) for p in router.providers] == [("vllm", "openai/gpt-oss-120b")]

@@ -14,6 +14,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import threading
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
@@ -62,7 +63,8 @@ class LLMCache:
         key = cache_key(response.provider, response.model, prompt)
         path = self._path(key)
         path.parent.mkdir(parents=True, exist_ok=True)
-        tmp = path.with_suffix(f".tmp{os.getpid()}")
+        # Unique per process and thread: parallel extraction workers share one cache.
+        tmp = path.with_suffix(f".tmp{os.getpid()}-{threading.get_ident()}")
         # The prompt is stored alongside the response so cached runs can be audited.
         tmp.write_text(
             json.dumps({"key": key, "prompt": prompt, "response": asdict(response)}),

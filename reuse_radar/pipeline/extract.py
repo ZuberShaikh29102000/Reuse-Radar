@@ -25,6 +25,7 @@ import math
 import os
 import re
 from collections.abc import Sequence
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass, field
 from itertools import pairwise
 from pathlib import Path
@@ -474,6 +475,7 @@ def run_extract(
     limit: int | None = None,
     only: Sequence[int] | None = None,
     force: bool = False,
+    workers: int = 1,
 ) -> dict[str, object]:
     """Extract every filtered paper of the corpus. Entry point for Airflow and GitHub Actions.
 
@@ -485,6 +487,9 @@ def run_extract(
     corrective retry was retried with the uncached first answer inside the prompt, so a rerun
     makes live calls again. On 2026-10-06 such a rerun hit a truncated answer and overwrote a
     good extraction (INSPIRE 1790439) with a schema_error.
+
+    `workers` > 1 extracts that many papers at once, for a self-hosted server that batches
+    concurrent requests (a GPU). The free tiers are paced per minute, so they gain nothing.
     """
     with tracer.start_as_current_span("extract") as span:
         span.set_attribute("corpus", corpus.name)
@@ -503,6 +508,7 @@ def run_extract(
         statuses: dict[str, int] = {}
         totals = {"products": 0, "dropped_spans": 0, "input_tokens": 0, "output_tokens": 0}
         stopped: str | None = None
+        todo: list[dict[str, Any]] = []
         for path in paths:
             record = json.loads(path.read_text(encoding="utf-8"))
             existing = out_dir / f"{record['inspire_id']}.json"
@@ -515,23 +521,55 @@ def run_extract(
                     statuses["ok"] = statuses.get("ok", 0) + 1
                     totals["products"] += len(previous.get("products") or [])
                     continue
+            todo.append(record)
+
+        def extract_one(record: dict[str, Any]) -> PaperExtraction:
             with tracer.start_as_current_span("extract.paper") as paper_span:
                 paper_span.set_attribute("inspire_id", int(record["inspire_id"]))
-                try:
-                    result = extract_paper(router, system, record)
-                except AllProvidersExhaustedError as exc:
-                    stopped = str(exc)
-                    logger.error(
-                        "llm quota exhausted; stopping extract stage",
-                        extra={"inspire_id": record["inspire_id"]},
-                    )
-                    break
+                return extract_paper(router, system, record)
+
+        def keep(result: PaperExtraction) -> None:
             statuses[result.status] = statuses.get(result.status, 0) + 1
             totals["products"] += len(result.products)
             totals["dropped_spans"] += result.dropped_spans
             totals["input_tokens"] += result.input_tokens
             totals["output_tokens"] += result.output_tokens
             _write_json_atomic(out_dir / f"{result.inspire_id}.json", asdict(result))
+
+        def quota_stop(exc: AllProvidersExhaustedError, record: dict[str, Any]) -> str:
+            logger.error(
+                "llm quota exhausted; stopping extract stage",
+                extra={"inspire_id": record["inspire_id"]},
+            )
+            return str(exc)
+
+        if workers <= 1:
+            for record in todo:
+                try:
+                    result = extract_one(record)
+                except AllProvidersExhaustedError as exc:
+                    stopped = quota_stop(exc, record)
+                    break
+                keep(result)
+        else:
+            # Results are tallied and written on this thread only. Papers already running when
+            # the quota runs out (or a fatal error occurs) finish; queued ones are cancelled.
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                futures = {pool.submit(extract_one, record): record for record in todo}
+                try:
+                    for future in as_completed(futures):
+                        if future.cancelled():  # queued when the quota ran out; never started
+                            continue
+                        try:
+                            keep(future.result())
+                        except AllProvidersExhaustedError as exc:
+                            stopped = stopped or quota_stop(exc, futures[future])
+                            for pending in futures:
+                                pending.cancel()
+                except BaseException:
+                    for pending in futures:
+                        pending.cancel()
+                    raise
 
         summary: dict[str, object] = {
             "corpus": corpus.name,
@@ -558,6 +596,12 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument(
         "--force", action="store_true", help="re-extract papers that already have an ok output"
     )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="papers extracted at once; >1 only helps a self-hosted server (LOCAL_LLM_BASE_URL)",
+    )
     args = parser.parse_args(argv)
 
     configure_logging()
@@ -570,6 +614,7 @@ def main(argv: list[str] | None = None) -> None:
         limit=args.limit,
         only=args.only,
         force=args.force,
+        workers=args.workers,
     )
 
 

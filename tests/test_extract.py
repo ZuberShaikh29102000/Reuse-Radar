@@ -364,6 +364,25 @@ def test_outputs_from_an_older_extraction_version_are_redone(tmp_path: Path) -> 
     assert json.loads(path.read_text(encoding="utf-8"))["extraction_version"] != "extract_v0"
 
 
+def test_parallel_workers_extract_every_paper(tmp_path: Path) -> None:
+    _write_filter(tmp_path, *(_record(i) for i in range(1, 6)))
+    router = ScriptedRouter([_result(OK) for _ in range(5)])
+    summary = run_extract(router, CORPUS, tmp_path, workers=3)
+    assert summary["statuses"] == {"ok": 5} and len(router.requests) == 5
+    out = tmp_path / "extract" / "c"
+    assert all((out / f"{i}.json").exists() for i in range(1, 6))
+
+
+def test_parallel_workers_stop_on_quota_and_keep_finished_papers(tmp_path: Path) -> None:
+    _write_filter(tmp_path, *(_record(i) for i in range(1, 7)))
+    script: list[LLMResult | Exception] = [_result(OK), AllProvidersExhaustedError("quota")]
+    router = ScriptedRouter(script + [_result(OK)] * 4)
+    with pytest.raises(AllProvidersExhaustedError, match="rerun later"):
+        run_extract(router, CORPUS, tmp_path, workers=2)
+    summary = json.loads((tmp_path / "extract" / "c" / "_summary.json").read_text(encoding="utf-8"))
+    assert summary["stopped_early"] and summary["statuses"].get("ok", 0) >= 1
+
+
 def test_only_filter_selects_papers(tmp_path: Path) -> None:
     _write_filter(tmp_path, _record(1), _record(2))
     summary = run_extract(ScriptedRouter([_result(OK)]), CORPUS, tmp_path, only=[2])

@@ -318,6 +318,85 @@ class GroqProvider:
         return str(error.get("failed_generation", ""))
 
 
+class OpenAICompatibleProvider:
+    """A self-hosted OpenAI-compatible server, e.g. vLLM serving gpt-oss-120b on a rented GPU.
+
+    The request is Groq's minus Groq-only fields, so the same open-weights model answers the same
+    prompt. No client-side pacing: the server has no per-minute quota, and it batches concurrent
+    requests, which is what parallel extraction workers rely on.
+    """
+
+    name = "vllm"
+
+    def __init__(
+        self,
+        base_url: str,
+        model: str = DEFAULT_GROQ_MODEL,
+        *,
+        api_key: str = "",
+        http: httpx.Client | None = None,
+        reasoning_effort: str | None = "medium",
+        structured_output: bool = True,
+    ) -> None:
+        if not base_url:
+            raise ValueError("LOCAL_LLM_BASE_URL is empty")
+        self.model = model
+        self._url = base_url.rstrip("/") + "/chat/completions"
+        self._key = api_key
+        # Long generations on a busy GPU can take minutes; a stuck server still fails loudly.
+        self._http = http or httpx.Client(timeout=900.0)
+        self._reasoning_effort = reasoning_effort
+        self._structured = structured_output
+
+    def payload(self, request: LLMRequest) -> dict[str, Any]:
+        body: dict[str, Any] = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": request.system},
+                *({"role": r, "content": t} for r, t in request.messages),
+            ],
+            "temperature": 0,
+            "max_completion_tokens": request.max_output_tokens,
+        }
+        if self._structured:
+            body["response_format"] = {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": request.schema_name,
+                    "strict": True,
+                    "schema": request.json_schema,
+                },
+            }
+        if self._reasoning_effort is not None:
+            body["reasoning_effort"] = self._reasoning_effort
+        return body
+
+    def estimate_tokens(self, payload: dict[str, Any]) -> int:
+        return _estimate(payload, int(payload["max_completion_tokens"]))
+
+    def send(self, payload: dict[str, Any]) -> Completion:
+        headers = {"Authorization": f"Bearer {self._key}"} if self._key else {}
+        try:
+            response = self._http.post(self._url, json=payload, headers=headers)
+        except httpx.TransportError as exc:
+            raise UnavailableError(f"vllm transport error: {exc}") from exc
+        _requests_counter.add(1, {"provider": self.name, "status": response.status_code})
+        if response.status_code == 429 or response.status_code >= 500:
+            raise UnavailableError(f"vllm {response.status_code}: {response.text[:300]}")
+        if response.status_code != 200:
+            raise ProviderFatalError(f"vllm {response.status_code}: {response.text[:500]}")
+        body = response.json()
+        try:
+            choice = body["choices"][0]
+            text = choice["message"]["content"]
+            usage = body["usage"]
+            input_tokens = int(usage["prompt_tokens"])
+            output_tokens = int(usage["completion_tokens"])  # includes reasoning tokens
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            raise ProviderFatalError(f"unexpected vllm response shape: {str(body)[:500]}") from exc
+        return Completion(text or "", input_tokens, output_tokens, choice.get("finish_reason", ""))
+
+
 _RETRY_DELAY = re.compile(r"^(\d+(?:\.\d+)?)s$")
 
 
@@ -605,7 +684,23 @@ def router_from_env(cache_dir: Path) -> Router:
 
     GEMINI_MODELS is a comma-separated fallback chain. Each Gemini model has its own free quota
     and its own overload spells, so a second model keeps a run going when the first is busy.
+
+    LOCAL_LLM_BASE_URL (e.g. http://localhost:8001/v1, a self-hosted vLLM reached through an SSH
+    tunnel) switches to that server alone, for bulk runs on a rented GPU: no free-tier fallback,
+    so a server problem stops the run instead of quietly spending the free quotas.
     """
+    local_url = os.environ.get("LOCAL_LLM_BASE_URL", "").strip()
+    if local_url:
+        local: list[Provider] = [
+            OpenAICompatibleProvider(
+                local_url,
+                os.environ.get("LOCAL_LLM_MODEL", DEFAULT_GROQ_MODEL),
+                api_key=os.environ.get("LOCAL_LLM_API_KEY", "").strip(),
+                structured_output=os.environ.get("LOCAL_LLM_STRUCTURED", "1") != "0",
+            )
+        ]
+        return Router(providers=local, cache=LLMCache(cache_dir / "llm"))
+
     gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
     gemini_models = [
         m.strip()
