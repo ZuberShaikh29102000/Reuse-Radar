@@ -44,10 +44,12 @@ The API, UI and MCP server only read precomputed rows. No model is ever called w
 
 ## Current status
 
-- **Corpus:** 624 papers harvested; 530 have LaTeX source and are queued for extraction.
-- **Processed so far:** 53 papers, with 423 declared products: 150 on HEPData, 87 missing from
-  the paper's HEPData record, 94 from papers with no HEPData record, and 92 for review. The rest
-  is limited by the free LLM quota, about 20 papers a day.
+- **Corpus:** 624 papers harvested; 530 have LaTeX source, and all 530 are processed.
+- **Results:** 5,092 declared products: 1,504 on HEPData, 829 missing from the paper's HEPData
+  record, 2,009 from papers with no HEPData record, and 750 for review.
+- **Compute:** the first 145 papers ran on free LLM tiers (about 20 papers a day); the other 385
+  ran in about an hour on one rented AMD MI300X GPU serving the same open-weights model
+  (`docs/gpu-run.md`).
 - **Quality**, measured on 6 hand-labelled papers (`reuse_radar/eval`):
 
   | Measure | Value |

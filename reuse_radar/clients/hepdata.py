@@ -44,6 +44,9 @@ CACHE_TTL_S = 7 * 24 * 3600.0
 
 _VERSIONED = re.compile(r"^10\.17182/hepdata\.(\d+)\.v(\d+)$")
 _TABLE_TITLE = re.compile(r'^"(?P<name>.*)" of "(?P<paper>.*)"$', re.DOTALL)
+# HEPData cuts a title at a "<" in the table name, leaving only the opening quote and the start of
+# the name (seen live: hepdata.156818.v1/t49, '"Total corr. 17 $|y_{e\mu}|$ (150 $').
+_TRUNCATED_TITLE = re.compile(r'^"(?P<name>[^"]+)$', re.DOTALL)
 
 logger = logging.getLogger(__name__)
 _meter = metrics.get_meter(__name__)
@@ -266,7 +269,8 @@ def _table_from_item(item: dict[str, Any], record: HepDataRecord) -> PublishedTa
     titles = attributes.get("titles")
     if not isinstance(titles, list) or not titles or "title" not in titles[0]:
         raise UnexpectedMetadataError(f"{doi} has no title")
-    match = _TABLE_TITLE.match(str(titles[0]["title"]))
+    title = str(titles[0]["title"])
+    match = _TABLE_TITLE.match(title) or _TRUNCATED_TITLE.match(title)
     if match is None:
         raise UnexpectedMetadataError(f"{doi} title has an unknown format: {titles[0]!r}")
     descriptions = attributes.get("descriptions") or []

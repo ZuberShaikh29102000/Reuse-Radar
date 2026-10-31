@@ -176,6 +176,24 @@ def test_unknown_table_title_format_fails_loudly(make_client: MakeClient) -> Non
         client.list_tables(record)
 
 
+def test_title_cut_short_by_hepdata_keeps_the_name_start(make_client: MakeClient) -> None:
+    """Regression: HEPData cuts a title at "<" (hepdata.156818.v1/t49, seen 2026-10-31)."""
+
+    def cut(request: httpx.Request, body: dict[str, Any] | None) -> httpx.Response | None:
+        if body and any("/t" in item["id"] for item in body["data"]):
+            for item in body["data"]:
+                if "/t" in item["id"]:
+                    item["attributes"]["titles"] = [{"title": '"Total corr. 17 $|y|$ (150 $'}]
+            return httpx.Response(200, json=body)
+        return None
+
+    client, _ = make_client(cut)
+    record = client.find_record(2745375)
+    assert record is not None
+    tables = [p for p in client.list_tables(record) if p.kind == "table"]
+    assert tables and all(t.name == "Total corr. 17 $|y|$ (150 $" for t in tables)
+
+
 def test_short_read_fails_loudly(make_client: MakeClient) -> None:
     def inflate_total(request: httpx.Request, body: dict[str, Any] | None) -> httpx.Response | None:
         if body is not None:
